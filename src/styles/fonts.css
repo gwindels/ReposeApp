@@ -1,0 +1,27 @@
+/* Repose Typography - Celestial Palette */
+
+/* Import Inter for clean, modern UI text */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* Import Crimson Pro for elegant headings (optional serif accent) */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500&display=swap');
+
+/* Base font variables */
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-serif: 'Crimson Pro', 'Georgia', 'Times New Roman', serif;
+}
+
+/* Apply base font to body */
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+/* Optional: Use serif for large headings if desired */
+h1, h2 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+}
