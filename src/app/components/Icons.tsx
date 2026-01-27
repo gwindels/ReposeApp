@@ -9,8 +9,8 @@ export function BrainWaveIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -31,8 +31,8 @@ export function AffirmationIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -51,8 +51,8 @@ export function SunIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -77,8 +77,8 @@ export function LeafIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -96,8 +96,8 @@ export function PurposeIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -115,8 +115,8 @@ export function BirdIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -138,8 +138,8 @@ export function PaletteIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -160,8 +160,8 @@ export function CustomizeIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -186,8 +186,8 @@ export function PlayIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -205,8 +205,8 @@ export function InstantIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -223,8 +223,8 @@ export function LocalStorageIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
@@ -242,8 +242,8 @@ export function PrivacyIcon(props: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#88806e"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
       {...props}
