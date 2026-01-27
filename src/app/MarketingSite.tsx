@@ -15,9 +15,9 @@ import {
 
 export function MarketingSite() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FAFAF8] via-[#F5F5F2] to-[#EFEFE8]">
+    <div className="min-h-screen" style={{ background: 'linear-gradient(to bottom right, #FAFAF8, #F5F5F2, #EFEFE8)' }}>
       {/* Header */}
-      <header className="border-b border-black/5 bg-white/60 backdrop-blur-md sticky top-0 z-10">
+      <header className="border-b border-black/5 sticky top-0 z-10" style={{ backgroundColor: 'rgba(255,255,255,0.85)', WebkitBackdropFilter: 'blur(12px)', backdropFilter: 'blur(12px)' }}>
         <div className="max-w-7xl mx-auto px-6 py-6">
           <Logo size="md" />
         </div>
@@ -103,13 +103,13 @@ export function MarketingSite() {
         </section>
 
         {/* Features */}
-        <section className="bg-white/40 backdrop-blur py-24">
+        <section className="py-24" style={{ backgroundColor: 'rgba(255,255,255,0.4)' }}>
           <div className="max-w-5xl mx-auto px-6">
             <h2 className="text-4xl text-center mb-16" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
               What Makes Repose Different
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-8 bg-white/70 backdrop-blur rounded-3xl border border-black/5">
+              <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
                   <BrainWaveIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
@@ -120,7 +120,7 @@ export function MarketingSite() {
                   This isn't ambient noise. Repose uses layered frequencies to move your brain in and out of gamma states, the same brainwave pattern linked to heightened learning and neural flexibility. Your mind becomes more receptive to change.
                 </p>
               </div>
-              <div className="p-8 bg-white/70 backdrop-blur rounded-3xl border border-black/5">
+              <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
                   <AffirmationIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
@@ -131,7 +131,7 @@ export function MarketingSite() {
                   Affirmations work better when your brain is primed for them. Repose delivers them at the right moment, in the right state. Choose from a list, write your own, or record them in your own voice for deeper resonance.
                 </p>
               </div>
-              <div className="p-8 bg-white/70 backdrop-blur rounded-3xl border border-black/5">
+              <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
                   <SunIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
@@ -142,7 +142,7 @@ export function MarketingSite() {
                   Use Repose when you wake up to prime your mind for the day. Reset during a break. Go deeper in a longer meditation session. Or use it as you fall asleep, when your brain is especially open to rewiring. Brainwave states are sequenced based on what that moment needs.
                 </p>
               </div>
-              <div className="p-8 bg-white/70 backdrop-blur rounded-3xl border border-black/5">
+              <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
                   <LeafIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
@@ -176,7 +176,7 @@ export function MarketingSite() {
         </section>
 
         {/* Private */}
-        <section className="bg-white/40 backdrop-blur py-24">
+        <section className="py-24" style={{ backgroundColor: 'rgba(255,255,255,0.4)' }}>
           <div className="max-w-5xl mx-auto px-6">
             <h2 className="text-4xl text-center mb-16" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
               Simple and Private
@@ -221,7 +221,7 @@ export function MarketingSite() {
 
         {/* Download CTA */}
         <section className="max-w-5xl mx-auto px-6 py-24">
-          <div className="text-center p-16 bg-white/70 backdrop-blur rounded-3xl border border-black/5">
+          <div className="text-center p-16 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
             <h2 className="text-4xl mb-6" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
               Ready to Begin?
             </h2>
@@ -303,7 +303,7 @@ export function MarketingSite() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-black/5 bg-white/40 backdrop-blur">
+      <footer className="border-t border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.4)' }}>
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="flex justify-center items-center">
             <div className="flex items-center gap-3">
