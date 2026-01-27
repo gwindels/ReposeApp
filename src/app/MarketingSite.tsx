@@ -1,5 +1,5 @@
 import { Logo } from "@/app/components/Logo";
-import { AppStoreButton } from "@/app/components/AppStoreButton";
+import { BetaButton } from "@/app/components/BetaButton";
 import {
   BrainWaveIcon,
   AffirmationIcon,
@@ -54,10 +54,7 @@ export function MarketingSite() {
             Neuroscience-backed frequencies quiet your mind and open you to change. 
             Pair with affirmations that actually land, whether releasing old doubts or inviting something new.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <AppStoreButton platform="ios" />
-            <AppStoreButton platform="mac" />
-          </div>
+          <BetaButton />
         </section>
 
         {/* How It Works */}
@@ -212,7 +209,7 @@ export function MarketingSite() {
                 No Tracking
               </h3>
               <p className="text-black/60 leading-relaxed">
-                What you do is never logged. Repose is personal tool, not a platform.
+                What you do is never logged. Repose is a personal tool, not a platform.
               </p>
             </div>
           </div>
@@ -226,12 +223,9 @@ export function MarketingSite() {
               Ready to Begin?
             </h2>
             <p className="text-xl text-black/60 mb-12 leading-relaxed" style={{ fontWeight: 300 }}>
-              Download Repose and create your first session.
+              Join the beta and create your first session.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <AppStoreButton platform="ios" />
-              <AppStoreButton platform="mac" />
-            </div>
+            <BetaButton />
           </div>
         </section>
 
@@ -305,10 +299,14 @@ export function MarketingSite() {
       {/* Footer */}
       <footer className="border-t border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.4)' }}>
         <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex justify-center items-center">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-3">
               <Logo variant="icon" size="sm" />
               <span className="text-black/40 text-sm">© 2026 Repose. All rights reserved.</span>
+            </div>
+            <div className="flex gap-6 text-sm">
+              <a href="./privacy.html" className="text-black/40 hover:text-black/60 transition-colors">Privacy</a>
+              <a href="./terms.html" className="text-black/40 hover:text-black/60 transition-colors">Terms</a>
             </div>
           </div>
         </div>

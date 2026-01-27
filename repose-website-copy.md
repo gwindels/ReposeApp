@@ -1,12 +1,12 @@
-# Repose Website Copy — Revised
+# Repose Website Copy — Final
 
 ---
 
 ## Hero
 
-**Ease Into Change**
+**Change Without Effort**
 
-Neuroscience-backed frequencies quiet your mind and open you to change. Pair them with affirmations that actually land, whether you're releasing old doubts or inviting something new.
+Neuroscience-backed frequencies quiet your mind and open you to change. Pair with affirmations that actually land, whether releasing old doubts or inviting something new.
 
 ---
 
@@ -30,15 +30,15 @@ The session guides your brain through targeted states. Works as you fall asleep,
 
 **Gamma Entrainment for Neuroplasticity**
 
-This isn't ambient noise. Repose uses binaural beats and layered frequencies to move your brain in and out of gamma states, the same brainwave pattern linked to heightened learning and neural flexibility. The result: your mind becomes more receptive to change.
+This isn't ambient noise. Repose uses layered frequencies to move your brain in and out of gamma states, the same brainwave pattern linked to heightened learning and neural flexibility. Your mind becomes more receptive to change.
 
 **Affirmations That Land**
 
-Affirmations work better when your brain is primed for them. Repose delivers them at the right moment, in the right state. Use ours, write your own, or record them in your own voice for deeper resonance.
+Affirmations work better when your brain is primed for them. Repose delivers them at the right moment, in the right state. Choose from a list, write your own, or record them in your own voice for deeper resonance.
 
 **Fits Your Day**
 
-Use Repose when you wake up to prime your mind for the day. During a break to reset. In a longer meditation session for deeper work. Or as you fall asleep, when your brain is especially open to rewiring. Each purpose sequences brainwave states differently based on what that moment needs.
+Use Repose when you wake up to prime your mind for the day. Reset during a break. Go deeper in a longer meditation session. Or use it as you fall asleep, when your brain is especially open to rewiring. Brainwave states are sequenced based on what that moment needs.
 
 **Release and Receive**
 
@@ -48,13 +48,7 @@ Self-doubt, limiting beliefs, mental loops that won't quit. Gamma entrainment cr
 
 ## The Approach
 
-Repose is built on a simple idea: change is easier when you stop forcing it.
-
-Instead of willpower and repetition, we use your brain's natural plasticity. Gamma entrainment increases receptivity. Affirmations seed new patterns. Rest lets them take hold.
-
-You're not pushing against yourself. You're creating the conditions for your mind to reorganize on its own.
-
-
+Instead of willpower, Repose uses your brain's natural plasticity. Gamma entrainment opens receptivity, affirmations seed new patterns, rest lets them take hold. Change is easier when you stop forcing it.
 
 ---
 
@@ -62,15 +56,15 @@ You're not pushing against yourself. You're creating the conditions for your min
 
 **No Account Required**
 
-Download and start immediately. No sign-up, no profile, no friction.
+Download and start immediately. No profile or account to set up.
 
 **Your Sessions Stay Yours**
 
-Everything is stored locally on your device. Your affirmations, your recordings, your sessions—they never leave your phone.
+Everything is stored locally on your device. Your affirmations, recordings, and sessions never leave your phone.
 
 **No Tracking**
 
-We don't log what you listen to or when. Repose is a tool, not a platform.
+What you do is never logged. Repose is personal tool, not a platform.
 
 ---
 
@@ -93,3 +87,7 @@ Repose is built on peer-reviewed neuroscience. Here are a few starting points if
 - [Multisensory gamma stimulation promotes glymphatic clearance](https://www.nature.com/articles/s41586-024-07132-6) — 2024 Nature paper showing how 40Hz stimulation supports the brain's waste-clearing system.
 
 ---
+
+## Footer
+
+© 2026 Repose. All rights reserved.
