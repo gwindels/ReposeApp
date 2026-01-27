@@ -1,6 +1,17 @@
 import { Logo } from "@/app/components/Logo";
 import { AppStoreButton } from "@/app/components/AppStoreButton";
-import { Moon, Volume2, Sparkles, Clock } from "lucide-react";
+import {
+  BrainWaveIcon,
+  AffirmationIcon,
+  SunIcon,
+  LeafIcon,
+  PurposeIcon,
+  BirdIcon,
+  PlayIcon,
+  InstantIcon,
+  LocalStorageIcon,
+  PrivacyIcon,
+} from "@/app/components/Icons";
 
 export function MarketingSite() {
   return (
@@ -37,11 +48,11 @@ export function MarketingSite() {
             </svg>
           </div>
           <h1 className="text-6xl mb-6" style={{ fontWeight: 300, letterSpacing: '1px', color: '#2A2A28' }}>
-            Change by Doing Less
+            Change Without Effort
           </h1>
           <p className="text-2xl text-black/60 max-w-2xl mx-auto mb-12 leading-relaxed" style={{ fontWeight: 300 }}>
-            Effortless transformation with a custom blend of binaural frequencies. 
-            Set once, then let go. Works during sleep or rest.
+            Neuroscience-backed frequencies quiet your mind and open you to change. 
+            Pair with affirmations that actually land, whether releasing old doubts or inviting something new.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <AppStoreButton platform="ios" />
@@ -57,35 +68,35 @@ export function MarketingSite() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
-                <Volume2 className="w-10 h-10 text-[#756F63]" />
+                <PurposeIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                1. Choose Your Session
+                1. Create Your Session
               </h3>
               <p className="text-black/60 leading-relaxed">
-                Select from curated binaural frequency programs designed for sleep, rest, or gentle awakening.
+                Choose a purpose—falling asleep, waking up, a midday reset, or deep meditation. Each one sequences brainwave states differently based on what you need.
               </p>
             </div>
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
-                <Moon className="w-10 h-10 text-[#756F63]" />
+                <BirdIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                2. Press Play & Rest
+                2. Make It Yours
               </h3>
               <p className="text-black/60 leading-relaxed">
-                No focus required. Just play and relax. The frequencies work passively while you sleep or rest.
+                Pick a nature soundscape. Add affirmations from our library, type your own and hear them spoken back to you, record your own voice, or upload audio you already have.
               </p>
             </div>
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
-                <Sparkles className="w-10 h-10 text-[#756F63]" />
+                <PlayIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                3. Let Transformation Happen
+                3. Press Play and Let Go
               </h3>
               <p className="text-black/60 leading-relaxed">
-                Binaural frequencies lower internal noise, creating receptive states for affirmations and change.
+                The session guides your brain through targeted states. Works as you fall asleep, wake up, take a midday break, or settle into longer meditation.
               </p>
             </div>
           </div>
@@ -95,62 +106,58 @@ export function MarketingSite() {
         <section className="bg-white/40 backdrop-blur py-24">
           <div className="max-w-5xl mx-auto px-6">
             <h2 className="text-4xl text-center mb-16" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
-              Designed for Effortless Use
+              What Makes Repose Different
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="p-8 bg-white/70 backdrop-blur rounded-3xl border border-black/5">
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
-                  <Moon className="w-8 h-8 text-[#756F63]" />
+                  <BrainWaveIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
                 <h3 className="text-2xl mb-4" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                  Works During Sleep
+                  Gamma Entrainment for Neuroplasticity
                 </h3>
                 <p className="text-black/60 leading-relaxed">
-                  No need to stay awake or concentrate. Repose is designed for passive listening that works 
-                  while you sleep, rest, or simply exist in a relaxed state.
+                  This isn't ambient noise. Repose uses layered frequencies to move your brain in and out of gamma states, the same brainwave pattern linked to heightened learning and neural flexibility. Your mind becomes more receptive to change.
                 </p>
               </div>
               <div className="p-8 bg-white/70 backdrop-blur rounded-3xl border border-black/5">
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
-                  <Clock className="w-8 h-8 text-[#756F63]" />
+                  <AffirmationIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
                 <h3 className="text-2xl mb-4" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                  Set Once, Let Go
+                  Affirmations That Land
                 </h3>
                 <p className="text-black/60 leading-relaxed">
-                  Minimal interaction by design. Choose your session, press play, and let the app do the rest. 
-                  No complicated settings or constant adjustments needed.
+                  Affirmations work better when your brain is primed for them. Repose delivers them at the right moment, in the right state. Choose from a list, write your own, or record them in your own voice for deeper resonance.
                 </p>
               </div>
               <div className="p-8 bg-white/70 backdrop-blur rounded-3xl border border-black/5">
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
-                  <Volume2 className="w-8 h-8 text-[#756F63]" />
+                  <SunIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
                 <h3 className="text-2xl mb-4" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                  Binaural Frequencies
+                  Fits Your Day
                 </h3>
                 <p className="text-black/60 leading-relaxed">
-                  Scientifically-tuned binaural beats lower internal noise and create receptive states. 
-                  Your mind quiets naturally, making space for positive change.
+                  Use Repose when you wake up to prime your mind for the day. Reset during a break. Go deeper in a longer meditation session. Or use it as you fall asleep, when your brain is especially open to rewiring. Brainwave states are sequenced based on what that moment needs.
                 </p>
               </div>
               <div className="p-8 bg-white/70 backdrop-blur rounded-3xl border border-black/5">
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
-                  <Sparkles className="w-8 h-8 text-[#756F63]" />
+                  <LeafIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
                 <h3 className="text-2xl mb-4" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                  Gentle Affirmations
+                  Release and Receive
                 </h3>
                 <p className="text-black/60 leading-relaxed">
-                  Optional affirmations layer seamlessly into the soundscape, delivered when your mind is 
-                  most receptive. No forcing, just natural absorption.
+                  Self-doubt, limiting beliefs, mental loops that won't quit. Gamma entrainment creates space for these patterns to soften and release. The same receptivity that lets go of what's stuck can welcome what you're ready to grow toward: confidence, connection, abundance, peace.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Philosophy */}
+        {/* Approach */}
         <section className="max-w-4xl mx-auto px-6 py-24">
           <div className="text-center mb-12">
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" className="mx-auto mb-8">
@@ -160,13 +167,53 @@ export function MarketingSite() {
               <circle cx="60" cy="60" r="11" fill="#E8DCC4" />
             </svg>
             <h2 className="text-4xl mb-6" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
-              Change Through Non-Resistance
+              The Approach
             </h2>
-            <p className="text-xl text-black/60 max-w-2xl mx-auto leading-relaxed" style={{ fontWeight: 300 }}>
-              Repose embodies a different approach to personal transformation. Rather than forcing change through 
-              willpower and effort, we create conditions for natural release. Self-doubt dissolves when given space, 
-              not when fought against.
-            </p>
+              <p className="text-xl text-black/60 max-w-2xl mx-auto leading-relaxed" style={{ fontWeight: 300 }}>
+              Change is easier when you stop forcing it. Instead of willpower, Repose uses your brain's natural plasticity: gamma entrainment opens receptivity, affirmations seed new patterns, rest lets them take hold.
+              </p>
+          </div>
+        </section>
+
+        {/* Private */}
+        <section className="max-w-5xl mx-auto px-6 py-24">
+          <h2 className="text-4xl text-center mb-16" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
+            Simple and Private
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+                <InstantIcon className="w-10 h-10 text-[#756F63]" />
+              </div>
+              <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
+                No Account Required
+              </h3>
+              <p className="text-black/60 leading-relaxed">
+                Download and start immediately. No profile or account to set up.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+                <LocalStorageIcon className="w-10 h-10 text-[#756F63]" />
+              </div>
+              <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
+                Your Sessions Stay Yours
+              </h3>
+              <p className="text-black/60 leading-relaxed">
+                Everything is stored locally on your device. Your affirmations, recordings, and sessions never leave your phone.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+                <PrivacyIcon className="w-10 h-10 text-[#756F63]" />
+              </div>
+              <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
+                No Tracking
+              </h3>
+              <p className="text-black/60 leading-relaxed">
+                What you do is never logged. Repose is personal tool, not a platform.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -177,7 +224,7 @@ export function MarketingSite() {
               Ready to Begin?
             </h2>
             <p className="text-xl text-black/60 mb-12 leading-relaxed" style={{ fontWeight: 300 }}>
-              Download Repose and experience effortless transformation.
+              Download Repose and create your first session.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <AppStoreButton platform="ios" />
@@ -185,20 +232,81 @@ export function MarketingSite() {
             </div>
           </div>
         </section>
+
+        {/* Research */}
+        <section className="max-w-4xl mx-auto px-6 py-24">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl mb-6" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
+              The Research
+            </h2>
+            <p className="text-xl text-black/60 max-w-2xl mx-auto leading-relaxed" style={{ fontWeight: 300 }}>
+              Repose is built on peer-reviewed neuroscience. Here are a few starting points if you'd like to go deeper.
+            </p>
+          </div>
+          <ul className="space-y-6 max-w-2xl mx-auto">
+            <li>
+              <a
+                href="https://www.nature.com/articles/nature20587"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#756F63] hover:text-[#5a554b] transition-colors font-medium"
+              >
+                Gamma frequency entrainment attenuates amyloid load and modifies microglia
+              </a>
+              <p className="text-black/60 mt-1 leading-relaxed">
+                The 2016 Nature paper from MIT that launched the field of gamma sensory stimulation research.
+              </p>
+            </li>
+            <li>
+              <a
+                href="https://news.mit.edu/2025/evidence-40hz-gamma-stimulation-promotes-brain-health-expanding-0314"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#756F63] hover:text-[#5a554b] transition-colors font-medium"
+              >
+                Evidence that 40Hz gamma stimulation promotes brain health is expanding
+              </a>
+              <p className="text-black/60 mt-1 leading-relaxed">
+                MIT's 2025 review of a decade of research from labs worldwide on gamma entrainment benefits.
+              </p>
+            </li>
+            <li>
+              <a
+                href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10198548/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#756F63] hover:text-[#5a554b] transition-colors font-medium"
+              >
+                Binaural beats to entrain the brain? A systematic review
+              </a>
+              <p className="text-black/60 mt-1 leading-relaxed">
+                A comprehensive review of studies on binaural beat stimulation and brainwave entrainment.
+              </p>
+            </li>
+            <li>
+              <a
+                href="https://www.nature.com/articles/s41586-024-07132-6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#756F63] hover:text-[#5a554b] transition-colors font-medium"
+              >
+                Multisensory gamma stimulation promotes glymphatic clearance
+              </a>
+              <p className="text-black/60 mt-1 leading-relaxed">
+                2024 Nature paper showing how 40Hz stimulation supports the brain's waste-clearing system.
+              </p>
+            </li>
+          </ul>
+        </section>
       </main>
 
       {/* Footer */}
       <footer className="border-t border-black/5 bg-white/40 backdrop-blur">
         <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex justify-center items-center">
             <div className="flex items-center gap-3">
               <Logo variant="icon" size="sm" />
-              <span className="text-black/40 text-sm">© 2025 Repose. All rights reserved.</span>
-            </div>
-            <div className="flex gap-8 text-sm text-black/60">
-              <a href="#" className="hover:text-[#756F63] transition-colors">Privacy</a>
-              <a href="#" className="hover:text-[#756F63] transition-colors">Terms</a>
-              <a href="#" className="hover:text-[#756F63] transition-colors">Support</a>
+              <span className="text-black/40 text-sm">© 2026 Repose. All rights reserved.</span>
             </div>
           </div>
         </div>
