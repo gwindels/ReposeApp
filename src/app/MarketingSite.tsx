@@ -170,7 +170,7 @@ export function MarketingSite() {
               The Approach
             </h2>
               <p className="text-xl text-black/60 max-w-2xl mx-auto leading-relaxed" style={{ fontWeight: 300 }}>
-              Change is easier when you stop forcing it. Instead of willpower, Repose uses your brain's natural plasticity: gamma entrainment opens receptivity, affirmations seed new patterns, rest lets them take hold.
+              Instead of willpower, Repose uses your brain's natural plasticity. Gamma entrainment opens receptivity, affirmations seed new patterns, rest lets them take hold. Change is easier when you stop forcing it. 
               </p>
           </div>
         </section>
