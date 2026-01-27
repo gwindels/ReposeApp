@@ -176,11 +176,12 @@ export function MarketingSite() {
         </section>
 
         {/* Private */}
-        <section className="max-w-5xl mx-auto px-6 py-24">
-          <h2 className="text-4xl text-center mb-16" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
-            Simple and Private
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+        <section className="bg-white/40 backdrop-blur py-24">
+          <div className="max-w-5xl mx-auto px-6">
+            <h2 className="text-4xl text-center mb-16" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
+              Simple and Private
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
                 <InstantIcon className="w-10 h-10 text-[#756F63]" />
@@ -214,6 +215,7 @@ export function MarketingSite() {
                 What you do is never logged. Repose is personal tool, not a platform.
               </p>
             </div>
+          </div>
           </div>
         </section>
 
