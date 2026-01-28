@@ -8,6 +8,7 @@ import {
   PurposeIcon,
   BirdIcon,
   PlayIcon,
+  HeadphonesIcon,
   InstantIcon,
   LocalStorageIcon,
   PrivacyIcon,
@@ -51,10 +52,28 @@ export function MarketingSite() {
             Change Without Effort
           </h1>
           <p className="text-2xl text-black/60 max-w-2xl mx-auto mb-12 leading-relaxed" style={{ fontWeight: 300 }}>
-            Neuroscience-backed frequencies quiet your mind and open you to change. 
+            Listen to layered audio frequencies that quiet your mind and open you to change.
             Pair with affirmations that actually land, whether releasing old doubts or inviting something new.
           </p>
           <BetaButton />
+        </section>
+
+        {/* Approach */}
+        <section className="max-w-4xl mx-auto px-6 py-24">
+          <div className="text-center mb-12">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" className="mx-auto mb-8">
+              <circle cx="60" cy="60" r="55" fill="#D4CDB8" opacity="0.15" />
+              <circle cx="60" cy="60" r="40" fill="#C4BBA8" opacity="0.25" />
+              <circle cx="60" cy="60" r="26" fill="#B8B0A0" opacity="0.4" />
+              <circle cx="60" cy="60" r="11" fill="#E8DCC4" />
+            </svg>
+            <h2 className="text-4xl mb-6" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
+              The Approach
+            </h2>
+              <p className="text-xl text-black/60 max-w-2xl mx-auto leading-relaxed" style={{ fontWeight: 300 }}>
+              Instead of willpower, Repose works with your brain's natural plasticity. The audio opens receptivity, affirmations seed new patterns, and rest lets them take hold. Change becomes easier when you stop forcing it.
+              </p>
+          </div>
         </section>
 
         {/* How It Works */}
@@ -71,7 +90,7 @@ export function MarketingSite() {
                 1. Create Your Session
               </h3>
               <p className="text-black/60 leading-relaxed">
-                Choose a purpose—falling asleep, waking up, a midday reset, or deep meditation. Each one sequences brainwave states differently based on what you need.
+                Choose a purpose: falling asleep, waking up, a midday reset, or deep meditation. Each one sequences the audio differently based on what you need.
               </p>
             </div>
             <div className="text-center">
@@ -82,18 +101,18 @@ export function MarketingSite() {
                 2. Make It Yours
               </h3>
               <p className="text-black/60 leading-relaxed">
-                Pick a nature soundscape. Add affirmations from our library, type your own and hear them spoken back to you, record your own voice, or upload audio you already have.
+                Pick a nature soundscape to play throughout. Add spoken affirmations from our library, type your own and hear them read back, or record them in your own voice.
               </p>
             </div>
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
-                <PlayIcon className="w-10 h-10 text-[#756F63]" />
+                <HeadphonesIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
                 3. Press Play and Let Go
               </h3>
               <p className="text-black/60 leading-relaxed">
-                The session guides your brain through targeted states. Works as you fall asleep, wake up, take a midday break, or settle into longer meditation.
+                Put on headphones and listen. The audio guides your brain through targeted states while you rest.
               </p>
             </div>
           </div>
@@ -103,9 +122,9 @@ export function MarketingSite() {
         <section className="py-24" style={{ backgroundColor: 'rgba(255,255,255,0.4)' }}>
           <div className="max-w-5xl mx-auto px-6">
             <h2 className="text-4xl text-center mb-16" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
-              What Makes Repose Different
+              Why It Works
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-3 gap-8">
               <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
                   <BrainWaveIcon className="w-8 h-8 text-[#756F63]" />
@@ -114,7 +133,7 @@ export function MarketingSite() {
                   Gamma Entrainment for Neuroplasticity
                 </h3>
                 <p className="text-black/60 leading-relaxed">
-                  This isn't ambient noise. Repose uses layered frequencies to move your brain in and out of gamma states, the same brainwave pattern linked to heightened learning and neural flexibility. Your mind becomes more receptive to change.
+                  This isn't ambient noise. Repose plays layered audio frequencies that move your brain in and out of gamma states, the brainwave pattern linked to heightened learning and neural flexibility.
                 </p>
               </div>
               <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
@@ -125,18 +144,7 @@ export function MarketingSite() {
                   Affirmations That Land
                 </h3>
                 <p className="text-black/60 leading-relaxed">
-                  Affirmations work better when your brain is primed for them. Repose delivers them at the right moment, in the right state. Choose from a list, write your own, or record them in your own voice for deeper resonance.
-                </p>
-              </div>
-              <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
-                  <SunIcon className="w-8 h-8 text-[#756F63]" />
-                </div>
-                <h3 className="text-2xl mb-4" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                  Fits Your Day
-                </h3>
-                <p className="text-black/60 leading-relaxed">
-                  Use Repose when you wake up to prime your mind for the day. Reset during a break. Go deeper in a longer meditation session. Or use it as you fall asleep, when your brain is especially open to rewiring. Brainwave states are sequenced based on what that moment needs.
+                  Affirmations work better when your brain is primed for them. Repose plays them at the right moment, in the right state.
                 </p>
               </div>
               <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
@@ -147,28 +155,10 @@ export function MarketingSite() {
                   Release and Receive
                 </h3>
                 <p className="text-black/60 leading-relaxed">
-                  Self-doubt, limiting beliefs, mental loops that won't quit. Gamma entrainment creates space for these patterns to soften and release. The same receptivity that lets go of what's stuck can welcome what you're ready to grow toward: confidence, connection, abundance, peace.
+                  We all carry doubts and beliefs that hold us back. Listening in a gamma state creates space for those patterns to soften, and that same openness can welcome something new.
                 </p>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Approach */}
-        <section className="max-w-4xl mx-auto px-6 py-24">
-          <div className="text-center mb-12">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" className="mx-auto mb-8">
-              <circle cx="60" cy="60" r="55" fill="#D4CDB8" opacity="0.15" />
-              <circle cx="60" cy="60" r="40" fill="#C4BBA8" opacity="0.25" />
-              <circle cx="60" cy="60" r="26" fill="#B8B0A0" opacity="0.4" />
-              <circle cx="60" cy="60" r="11" fill="#E8DCC4" />
-            </svg>
-            <h2 className="text-4xl mb-6" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
-              The Approach
-            </h2>
-              <p className="text-xl text-black/60 max-w-2xl mx-auto leading-relaxed" style={{ fontWeight: 300 }}>
-              Instead of willpower, Repose uses your brain's natural plasticity. Gamma entrainment opens receptivity, affirmations seed new patterns, rest lets them take hold. Change is easier when you stop forcing it. 
-              </p>
           </div>
         </section>
 

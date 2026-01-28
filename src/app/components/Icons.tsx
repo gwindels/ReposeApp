@@ -198,6 +198,25 @@ export function PlayIcon(props: IconProps) {
   );
 }
 
+export function HeadphonesIcon(props: IconProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#88806e"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+      <path d="M21 20a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h3v7z" />
+      <path d="M3 20a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3v7z" />
+    </svg>
+  );
+}
+
 // Lightning bolt - for "No Account Required"
 export function InstantIcon(props: IconProps) {
   return (
