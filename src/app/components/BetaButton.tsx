@@ -15,9 +15,9 @@ export function BetaButton({ className = '' }: BetaButtonProps) {
     <div className={`flex flex-col items-center ${className}`}>
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="flex items-center gap-4 px-5 py-3 rounded-2xl transition-all hover:scale-105 border border-black/10"
+        className="flex items-center gap-4 px-5 py-3 rounded-2xl transition-all hover:scale-105 cursor-pointer"
         style={{
-          backgroundColor: 'rgba(255,255,255,0.8)',
+          backgroundColor: '#5d584e',
         }}
       >
         <svg width="48" height="48" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" className="rounded-xl">
@@ -39,56 +39,51 @@ export function BetaButton({ className = '' }: BetaButtonProps) {
             </clipPath>
           </defs>
         </svg>
-        <div className="text-left">
-          <div className="text-xs text-black/50">Beta Available</div>
-          <div className="text-base font-medium" style={{ color: '#2A2A28' }}>Join on TestFlight</div>
+        <div className="text-left text-white">
+          <div className="text-xs opacity-70">Beta Available</div>
+          <div className="text-base font-medium">Join on TestFlight</div>
         </div>
       </button>
 
-      {isExpanded && (
-        <div
-          className="mt-6 p-6 rounded-2xl border border-black/10 max-w-md text-left"
-          style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
-        >
-          <h3 className="text-lg font-medium mb-4" style={{ color: '#2A2A28' }}>
-            How to Install
-          </h3>
-          <ol className="space-y-4 text-black/70">
-            <li className="flex gap-3">
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#E8DCC4] flex items-center justify-center text-sm font-medium" style={{ color: '#2A2A28' }}>1</span>
-              <div>
-                <p>Install <a href={TESTFLIGHT_APP_URL} target="_blank" rel="noopener noreferrer" className="text-[#756F63] hover:text-[#5a554b] font-medium underline">TestFlight</a> from the App Store (Apple's official beta testing app)</p>
-              </div>
-            </li>
-            <li className="flex gap-3">
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#E8DCC4] flex items-center justify-center text-sm font-medium" style={{ color: '#2A2A28' }}>2</span>
-              <div>
-                <p>Tap the button below to join the Repose beta</p>
-              </div>
-            </li>
-            <li className="flex gap-3">
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#E8DCC4] flex items-center justify-center text-sm font-medium" style={{ color: '#2A2A28' }}>3</span>
-              <div>
-                <p>Install Repose from within TestFlight</p>
-              </div>
-            </li>
-          </ol>
-          <a
-            href={TESTFLIGHT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl transition-all hover:scale-105 text-white font-medium"
-            style={{ backgroundColor: '#645f54' }}
+      <div
+        className={`grid transition-all duration-500 ease-out ${isExpanded ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0 mt-0'}`}
+      >
+        <div className="overflow-hidden">
+          <div
+            className="p-6 rounded-2xl border border-black/10 max-w-md text-left"
+            style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M15 3h6v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M10 14L21 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Open in TestFlight
-          </a>
+            <h3 className="text-lg font-medium mb-4" style={{ color: '#2A2A28' }}>
+              How to join the Beta
+            </h3>
+            <ol className="space-y-4 text-black/70">
+              <li className="flex gap-3">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#E8DCC4] flex items-center justify-center text-sm font-medium" style={{ color: '#2A2A28' }}>1</span>
+                <div>
+                  <p>Get <a href={TESTFLIGHT_APP_URL} target="_blank" rel="noopener noreferrer" className="text-[#756F63] hover:text-[#5a554b] font-medium underline">TestFlight</a> from the App Store if you don't have it yet</p>
+                </div>
+              </li>
+              <li className="flex gap-3 items-center">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#E8DCC4] flex items-center justify-center text-sm font-medium" style={{ color: '#2A2A28' }}>2</span>
+                <a
+                  href={TESTFLIGHT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-all hover:scale-105 text-white text-sm font-medium"
+                  style={{ backgroundColor: '#5d584e' }}
+                >
+                  Install the App
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M15 3h6v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </li>
+            </ol>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
