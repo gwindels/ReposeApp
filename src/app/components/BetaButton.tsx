@@ -60,11 +60,12 @@ export function BetaButton({ className = '' }: BetaButtonProps) {
               <li className="flex gap-3">
                 <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#E8DCC4] flex items-center justify-center text-sm font-medium" style={{ color: '#2A2A28' }}>1</span>
                 <div>
-                  <p>Get <a href={TESTFLIGHT_APP_URL} target="_blank" rel="noopener noreferrer" className="text-[#756F63] hover:text-[#5a554b] font-medium underline">TestFlight</a> from the App Store if you don't have it yet</p>
+                  <p>Get Apple's <a href={TESTFLIGHT_APP_URL} target="_blank" rel="noopener noreferrer" className="text-[#756F63] hover:text-[#5a554b] font-medium underline">TestFlight</a> app from the App Store if you don't have it yet</p>
                 </div>
               </li>
               <li className="flex gap-3 items-center">
                 <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#E8DCC4] flex items-center justify-center text-sm font-medium" style={{ color: '#2A2A28' }}>2</span>
+                <p>Return here to</p>
                 <a
                   href={TESTFLIGHT_URL}
                   target="_blank"
