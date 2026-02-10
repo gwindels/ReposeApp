@@ -3,11 +3,9 @@ import { BetaButton } from "@/app/components/BetaButton";
 import {
   BrainWaveIcon,
   AffirmationIcon,
-  SunIcon,
   LeafIcon,
   PurposeIcon,
   BirdIcon,
-  PlayIcon,
   HeadphonesIcon,
   InstantIcon,
   LocalStorageIcon,
@@ -292,7 +290,7 @@ export function MarketingSite() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-3">
               <Logo variant="icon" size="sm" />
-              <span className="text-black/40 text-sm">© 2026 Repose. All rights reserved.</span>
+              <span className="text-black/40 text-sm">© 2026 Entrain Apps. All rights reserved.</span>
             </div>
             <div className="flex gap-6 text-sm">
               <a href="./privacy.html" className="text-black/40 hover:text-black/60 transition-colors">Privacy</a>
