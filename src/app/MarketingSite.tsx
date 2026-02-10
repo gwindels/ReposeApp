@@ -295,6 +295,7 @@ export function MarketingSite() {
             <div className="flex gap-6 text-sm">
               <a href="./privacy.html" className="text-black/40 hover:text-black/60 transition-colors">Privacy</a>
               <a href="./terms.html" className="text-black/40 hover:text-black/60 transition-colors">Terms</a>
+              <a href="./entrain.html" className="text-black/40 hover:text-black/60 transition-colors">Beta Notes</a>
             </div>
           </div>
         </div>
