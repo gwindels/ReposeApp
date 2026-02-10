@@ -29,7 +29,7 @@ if [ "$(git branch --show-current)" != "web" ]; then
 fi
 
 # Remove old files (keep .git, .gitignore, node_modules)
-find . -maxdepth 1 ! -name '.git' ! -name '.gitignore' ! -name 'node_modules' ! -name '.' -exec rm -rf {} +
+find . -maxdepth 1 ! -name '.git' ! -name '.gitignore' ! -name 'node_modules' ! -name '.' ! -name 'CNAME' ! -name 'entrain.html' -exec rm -rf {} +
 
 # Copy dist contents from main to root
 git checkout main -- dist
