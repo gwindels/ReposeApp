@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repose — Frequency Entrainment</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #191b1d;
+    --surface: #182623;
+    --surface-light: #1c1e20;
+    --border: #212c2b;
+    --text: #f2f3e9;
+    --text-muted: #C4C4BF;
+    --text-dim: #aba79c;
+    --delta: #6366f1;
+    --theta: #8b5cf6;
+    --alpha: #06b6d4;
+    --beta: #f59e0b;
+    --gamma: #ef4444;
+    --accent: #DCDDD5;
+    --green: #22c55e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+
+  /* Header */
+  .header-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .header-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    font-family: 'Fraunces', serif;
+    line-height: 1.2;
+  }
+  .header-sub {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* Main nav tabs */
+  .main-nav {
+    display: flex;
+    gap: 0;
+    margin: 32px 0 28px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+  .main-nav button {
+    padding: 10px 16px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .main-nav button.active {
+    color: var(--text);
+    font-weight: 600;
+    border-bottom-color: var(--accent);
+  }
+
+  /* Section */
+  .section { margin-bottom: 40px; }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    font-family: 'Fraunces', serif;
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin: 4px 0 16px;
+    line-height: 1.5;
+  }
+
+  /* Tab bar (sub-tabs) */
+  .tab-bar {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tab-bar button {
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    transition: all 0.2s;
+  }
+  .tab-bar button.active {
+    border-color: var(--accent);
+    background: rgba(73, 73, 66, 0.13);
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Card */
+  .card {
+    background: var(--surface-light);
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+  }
+
+  /* Callout box */
+  .callout {
+    margin-top: 16px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .callout-gamma {
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+  .callout-green {
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+  }
+  .callout-accent {
+    background: rgba(167, 139, 250, 0.05);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* Panel visibility */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* Brainwave band row */
+  .band-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface-light);
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  .band-label { width: 72px; flex-shrink: 0; }
+  .band-label .name { font-size: 14px; font-weight: 700; }
+  .band-label .range { font-size: 11px; color: var(--text-dim); }
+  .band-wave { flex: 1; min-width: 0; }
+  .band-info { width: 200px; flex-shrink: 0; }
+  .band-info .desc { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+  .band-info .carriers { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+
+  /* Timeline bar */
+  .timeline { display: flex; border-radius: 10px; overflow: hidden; height: 44px; margin-bottom: 16px; }
+  .timeline-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .timeline-segment span {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+  .timeline-arrow {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  }
+
+  /* Stage details row */
+  .stages-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .stage-detail { padding: 8px 6px; border-radius: 8px; border: 1px solid transparent; }
+  .stage-detail .note { font-size: 11px; }
+  .stage-detail .pct { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+
+  /* Modality card */
+  .modality-card {
+    background: var(--surface-light);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .modality-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .modality-name { font-size: 16px; font-weight: 700; color: var(--text); font-family: 'Fraunces', serif; }
+  .modality-subtitle { font-size: 11px; color: var(--text-dim); }
+  .modality-status {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .modality-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .modality-tag {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .modality-notes { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+  /* ISF comparison */
+  .isf-card {
+    background: var(--surface-light);
+    border-radius: 10px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  .isf-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .isf-method { font-size: 13px; font-weight: 600; color: var(--text); }
+  .isf-risk { font-size: 11px; color: var(--text-dim); }
+  .bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .bar-label { font-size: 10px; color: var(--text-dim); width: 70px; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s; }
+  .bar-value { font-size: 11px; font-weight: 600; width: 44px; text-align: right; }
+
+  /* Monroe layering */
+  .monroe-layer {
+    background: var(--surface-light);
+    border-radius: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .monroe-label { width: 70px; flex-shrink: 0; }
+  .monroe-label .name { font-size: 12px; font-weight: 600; color: var(--text); }
+  .monroe-label .freq { font-size: 11px; font-weight: 600; }
+  .monroe-wave { flex: 1; }
+  .monroe-info { width: 120px; flex-shrink: 0; text-align: right; font-size: 10px; color: var(--text-dim); }
+  .monroe-info div + div { margin-top: 1px; }
+
+  .masking-layer {
+    margin-top: 8px;
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 10px 14px;
+    border: 1px dashed var(--border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .masking-label { width: 70px; flex-shrink: 0; }
+  .masking-label .name { font-size: 12px; font-weight: 600; color: var(--text-dim); }
+  .masking-label .level { font-size: 11px; color: var(--text-dim); }
+  .masking-desc { flex: 1; font-size: 12px; color: var(--text-dim); }
+
+  @media (max-width: 600px) {
+    .band-info { width: 140px; }
+    .band-wave canvas { width: 140px !important; }
+    .monroe-info { width: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <div style="margin-bottom: 0;">
+    <div class="header-label">Repose</div>
+    <h1 class="header-title">Frequency Entrainment</h1>
+    <p class="header-sub">How layered audio frequencies guide your brain through targeted states — making it receptive to change.</p>
+  </div>
+
+  <!-- Main Navigation -->
+  <div class="main-nav" id="mainNav">
+    <button class="active" data-panel="progression">Session Flow</button>
+    <button data-panel="bands">Brainwave Bands</button>
+    <button data-panel="layering">Monroe Layering</button>
+    <button data-panel="multimodal">Multimodal</button>
+    <button data-panel="isf">ISF Comparison</button>
+  </div>
+
+  <!-- ==================== PANEL: SESSION FLOW ==================== -->
+  <div class="panel active" id="panel-progression">
+    <div class="section">
+      <h2 class="section-title">Adaptive Session Progression</h2>
+      <p class="section-subtitle">The session purpose determines which brainwave states are included and in what order. Gamma always occurs after theta priming so affirmations land during peak receptivity.</p>
+
+      <div class="tab-bar" id="sessionTabs"></div>
+      <div id="sessionTimeline" class="timeline"></div>
+      <div id="sessionStages" class="stages-row"></div>
+      <div class="callout callout-gamma" style="margin-top:16px">
+        <span style="color:var(--gamma);font-weight:600">↑ Gamma stage</span> — Affirmations play here, when the brain is most receptive after theta entrainment. 40 Hz disrupts default patterns so new beliefs can take hold.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PANEL: BRAINWAVE BANDS ==================== -->
+  <div class="panel" id="panel-bands">
+    <div class="section">
+      <h2 class="section-title">Brainwave Frequency Bands</h2>
+      <p class="section-subtitle">Each band corresponds to a different mental state. Repose uses binaural beats at specific carrier frequencies to entrain each band.</p>
+      <div id="bandsContainer"></div>
+    </div>
+  </div>
+
+  <!-- ==================== PANEL: MONROE LAYERING ==================== -->
+  <div class="panel" id="panel-layering">
+    <div class="section">
+      <h2 class="section-title">Monroe-Style Frequency Layering</h2>
+      <p class="section-subtitle">Multiple binaural beat layers at once create richer entrainment than single frequencies. Nature sounds mask carrier tones while enhancing beat perception.</p>
+
+      <div class="tab-bar" id="monroeTabs"></div>
+      <div style="font-size:13px;color:var(--accent);font-weight:600;margin-bottom:12px" id="monroeTarget"></div>
+      <div id="monroeLayers"></div>
+      <div class="masking-layer">
+        <div class="masking-label">
+          <div class="name">Masking</div>
+          <div class="level">60–65 dB</div>
+        </div>
+        <div class="masking-desc">Nature sounds / pink noise — masks carrier tones, enhances beat perception</div>
+      </div>
+      <div id="monroeNote" class="callout callout-accent" style="margin-top:12px;display:none"></div>
+    </div>
+  </div>
+
+  <!-- ==================== PANEL: MULTIMODAL ==================== -->
+  <div class="panel" id="panel-multimodal">
+    <div class="section">
+      <h2 class="section-title">Multimodal Entrainment</h2>
+      <p class="section-subtitle">Research shows combining sensory modalities produces stronger gamma synchronization. Repose layers audio, visual, and haptic channels.</p>
+      <div id="modalitiesContainer"></div>
+    </div>
+  </div>
+
+  <!-- ==================== PANEL: ISF COMPARISON ==================== -->
+  <div class="panel" id="panel-isf">
+    <div class="section">
+      <h2 class="section-title">Visual Flicker Methods</h2>
+      <p class="section-subtitle">Comparing approaches to 40 Hz visual entrainment. Signal-to-Noise Ratio (SNR) measures entrainment strength from EEG studies.</p>
+      <div id="isfContainer"></div>
+      <div class="callout callout-green" style="margin-top:20px">
+        <span style="color:var(--green);font-weight:600">ISF is the sweet spot for Repose.</span> Nearly invisible flicker with confirmed gamma entrainment. Implementable on ProMotion displays via RGB subpixel modulation at 3 frames per 40 Hz cycle. Attention engagement (watching soothing visuals) actually <em>boosts</em> entrainment strength.
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Sources: Tsai Lab / MIT GENUS research (Iaccarino 2016, Martorell 2019), Agger et al. 2022 (ISF), Hansen et al. 2024, Park et al. 2022, Monroe Institute Hemi-Sync methodology. Full citations in research summary.
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const COLORS = {
+  bg:"#0a0e1a", surface:"#111827", surfaceLight:"#1a2236", border:"#1e293b",
+  text:"#e2e8f0", textMuted:"#94a3b8", textDim:"#64748b",
+  delta:"#6366f1", theta:"#8b5cf6", alpha:"#06b6d4", beta:"#f59e0b", gamma:"#ef4444",
+  accent:"#a78bfa", green:"#22c55e"
+};
+
+const BANDS = [
+  { name:"Delta", range:"1–4 Hz", color:COLORS.delta, freq:2, desc:"Deep sleep, restoration", carriers:"160–200 Hz" },
+  { name:"Theta", range:"4–8 Hz", color:COLORS.theta, freq:6, desc:"Dreams, deep meditation, receptivity", carriers:"180–210 Hz" },
+  { name:"Alpha", range:"8–13 Hz", color:COLORS.alpha, freq:10, desc:"Relaxed focus, calm awareness", carriers:"220–250 Hz" },
+  { name:"Beta", range:"13–30 Hz", color:COLORS.beta, freq:20, desc:"Active thinking, concentration", carriers:"200–250 Hz" },
+  { name:"Gamma", range:"40 Hz", color:COLORS.gamma, freq:40, desc:"Neuroplasticity, pattern disruption", carriers:"Monaural beats" },
+];
+
+const SESSIONS = {
+  sleep: {
+    label:"Going to Sleep", icon:"☽",
+    stages: [
+      { band:"Alpha", pct:15, note:"Gentle entry" },
+      { band:"Theta", pct:25, note:"Receptive state" },
+      { band:"Gamma", pct:20, note:"Affirmations land", highlight:true },
+      { band:"Theta", pct:15, note:"Integration" },
+      { band:"Delta", pct:25, note:"Deep sleep" },
+    ]
+  },
+  waking: {
+    label:"Waking Up", icon:"☀",
+    stages: [
+      { band:"Delta", pct:10, note:"Meet you where you are" },
+      { band:"Theta", pct:20, note:"Receptive state" },
+      { band:"Gamma", pct:25, note:"Affirmations land", highlight:true },
+      { band:"Alpha", pct:25, note:"Calm clarity" },
+      { band:"Beta", pct:20, note:"Ready for the day" },
+    ]
+  },
+  meditation: {
+    label:"Deep Meditation", icon:"✦",
+    stages: [
+      { band:"Beta", pct:10, note:"Settle in" },
+      { band:"Alpha", pct:15, note:"Relaxed focus" },
+      { band:"Theta", pct:30, note:"Deep exploration" },
+      { band:"Gamma", pct:25, note:"Affirmations land", highlight:true },
+      { band:"Theta", pct:20, note:"Integration" },
+    ]
+  },
+  break: {
+    label:"Midday Break", icon:"☁︎",
+    stages: [
+      { band:"Alpha", pct:20, note:"Quick calm" },
+      { band:"Theta", pct:25, note:"Brief receptive window" },
+      { band:"Gamma", pct:30, note:"Affirmations land", highlight:true },
+      { band:"Alpha", pct:25, note:"Return to calm focus" },
+    ]
+  }
+};
+
+const MODALITIES = [
+  { name:"Audio", subtitle:"Primary · All Sessions", status:"Implemented", statusColor:COLORS.green,
+    techniques:["40 Hz binaural beats","Monaural beats for gamma","Monroe-style layering","Nature sound masking"],
+    notes:"Well-validated. Works eyes-closed. Strongest for sleep sessions." },
+  { name:"Visual (ISF)", subtitle:"Secondary · Eyes-Open Sessions", status:"Next Priority", statusColor:COLORS.beta,
+    techniques:["Invisible Spectral Flicker","RGB subpixel modulation","40 Hz imperceptible shimmer","Video overlay compatible"],
+    notes:"Nearly invisible flicker. Attention engagement boosts entrainment. ProMotion displays render 40 Hz cleanly (3 frames/cycle)." },
+  { name:"Haptics", subtitle:"Experimental · All Sessions", status:"Exploratory", statusColor:COLORS.textDim,
+    techniques:["Core Haptics transient pulses","40 Hz via Taptic Engine","80–120 Hz oversampling","Continuous wave approximation"],
+    notes:"Research promising with dedicated actuators. iPhone Taptic Engine is limited. Worth testing but don't market as validated." },
+];
+
+const ISF_COMPARISON = [
+  { method:"Stroboscopic (full on/off)", snr:12.04, comfort:2, risk:"High", color:COLORS.gamma },
+  { method:"Luminance Flicker (partial)", snr:5.8, comfort:5, risk:"Medium", color:COLORS.beta },
+  { method:"Chromatic Flicker", snr:4.1, comfort:6, risk:"Low", color:COLORS.alpha },
+  { method:"Invisible Spectral Flicker", snr:3.03, comfort:9, risk:"Very Low", color:COLORS.green },
+];
+
+const MONROE_STATES = {
+  sleep: {
+    label:"Deep Sleep", target:"2 Hz Delta",
+    layers: [
+      { left:180, right:182, beat:2, label:"Layer 1" },
+      { left:185, right:188, beat:3, label:"Layer 2" },
+      { left:190, right:194, beat:4, label:"Layer 3" },
+    ]
+  },
+  meditation: {
+    label:"Deep Meditation", target:"5 Hz Theta",
+    layers: [
+      { left:200, right:205, beat:5, label:"Layer 1" },
+      { left:205, right:211, beat:6, label:"Layer 2" },
+      { left:210, right:217, beat:7, label:"Layer 3" },
+    ]
+  },
+  focus: {
+    label:"Relaxed Focus", target:"10 Hz Alpha",
+    layers: [
+      { left:230, right:240, beat:10, label:"Layer 1" },
+      { left:240, right:252, beat:12, label:"Layer 2" },
+      { left:220, right:228, beat:8, label:"Stabilizer" },
+    ]
+  },
+  gamma: {
+    label:"Gamma (Neuroplasticity)", target:"40 Hz Monaural",
+    layers: [
+      { left:220, right:260, beat:40, label:"Monaural beat", mono:true },
+    ],
+    note:"Binaural beats unreliable above ~30 Hz. Monaural beats deliver 40 Hz to both ears as amplitude-modulated signal — more effective for gamma."
+  }
+};
+
+// ===== WAVE ANIMATION =====
+const activeCanvases = [];
+
+function createWave(canvas, freq, color, amplitude, opacity) {
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width;
+  const h = canvas.height;
+  let phase = 0;
+  const entry = { canvas, alive: true };
+  activeCanvases.push(entry);
+
+  function draw() {
+    if (!entry.alive) return;
+    ctx.clearRect(0, 0, w, h);
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.globalAlpha = opacity;
+    ctx.lineWidth = 2;
+    const mid = h / 2;
+    const visualFreq = Math.min(freq, 12);
+    for (let x = 0; x < w; x++) {
+      const t = (x / w) * Math.PI * 2 * visualFreq + phase;
+      const y = mid + Math.sin(t) * amplitude;
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    phase += 0.03 * (freq / 4);
+    requestAnimationFrame(draw);
+  }
+  draw();
+  return entry;
+}
+
+function bandColor(name) {
+  const b = BANDS.find(b => b.name === name);
+  return b ? b.color : '#fff';
+}
+
+// ===== MAIN NAV =====
+document.querySelectorAll('#mainNav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#mainNav button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + btn.dataset.panel).classList.add('active');
+  });
+});
+
+// ===== BRAINWAVE BANDS =====
+(function renderBands() {
+  const container = document.getElementById('bandsContainer');
+  BANDS.forEach(b => {
+    const row = document.createElement('div');
+    row.className = 'band-row';
+    row.innerHTML = `
+      <div class="band-label">
+        <div class="name" style="color:${b.color}">${b.name}</div>
+        <div class="range">${b.range}</div>
+      </div>
+      <div class="band-wave"><canvas width="220" height="32" style="display:block"></canvas></div>
+      <div class="band-info">
+        <div class="desc">${b.desc}</div>
+        <div class="carriers">Carriers: ${b.carriers}</div>
+      </div>
+    `;
+    container.appendChild(row);
+    createWave(row.querySelector('canvas'), b.freq, b.color, 10, 0.8);
+  });
+})();
+
+// ===== SESSION PROGRESSION =====
+let currentSession = 'sleep';
+
+function renderSessionTabs() {
+  const container = document.getElementById('sessionTabs');
+  container.innerHTML = '';
+  Object.entries(SESSIONS).forEach(([key, val]) => {
+    const btn = document.createElement('button');
+    btn.textContent = `${val.icon} ${val.label}`;
+    if (key === currentSession) btn.className = 'active';
+    btn.addEventListener('click', () => { currentSession = key; renderSessionTabs(); renderSession(); });
+    container.appendChild(btn);
+  });
+}
+
+function renderSession() {
+  const s = SESSIONS[currentSession];
+  // Timeline
+  const timeline = document.getElementById('sessionTimeline');
+  timeline.innerHTML = '';
+  s.stages.forEach((st, i) => {
+    const color = bandColor(st.band);
+    const seg = document.createElement('div');
+    seg.className = 'timeline-segment';
+    seg.style.width = st.pct + '%';
+    seg.style.background = st.highlight
+      ? `linear-gradient(135deg, ${color}, ${color}cc)`
+      : color + '55';
+    seg.style.borderRight = i < s.stages.length - 1 ? `1px solid ${COLORS.bg}` : 'none';
+    seg.innerHTML = `<span>${st.band}</span>`;
+    if (st.highlight) {
+      seg.innerHTML += `<div class="timeline-arrow" style="border-top-color:${color}"></div>`;
+    }
+    timeline.appendChild(seg);
+  });
+
+  // Stages
+  const stages = document.getElementById('sessionStages');
+  stages.innerHTML = '';
+  s.stages.forEach(st => {
+    const color = bandColor(st.band);
+    const div = document.createElement('div');
+    div.className = 'stage-detail';
+    div.style.flex = `${st.pct} 0 0`;
+    div.style.minWidth = '60px';
+    if (st.highlight) {
+      div.style.background = color + '15';
+      div.style.borderColor = color + '44';
+    }
+    div.innerHTML = `
+      <div class="note" style="color:${st.highlight ? color : 'var(--text-muted)'};font-weight:${st.highlight ? 600 : 400}">${st.note}</div>
+      <div class="pct">${st.pct}% of session</div>
+    `;
+    stages.appendChild(div);
+  });
+}
+
+renderSessionTabs();
+renderSession();
+
+// ===== MULTIMODAL =====
+(function renderModalities() {
+  const container = document.getElementById('modalitiesContainer');
+  MODALITIES.forEach(m => {
+    const div = document.createElement('div');
+    div.className = 'modality-card';
+    div.innerHTML = `
+      <div class="modality-header">
+        <div>
+          <div class="modality-name">${m.name}</div>
+          <div class="modality-subtitle">${m.subtitle}</div>
+        </div>
+        <span class="modality-status" style="background:${m.statusColor}22;color:${m.statusColor}">${m.status}</span>
+      </div>
+      <div class="modality-tags">
+        ${m.techniques.map(t => `<span class="modality-tag">${t}</span>`).join('')}
+      </div>
+      <p class="modality-notes">${m.notes}</p>
+    `;
+    container.appendChild(div);
+  });
+})();
+
+// ===== ISF COMPARISON =====
+(function renderISF() {
+  const container = document.getElementById('isfContainer');
+  const maxSNR = 14;
+  ISF_COMPARISON.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'isf-card';
+    div.innerHTML = `
+      <div class="isf-header">
+        <span class="isf-method">${item.method}</span>
+        <span class="isf-risk">Seizure Risk: ${item.risk}</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Entrainment</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${(item.snr/maxSNR)*100}%;background:${item.color}"></div></div>
+        <span class="bar-value" style="color:${item.color}">${item.snr.toFixed(1)}</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Comfort</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${item.comfort*10}%;background:${COLORS.green};opacity:0.7"></div></div>
+        <span class="bar-value" style="color:${COLORS.green}">${item.comfort}/10</span>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+})();
+
+// ===== MONROE LAYERING =====
+let currentMonroe = 'sleep';
+
+function renderMonroeTabs() {
+  const container = document.getElementById('monroeTabs');
+  container.innerHTML = '';
+  Object.entries(MONROE_STATES).forEach(([key, val]) => {
+    const btn = document.createElement('button');
+    btn.textContent = val.label;
+    if (key === currentMonroe) btn.className = 'active';
+    btn.addEventListener('click', () => { currentMonroe = key; renderMonroeTabs(); renderMonroe(); });
+    container.appendChild(btn);
+  });
+}
+
+function renderMonroe() {
+  const s = MONROE_STATES[currentMonroe];
+  document.getElementById('monroeTarget').textContent = 'Target: ' + s.target;
+
+  // Kill old canvases
+  const layersEl = document.getElementById('monroeLayers');
+  layersEl.querySelectorAll('canvas').forEach(c => {
+    const entry = activeCanvases.find(e => e.canvas === c);
+    if (entry) entry.alive = false;
+  });
+  layersEl.innerHTML = '';
+
+  s.layers.forEach(l => {
+    const bandObj = BANDS.find(b => l.beat >= b.freq - 2 && l.beat <= b.freq + 4) || BANDS[0];
+    const div = document.createElement('div');
+    div.className = 'monroe-layer';
+    div.innerHTML = `
+      <div class="monroe-label">
+        <div class="name">${l.label}</div>
+        <div class="freq" style="color:${bandObj.color}">${l.beat} Hz</div>
+      </div>
+      <div class="monroe-wave"><canvas width="180" height="26" style="display:block"></canvas></div>
+      <div class="monroe-info">
+        ${l.mono
+          ? '<div style="font-size:11px">Both ears: AM signal</div>'
+          : `<div>L: ${l.left} Hz · R: ${l.right} Hz</div><div>Δ = ${l.beat} Hz beat</div>`
+        }
+      </div>
+    `;
+    layersEl.appendChild(div);
+    createWave(div.querySelector('canvas'), l.beat, bandObj.color, 8, 0.6);
+  });
+
+  const noteEl = document.getElementById('monroeNote');
+  if (s.note) {
+    noteEl.style.display = 'block';
+    noteEl.textContent = s.note;
+  } else {
+    noteEl.style.display = 'none';
+  }
+}
+
+renderMonroeTabs();
+renderMonroe();
+</script>
+</body>
+</html>
