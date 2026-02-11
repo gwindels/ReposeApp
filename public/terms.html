@@ -6,8 +6,12 @@
   <title>Terms of Service - Repose</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --font-weight-light: 300;
+      --font-weight-regular: 400;
+      --font-weight-medium: 500;
+    }
     * {
       margin: 0;
       padding: 0;
@@ -15,6 +19,7 @@
     }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: var(--font-weight-regular);
       background: linear-gradient(to bottom right, #FAFAF8, #F5F5F2, #EFEFE8);
       color: #2A2A28;
       line-height: 1.7;
@@ -43,7 +48,7 @@
     }
     .logo-link span {
       font-size: 1.25rem;
-      font-weight: 300;
+      font-weight: var(--font-weight-light);
       letter-spacing: 2px;
     }
     main {
@@ -53,9 +58,8 @@
       font-size: 0.9rem;
     }
     h1 {
-      font-family: 'CrimsonPro', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 2.5rem;
-      font-weight: 300;
+      font-weight: var(--font-weight-light);
       letter-spacing: 0.5px;
       margin-bottom: 0.1rem;
       line-height: 1.5;
@@ -66,9 +70,8 @@
       font-size: 0.9rem;
     }
     h2 {
-      font-family: 'CrimsonPro', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 1.5rem;
-      font-weight: 300;
+      font-weight: var(--font-weight-light);
       margin-top: 1.4rem;
       margin-bottom: 0.2rem;
       color: #2A2A28;
