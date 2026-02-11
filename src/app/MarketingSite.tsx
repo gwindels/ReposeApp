@@ -81,7 +81,7 @@ export function MarketingSite() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
                 <PurposeIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
@@ -92,7 +92,7 @@ export function MarketingSite() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
                 <BirdIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
@@ -103,7 +103,7 @@ export function MarketingSite() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
                 <HeadphonesIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
@@ -124,7 +124,7 @@ export function MarketingSite() {
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
                   <BrainWaveIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
                 <h3 className="text-2xl mb-4" style={{ fontWeight: 400, color: '#2A2A28' }}>
@@ -135,7 +135,7 @@ export function MarketingSite() {
                 </p>
               </div>
               <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
                   <AffirmationIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
                 <h3 className="text-2xl mb-4" style={{ fontWeight: 400, color: '#2A2A28' }}>
@@ -146,7 +146,7 @@ export function MarketingSite() {
                 </p>
               </div>
               <div className="p-8 rounded-3xl border border-black/5" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
                   <LeafIcon className="w-8 h-8 text-[#756F63]" />
                 </div>
                 <h3 className="text-2xl mb-4" style={{ fontWeight: 400, color: '#2A2A28' }}>
@@ -168,7 +168,7 @@ export function MarketingSite() {
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
                 <InstantIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
@@ -179,7 +179,7 @@ export function MarketingSite() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
                 <LocalStorageIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
@@ -190,7 +190,7 @@ export function MarketingSite() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#E8DCC4] to-[#FAFAF8] flex items-center justify-center">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
                 <PrivacyIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
