@@ -2228,12 +2228,8 @@ function toggleTestFlight() {
 // ══════════════════════════════════════════════════
 // TOGGLE LIGHT AND DARK MODE
 // ══════════════════════════════════════════════════
-// Respect system preference on load (force dark on mobile)
+// Default to dark; hide theme toggle on mobile
 const isMobile = window.matchMedia('(max-width: 900px)').matches;
-if (!isMobile && window.matchMedia('(prefers-color-scheme: light)').matches) {
-  const html = document.documentElement;
-  html.setAttribute('data-theme', 'light');
-}
 if (isMobile) {
   document.getElementById('ltdrk-mode').style.display = 'none';
 }
