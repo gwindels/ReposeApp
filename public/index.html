@@ -34,7 +34,7 @@
   --sans: 'DM Sans', -apple-system, sans-serif;
   --heading-weight: 400;
   --breathing: linear(0.5000 0.0%, 0.6913 6.2%, 0.8536 12.5%, 0.9619 18.8%, 1.0000 25.0%, 0.9619 31.2%, 0.8536 37.5%, 0.6913 43.8%, 0.5000 50.0%, 0.3087 56.2%, 0.1464 62.5%, 0.0381 68.8%, 0.0000 75.0%, 0.0381 81.2%, 0.1464 87.5%, 0.3087 93.8%, 0.5000 100.0%);
-  --btn-background: rgba(255,255,255,0.03);
+  --btn-background: rgba(255,255,255,0.05);
   --btn-background-reversed: #e8e4de;
   --btn-border: 1px solid var(--border-seam);
   --btn-color: var(--text-secondary);
@@ -47,6 +47,8 @@
   --radius-lg: 16px;
   --radius-md: 12px;
   --radius-sm: 6px;
+  --page-margin: 1.5rem;
+  --page-margin-mobile: 1rem;
   --shadow-raised: 0rem 1rem 1rem rgba(0,0,0,0.3),
               0rem -0.5rem 1rem rgba(255, 255, 255, 0.05);
   --shadow-inset: inset 0rem 1rem 1.5rem rgba(0,0,0,0.1),
@@ -106,6 +108,7 @@ html {
   scrollbar-width: thin;
   scrollbar-color: var(--accent-warm) var(--bg-deep);
   font-size: 18px;
+  overflow-x: hidden;
 }
 
 body {
@@ -310,6 +313,7 @@ section {
   text-transform: uppercase;
   color: var(--text-dim);
   margin-bottom: 2rem;
+  text-wrap: pretty;
   opacity: 0;
   animation: fadeUp 1s 0.3s ease forwards;
 }
@@ -426,7 +430,7 @@ section {
 .freq-selector {
   display: flex;
   gap: 0rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.5rem;
   opacity: 0;
   animation: var(--animation-fade-up);
   background: transparent;
@@ -552,13 +556,13 @@ section {
 
 .sound-btn,
 .voice-btn {
-  padding: 0.35rem 0.85rem;
+  padding: 0.55rem 0.85rem;
   border: var(--border-seam);
   border-top-color: var(--lip);
   background: none;
   color: var(--btn-color);
   font-family: var(--sans);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   cursor: pointer;
   transition: all 0.3s;
@@ -566,12 +570,12 @@ section {
 
 .sound-btn:first-child,
 .voice-btn:first-child {
-  border-radius: 99rem 0 0 99rem;
+  border-radius: var(--radius-round) 0 0 var(--radius-round);
 }
 
 .sound-btn:last-child,
 .voice-btn:last-child {
-  border-radius: 0 99rem 99rem 0;
+  border-radius: 0 var(--radius-round) var(--radius-round) 0;
 }
 
 .sound-btn:hover,
@@ -950,13 +954,19 @@ section {
   flex-wrap: wrap;
 }
 
+.brainwave-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
 .brain-state {
   padding: 1.5rem 2rem;
   border-radius: var(--radius-lg);
   border: var(--border-seam);
   background: var(--bg-tinted-card);
   backdrop-filter: blur(10px);
-  min-width: 160px;
+  min-width: 140px;
   transition: all 0.5s ease;
   cursor: default;
 }
@@ -974,6 +984,12 @@ section {
   margin-bottom: 0.25rem;
 }
 
+.brain-state .state-name.beta { color: var(--accent-warm)}
+.brain-state .state-name.alpha { color: var(--accent-cool)}
+.brain-state .state-name.theta { color: var(--accent-violet)}
+.brain-state .state-name.gamma { color: var(--accent-green)}
+
+
 .brain-state .state-hz {
   font-size: 0.7rem;
   letter-spacing: 0.15em;
@@ -986,11 +1002,6 @@ section {
   font-size: 0.78rem;
   color: var(--text-secondary);
 }
-
-.brain-state:nth-child(1) .state-name { color: var(--accent-warm); }
-.brain-state:nth-child(2) .state-name { color: var(--accent-cool); }
-.brain-state:nth-child(3) .state-name { color: var(--accent-violet); }
-.brain-state:nth-child(4) .state-name { color: var(--accent-green); }
 
 /* ── CTA SECTION ── */
 .cta-section {
@@ -1259,15 +1270,15 @@ footer .footer-links a:hover { color: var(--accent-warm); }
   .section-grid:nth-child(odd) {
     direction: ltr;
   }
-  nav { padding: 1rem 1.5rem; }
+  nav { padding: 1rem var(--page-margin-mobile); }
   .nav-links { display: none; }
-  .hero { padding: 5rem 1.5rem 4rem; }
+  .hero { padding: 5rem var(--page-margin-mobile) 4rem; }
   .waveform-section, .breathing-section,
   .journey-section, .ratio-section,
   .brainwave-section, .cta-section {
-    padding: 3rem 1.5rem;
+    padding: 3rem var(--page-margin-mobile);
   }
-  .timeline::before { left: 20px; }
+  .timeline::before { left: 0; }
   .timeline-step,
   .timeline-step:nth-child(odd),
   .timeline-step:nth-child(even) {
@@ -1276,13 +1287,17 @@ footer .footer-links a:hover { color: var(--accent-warm); }
     margin-bottom: 2.5rem;
   }
   .timeline-spacer { display: none; }
-  .timeline-content { padding: 0 0 0 2rem; }
-  .freq-section { padding: 0 1.5rem; }
+  .timeline-content { padding: 0 0 0 var(--page-margin-mobile); }
+  .freq-section { padding: 0 var(--page-margin-mobile); }
   .freq-listener { padding: 1.25rem 1.25rem 2rem; }
-  .freq-selector { flex-wrap: wrap; justify-content: center; }
-  .audio-layers { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
-  .brainwave-states { flex-direction: column; align-items: stretch; }
-  .brain-state { min-width: 0; }
+  .freq-selector { flex-wrap: nowrap; }
+  .freq-btn { padding: 0.5rem 1rem; }
+  .freq-btn .hz { display: none; }
+  .audio-layers { flex-wrap: wrap; justify-content: center; gap: 1.5rem;}
+  .brainwave-states { flex-direction: column; align-items: stretch; gap: 1rem; }
+  .brainwave-row { gap: 1rem; margin: 0; align-items: stretch;}
+  .brain-state { min-width: 0; padding: 1rem; width: 100%;}
+  footer { padding: 3rem 1.5rem; }
 }
 
 </style>
@@ -1447,25 +1462,29 @@ footer .footer-links a:hover { color: var(--accent-warm); }
     <p class="section-body" style="margin: 0 auto 1rem; max-width: 520px;">Most meditation asks you to concentrate. Repose asks you to stop. The audio gently shifts your brain's electrical activity through targeted states — from alert waking consciousness into deep, receptive theta, then briefly into gamma for neuroplasticity. You don't focus. You don't follow along. You press play and let go.</p>
     
     <div class="brainwave-states">
+      <div class="brainwave-row">
       <div class="brain-state">
-        <div class="state-name">Beta</div>
+        <div class="state-name beta">Beta</div>
         <div class="state-hz">13–30 Hz</div>
         <div class="state-desc">Waking state.<br>Where sessions begin.</div>
       </div>
       <div class="brain-state">
-        <div class="state-name">Alpha</div>
+        <div class="state-name alpha">Alpha</div>
         <div class="state-hz">8–13 Hz</div>
         <div class="state-desc">Relaxed awareness.<br>The gateway inward.</div>
       </div>
+      </div>
+      <div class="brainwave-row">
       <div class="brain-state">
-        <div class="state-name">Theta</div>
+        <div class="state-name theta">Theta</div>
         <div class="state-hz">4–8 Hz</div>
         <div class="state-desc">Deep meditation.<br>Subconscious access.</div>
       </div>
       <div class="brain-state">
-        <div class="state-name">Gamma</div>
+        <div class="state-name gamma">Gamma</div>
         <div class="state-hz">30–100 Hz</div>
         <div class="state-desc">Peak neuroplasticity.<br>Where change lives.</div>
+      </div>
       </div>
     </div>
   </div>
@@ -1521,7 +1540,7 @@ footer .footer-links a:hover { color: var(--accent-warm); }
   <div class="hero-glow"></div>
   <div class="reveal">
     <h2>Try the <em>hypnosis</em></h2>
-    <p class="cta-privacy"><b>No account. No sign-up.</b> Nothing leaves your phone.</p>
+    <p class="cta-privacy">No account. No sign-up. Nothing leaves your phone.</p>
     <p>Join the beta on TestFlight.</p>
 
     <div class="tf-cta-wrap">
@@ -2209,10 +2228,14 @@ function toggleTestFlight() {
 // ══════════════════════════════════════════════════
 // TOGGLE LIGHT AND DARK MODE
 // ══════════════════════════════════════════════════
-// Respect system preference on load
-if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+// Respect system preference on load (force dark on mobile)
+const isMobile = window.matchMedia('(max-width: 900px)').matches;
+if (!isMobile && window.matchMedia('(prefers-color-scheme: light)').matches) {
   const html = document.documentElement;
   html.setAttribute('data-theme', 'light');
+}
+if (isMobile) {
+  document.getElementById('ltdrk-mode').style.display = 'none';
 }
 function toggleTheme() {
   const html = document.documentElement;
