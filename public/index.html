@@ -56,7 +56,7 @@
   --animation-fade-up: fadeUp 1s 0.9s ease forwards;
   --particle-blur: blur(0px);
   --breath-rgb: 122,172,139;
-  --layer-btn-active: var(--accent-glow);
+  --layer-btn-active: var(--accent-warm);
 }
 
 [data-theme="light"] {
@@ -544,7 +544,7 @@ section {
   margin-bottom: 1.75rem;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  align-self: stretch;
 }
 
 .sound-group,
@@ -566,6 +566,15 @@ section {
   letter-spacing: 0.06em;
   cursor: pointer;
   transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.sound-btn {
+  padding: 0.55rem 1.25rem;
+}
+.sound-btn svg {
+  display: block;
 }
 
 .sound-btn:first-child,
@@ -1382,9 +1391,9 @@ footer .footer-links a:hover { color: var(--accent-warm); }
     </div>
     <div class="audio-layers">
       <div class="sound-group">
-        <button class="sound-btn active" data-sound="rain" onclick="selectSoundscape('rain', this)">Rain</button>
-        <button class="sound-btn" data-sound="ocean" onclick="selectSoundscape('ocean', this)">Ocean</button>
-        <button class="sound-btn" data-sound="field" onclick="selectSoundscape('field', this)">Field</button>
+        <button class="sound-btn active" data-sound="rain" onclick="selectSoundscape('rain', this)" title="Rain"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M6.341 8.143A5.5 5.5 0 0 1 16.5 7.5h.5a4 4 0 0 1 0 8H6a3.5 3.5 0 0 1-.659-6.357z" opacity="0.9"/><line x1="8" y1="18" x2="7" y2="20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="18" x2="11" y2="20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="18" x2="15" y2="20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <button class="sound-btn" data-sound="ocean" onclick="selectSoundscape('ocean', this)" title="Ocean"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 8c1.5-1.5 3-2 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0"/><path d="M2 13c1.5-1.5 3-2 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0"/><path d="M2 18c1.5-1.5 3-2 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0"/></svg></button>
+        <button class="sound-btn" data-sound="field" onclick="selectSoundscape('field', this)" title="Field"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M3 21 Q5 16, 9 12 Q13 8, 18 4 Q20 3, 21 2.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M6.5 17 Q5 15.5, 4.5 13.5 Q6.5 14, 7.5 16Z"/><path d="M7.5 16 Q9 17.5, 9.5 19.5 Q7.5 19, 6.5 17Z"/><path d="M10 13 Q8.5 11.5, 8 9.5 Q10 10, 11 12Z"/><path d="M11 12 Q12.5 13.5, 13 15.5 Q11 15, 10 13Z"/><path d="M14 9 Q12.5 7.5, 12 5.5 Q14 6, 15 8Z"/><path d="M15 8 Q16.5 9.5, 17 11.5 Q15 11, 14 9Z"/><path d="M18 5.5 Q16.5 4, 16 2.5 Q18 3, 19 4.5Z"/><path d="M19 4.5 Q20 6, 20.5 7.5 Q18.5 7, 18 5.5Z"/></svg></button>
       </div>
       <div class="voice-group">
         <button class="voice-btn active" data-voice="f" onclick="selectVoice('f', this)">Feminine</button>
