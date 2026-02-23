@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repose — Deep Hypnosis Meditation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #080b10;
+  --bg-pressed: rgba(0,0,0,0.5);
+  --bg-section: #0a0e15;
+  --bg-card: rgba(255,255,255,0.015);
+  --bg-tinted-card: rgba(8,11,16,0.6);
+  --bg-floating-card: linear-gradient(180deg,rgb(27, 29, 30) 0%, rgb(16, 17, 19) 100%);
+  --shadow-floating-card: 0rem 2rem 7rem rgba(0,0,0,0.5),
+                      0rem -1.5rem 12rem rgba(255, 254, 210, 0.3);
+  --border-seam: 1px solid var(--seam);
+  --border-lip: 1px solid var(--lip);
+  --seam: rgba(0,0,0,0.1);
+  --lip: rgba(255,255,255,0.06);
+  --contrast: #000000;
+  --text-primary: #e8e4de;
+  --text-reversed: #1a1612;
+  --text-secondary: rgba(232,228,222,0.75);
+  --text-dim: rgba(232,228,222,0.7);
+  --accent-warm: #c49074;
+  --accent-glow: #d4a574;
+  --accent-cool: #7fafc8;
+  --accent-violet: #a391c7;
+  --accent-green: #8fc2a0;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --heading-weight: 400;
+  --breathing: linear(0.5000 0.0%, 0.6913 6.2%, 0.8536 12.5%, 0.9619 18.8%, 1.0000 25.0%, 0.9619 31.2%, 0.8536 37.5%, 0.6913 43.8%, 0.5000 50.0%, 0.3087 56.2%, 0.1464 62.5%, 0.0381 68.8%, 0.0000 75.0%, 0.0381 81.2%, 0.1464 87.5%, 0.3087 93.8%, 0.5000 100.0%);
+  --btn-background: rgba(255,255,255,0.03);
+  --btn-background-reversed: #e8e4de;
+  --btn-border: 1px solid var(--border-seam);
+  --btn-color: var(--text-secondary);
+  --btn-background-hover: rgba(59, 67, 73, 0.08);
+  --btn-border-hover: var(--border-seam);
+  --btn-color-hover: var(--accent-warm);
+  --btn-shadow-hover: 0 0 24px rgba(196,149,106,0.3);
+  --radius-round: 9999px;
+  --radius-xl: 32px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 6px;
+  --shadow-raised: 0rem 1rem 1rem rgba(0,0,0,0.3),
+              0rem -0.5rem 1rem rgba(255, 255, 255, 0.05);
+  --shadow-inset: inset 0rem 1rem 1.5rem rgba(0,0,0,0.1),
+            inset 0rem -0.2rem .5rem rgba(200, 206, 162, 0.03);
+  --animation-fade-up: fadeUp 1s 0.9s ease forwards;
+  --particle-blur: blur(0px);
+}
+
+[data-theme="light"] {
+  --bg-deep: rgb(221, 217, 212);
+  --bg-pressed: rgb(201, 197, 193);
+  --bg-section: #f0ece6;
+  --bg-card: #e1ddd6;
+  --bg-tinted-card: rgba(231, 229, 221, 0.6);
+  --bg-floating-card: linear-gradient(180deg,rgb(227, 223, 218) 0%, rgb(209, 205, 201) 100%);
+  --shadow-floating-card: 0.5rem 2rem 7rem rgba(21, 19, 16, 0.25),
+                      0rem -1.5rem 12rem rgba(255, 255, 255, 0.6);
+  --border-seam: 1px solid var(--seam);
+  --border-lip: 1px solid var(--lip);
+  --seam: rgba(0,0,0,0.04);
+  --lip: rgba(255,255,255,0.1);
+  --contrast: #fff;
+  --text-primary: #1a1612;
+  --text-reversed: #e8e4de;
+  --text-secondary: rgba(43, 41, 38, 0.75);
+  --text-dim: rgba(11, 8, 4, 0.5);
+  --accent-warm: #b06a3b;
+  --accent-glow: #c1905b;
+  --accent-cool: #48768e;
+  --accent-violet: #68558f;
+  --accent-green: #4e8a62;
+  --border: rgba(0,0,0,0.08);
+  --heading-weight: 500;
+  --btn-background: rgba(0,0,0,0.04);
+  --btn-background-reversed: #443b36; 
+  --btn-border: var(--border-seam);
+  --btn-color: var(--text-secondary);
+  --btn-background-hover: rgba(159, 154, 150, 0.1);
+  --btn-border-hover: var(--border-seam);
+  --btn-color-hover: var(--accent-warm);  
+  --btn-shadow-hover: 0 6px 24px rgba(40, 37, 34, 0.3);
+  --shadow-raised: 0.2rem 0.5rem 1rem rgba(0,0,0,0.07),
+            -0.2rem -0.5rem 1rem rgba(255,255,255,0.5);
+  --shadow-inset: inset 0rem 1rem 1.5rem rgba(0,0,0,0.1),
+            inset 0rem -0.2rem .4rem rgba(255,255,255,0.2);
+  --particle-blur: blur(20px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-warm) var(--bg-deep);
+  font-size: 18px;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── PARTICLE CANVAS ── */
+#particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  filter: var(--particle-blur);
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.6s ease, backdrop-filter 0.6s ease;
+}
+
+nav.scrolled {
+  background: var(--bg-section);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.nav-logo a {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-logo a span {
+  color: var(--accent-warm);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.nav-links a.nav-install-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: var(--radius-round);
+  color: var(--text-reversed);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.3rem 0.9rem 0.2rem;
+  border-radius: 99rem;
+  background: var(--btn-background-reversed);
+  border: var(--btn-border);
+  box-shadow: none;
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.nav-links a.nav-install-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--btn-shadow-hover);
+  color: var(--text-reversed);
+}
+
+.lt-dk-mode {
+  color: var(--text-secondary);
+  position: relative;
+  top: 3px; 
+}
+
+.nav-links a:hover { 
+  color: var(--accent-warm); 
+  cursor: pointer;
+}
+
+/* ── AUDIO TOGGLE ── */
+.audio-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-round);
+  border: var(--border-seam);
+  background: var(--btn-background);
+  backdrop-filter: blur(15px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.audio-toggle:hover {
+  border: var(--border-seam);
+  box-shadow: var(--btn-shadow-hover);
+}
+
+.audio-toggle svg { transition: opacity 0.3s; }
+
+.audio-bars {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  height: 20px;
+}
+
+.audio-bars .bar {
+  width: 3px;
+  background: var(--text-dim);
+  border-radius: 2px;
+  transition: height 0.2s;
+}
+
+.audio-bars.playing .bar {
+  animation: barPulse 1.2s ease-in-out infinite;
+  background: var(--accent-warm);
+}
+
+.audio-bars.playing .bar:nth-child(1) { animation-delay: 0s; }
+.audio-bars.playing .bar:nth-child(2) { animation-delay: 0.15s; }
+.audio-bars.playing .bar:nth-child(3) { animation-delay: 0.3s; }
+.audio-bars.playing .bar:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes barPulse {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+/* ── SECTIONS ── */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding: 8rem 2rem 0rem;
+  position: relative;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,149,106,0.08) 0%, rgba(196,149,106,0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: heroGlowPulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes heroGlowPulse {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+.hero-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.3s ease forwards;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: var(--heading-weight);
+  text-wrap: balance;
+  line-height: 1.1;
+  max-width: 900px;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.5s ease forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-warm);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: 4.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.8s ease forwards;
+  text-wrap: balance;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  /*border: 1px solid var(--text-dim);*/
+  border: none;
+  border-radius: 100px;
+  color: var(--text-primary);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  opacity: 0;
+  animation: fadeUp 1s 1s ease forwards;
+  cursor: pointer;
+  background: transparent;
+  box-shadow: var(--shadow-raised);
+}
+
+.hero-cta:hover {
+  background: var(--text-dim);
+  color: var(--bg-deep);
+  box-shadow: 0 0 40px rgba(191, 184, 161, 0.25);
+}
+
+.hero-scroll-hint {
+  margin-bottom: 3rem;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 1.4s ease forwards;
+}
+
+.hero-scroll-hint span {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--accent-warm), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ── FREQ SELECTOR (HERO) ── */
+.freq-section {
+  margin: 0 auto 4rem;
+  position: relative;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.freq-listener {
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 2.5rem 2.25rem;
+  background: var(--bg-floating-card);
+  box-shadow: var(--shadow-floating-card);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  animation: var(--animation-fade-up);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.freq-selector {
+  display: flex;
+  gap: 0rem;
+  margin-bottom: 2.25rem;
+  opacity: 0;
+  animation: var(--animation-fade-up);
+  background: transparent;
+  border-radius: var(--radius-round);
+  box-shadow: var(--shadow-raised);
+}
+
+.freq-btn {
+  padding: 0.5rem 1.5rem;
+  border: var(--border-seam);
+  border-top-color: var(--lip);
+  background: none;
+  color: var(--btn-color);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.freq-btn:first-child {
+  border-radius: 99rem 0 0 99rem;
+}
+.freq-btn:last-child {
+  border-radius: 0 99rem 99rem 0;
+}
+
+.freq-btn:hover {
+  /*border-color: var(--btn-border-hover);*/
+  color: var(--btn-color-hover);
+  background: var(--btn-background-hover);
+}
+.freq-btn.active,
+.freq-btn:active {
+  background: var(--bg-pressed);
+  border-color: none;
+  border-bottom-color: var(--lip);
+  box-shadow: var(--shadow-inset);
+}
+
+.freq-btn-alpha.active,
+.freq-btn-alpha:hover {
+  /*border-color: var(--accent-cool);*/
+  color: var(--accent-cool);
+}
+
+.freq-btn-theta.active,
+.freq-btn-theta:hover {
+  /*border-color: var(--accent-violet);*/
+  color: var(--accent-violet);
+}
+
+.freq-btn-gamma.active,
+.freq-btn-gamma:hover {
+  /*border-color: var(--accent-green);*/
+  color: var(--accent-green);
+}
+
+.freq-btn .hz {
+  display: block;
+  font-family: var(--serif);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.freq-btn .label {
+  font-weight: 500;
+}
+
+.freq-play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center ;
+  gap: 0.75rem;
+  padding: .5rem .5rem;
+  width: 4rem;
+  height: 4rem;
+  /*border: 1px solid var(--text-dim);*/
+  border: none;
+  border-radius: 99rem;
+  color: var(--text-secondary);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  opacity: 0;
+  animation: fadeUp 1s 1s ease forwards;
+  cursor: pointer;
+  background: transparent;
+  box-shadow: var(--shadow-raised);
+}
+
+.freq-play-btn:hover {
+  background: var(--text-dim);
+  background: var(--btn-background-hover);
+}
+.freq-play-btn.active {
+  background: var(--text-secondary);
+  color: var(--bg-deep);
+  box-shadow: 0 0 40px rgba(191, 184, 161, 0.15);
+}
+
+/* ── WAVEFORM SECTION ── */
+.waveform-section {
+  padding: 4rem 3rem 2rem;
+  position: relative;
+}
+
+.waveform-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-seam), transparent);
+}
+
+.section-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+}
+
+.section-grid:nth-child(odd) {
+  direction: rtl;
+}
+.section-grid:nth-child(odd) * {
+  direction: ltr;
+}
+
+
+.scrim {
+  mask-image:
+    linear-gradient(to right, transparent, black 30%, black 70%, transparent),
+    linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+.scrim-horizontal {
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+.scrim-horizontal-right {
+  mask-image: linear-gradient(to left, transparent, black 20%, black 100%);
+}
+.scrim-horizontal-left {
+  mask-image: linear-gradient(to right, transparent, black 20%, black 100%);
+}
+
+.scrim-vertical {
+  mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+}
+
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 1.5rem;
+}
+
+.section-heading {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: var(--heading-weight);
+  text-wrap: balance;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.section-heading em {
+  font-style: italic;
+  color: var(--accent-warm);
+}
+
+.section-heading.entrainment em {
+  color: var(--accent-violet);
+}
+
+.section-heading.breath em {
+  color: var(--accent-green);
+}
+
+.section-body {
+  color: var(--text-secondary);
+  text-wrap: pretty;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  max-width: 480px;
+}
+
+.waveform-visual {
+  position: relative;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#waveform-canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md);
+}
+
+/* ── BREATHING SECTION ── */
+.breathing-section {
+  padding: 8rem 3rem;
+  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-section) 50%, var(--bg-deep) 100%);
+}
+
+.breathing-section .section-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.breathing-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  position: relative;
+}
+
+.breath-circle-outer {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 1px solid rgba(122,172,139,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.breath-circle-outer::before {
+  content: '';
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 1px solid rgba(122,172,139,0.06);
+  opacity: 0;
+  animation: fade 1.57s ease-out, breatheOuter 6.28s ease-in-out 1.57s infinite;
+}
+
+.breath-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122,172,139,0.2) 0%, rgba(122,172,139,0) 70%);
+  border: 1px solid rgba(122,172,139,0.4);
+  opacity: 0;
+  animation: fade 1.57s ease-out, breathe 6.28s ease-in-out 1.57s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.breath-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-green);
+  opacity: 0.8;
+}
+
+.breath-wave {
+  position: absolute;
+  width: 100%;
+  bottom: 40px;
+  left: 0;
+}
+
+#breath-wave-canvas {
+  width: 100%;
+  height: 80px;
+}
+
+@keyframes fade {
+  0% { opacity: 0; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1.15); border-color: rgba(122,172,139,0.4); opacity: 1; }
+  50%      { transform: scale(0.85); border-color: rgba(122,172,139,0.2); opacity: 1; }
+}
+
+@keyframes breatheOuter {
+  0%, 100% { transform: scale(1.15); opacity: 1; }
+  50%      { transform: scale(0.9); opacity: 0.6; }
+}
+
+/* ── JOURNEY / TIMELINE ── */
+.journey-section {
+  padding: 4rem 3rem;
+}
+
+.journey-section .section-label,
+.journey-section .section-heading {
+  text-align: center;
+}
+
+.journey-section .section-heading {
+  margin-bottom: 4rem;
+}
+
+.timeline {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--text-dim), var(--accent-warm), var(--accent-violet), var(--accent-green), var(--accent-cool), transparent);
+  transform: translateX(-50%);
+}
+
+.timeline-step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-step:nth-child(odd) {
+  flex-direction: row;
+  text-align: right;
+}
+
+.timeline-step:nth-child(even) {
+  flex-direction: row-reverse;
+  text-align: left;
+}
+
+.timeline-content {
+  flex: 0.9;
+  padding: 0 20px;
+}
+
+.timeline-spacer {
+  flex: 1.1;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-deep);
+  border: 2px solid var(--text-dim);
+  position: absolute;
+  z-index: 2;
+  flex-shrink: 0;
+  left: 50%;
+}
+
+.timeline-step:nth-child(2) .timeline-dot { border-color: var(--accent-warm); }
+.timeline-step:nth-child(3) .timeline-dot { border-color: var(--accent-violet); }
+.timeline-step:nth-child(4) .timeline-dot { border-color: var(--accent-green); }
+.timeline-step:nth-child(5) .timeline-dot { border-color: var(--accent-cool); }
+
+.timeline-phase {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-step:nth-child(2) .timeline-phase { color: var(--accent-warm); }
+.timeline-step:nth-child(3) .timeline-phase { color: var(--accent-violet); }
+.timeline-step:nth-child(4) .timeline-phase { color: var(--accent-green); }
+.timeline-step:nth-child(5) .timeline-phase { color: var(--accent-cool); }
+
+.timeline-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: var(--heading-weight);
+  text-wrap: balance;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-wrap: balance;
+  line-height: 1.7;
+}
+
+/* ── GOLDEN RATIO SECTION ── */
+.ratio-section {
+  padding: 8rem 3rem;
+  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-section) 50%, var(--bg-deep) 100%);
+}
+
+.ratio-section .section-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+#golden-canvas {
+  width: 100%;
+  /*height: 400px;*/
+  /*border-radius: var(--radius-md);*/
+}
+
+/* ── BRAINWAVE GRADIENT SECTION ── */
+.brainwave-section {
+  padding: 6rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.brainwave-bg,
+.group-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  transition: background 1.5s ease;
+  background: linear-gradient(135deg, rgba(196,149,106,0.06) 0%, rgba(139,122,172,0.06) 50%, rgba(122,172,139,0.06) 100%);
+}
+
+.brainwave-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.brainwave-states {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.brain-state {
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius-lg);
+  border: var(--border-seam);
+  background: var(--bg-tinted-card);
+  backdrop-filter: blur(10px);
+  min-width: 160px;
+  transition: all 0.5s ease;
+  cursor: default;
+}
+
+.brain-state-section {
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1.25rem;
+  background: var(--bg-card);
+}
+
+.brain-state .state-name {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+
+.brain-state .state-hz {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.brain-state .state-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.brain-state:nth-child(1) .state-name { color: var(--accent-warm); }
+.brain-state:nth-child(2) .state-name { color: var(--accent-cool); }
+.brain-state:nth-child(3) .state-name { color: var(--accent-violet); }
+.brain-state:nth-child(4) .state-name { color: var(--accent-green); }
+
+/* ── CTA SECTION ── */
+.cta-section {
+  padding: 5rem 3rem 10rem;
+  text-align: center;
+  position: relative;
+}
+
+.cta-section .hero-glow {
+  opacity: 0.7;
+}
+
+.cta-section h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: var(--heading-weight);
+  text-wrap: balance;
+  line-height: 1.15;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
+
+.cta-section h2 em {
+  font-style: italic;
+  color: var(--accent-warm);
+}
+
+.cta-section p {
+  color: var(--text-secondary);
+  max-width: 540px;
+  margin: 0 auto 1rem;
+  font-size: 1rem;
+  text-wrap: balance;
+}
+
+/* ── TestFlight CTA Button ── */
+.tf-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.tf-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-lg);
+  background: var(--btn-background);
+  border: var(--btn-border);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(.4,0,.2,1);
+}
+
+.tf-btn:hover {
+  transform: scale(1.02);
+  background: var(--btn-background-hover);
+  border: var(--btn-border-hover);
+}
+
+.tf-btn-text {
+  text-align: left;
+}
+
+.tf-btn-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+}
+
+.tf-btn-title {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* ── Expandable Instructions Panel ── */
+.tf-instructions-grid {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.5s cubic-bezier(.4,0,.2,1),
+              opacity 0.4s cubic-bezier(.4,0,.2,1),
+              margin-top 0.5s cubic-bezier(.4,0,.2,1);
+  margin-top: 0;
+}
+
+.tf-instructions-grid.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 1.5rem;
+}
+
+.tf-instructions-inner {
+  overflow: hidden;
+  padding: 1.5rem 2rem 2.5rem 2rem;
+  border-radius: var(--radius-xl);
+  background: var(--bg-floating-card);
+  box-shadow: var(--shadow-floating-card);
+}
+
+.tf-instructions {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  max-width: 420px;
+  text-align: left;
+  color: var(--text-secondary)
+}
+
+.tf-instructions h3 {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.tf-instructions ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tf-instructions li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.tf-step-num {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--bg-tinted-card);
+  border: var(--border-lip);
+  color: var(--text-dim);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.tf-instructions li p,
+.tf-instructions li div {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.tf-instructions a.tf-link {
+  color: var(--accent-cool);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.3s;
+}
+
+.tf-instructions a.tf-link:hover {
+  color: var(--text-primary);
+  text-shadow: var(--btn-shadow-hover);
+}
+
+.tf-install-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  color: var(--text-reversed);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 99rem;
+  background: var(--btn-background-reversed);
+  border: var(--btn-border);
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.tf-install-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--btn-shadow-hover);
+}
+
+/* chevron rotation */
+.tf-chevron {
+  transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+  flex-shrink: 0;
+}
+
+.tf-btn.active .tf-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 3rem;
+  text-align: center;
+  border-top: 1px solid var(--border-seam);
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+footer .footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+footer .footer-links a:hover { color: var(--accent-warm); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .section-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .section-grid:nth-child(odd) {
+    direction: ltr;
+  }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { padding: 5rem 1.5rem 4rem; }
+  .waveform-section, .breathing-section,
+  .journey-section, .ratio-section,
+  .brainwave-section, .cta-section {
+    padding: 3rem 1.5rem;
+  }
+  .timeline::before { left: 20px; }
+  .timeline-step,
+  .timeline-step:nth-child(odd),
+  .timeline-step:nth-child(even) {
+    flex-direction: row;
+    text-align: left;
+    margin-bottom: 2.5rem;
+  }
+  .timeline-spacer { display: none; }
+  .timeline-content { padding: 0 0 0 2rem; }
+  .freq-selector { flex-wrap: wrap; justify-content: center; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- PARTICLE CANVAS -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo"><a href="#hero">Repo<span>s</span>e</a></div>
+  <ul class="nav-links">
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#states">States</a></li>
+    <li><a href="#science">Science</a></li>
+    <li><a class="nav-install-btn" href="#cta" onclick="setTimeout(()=>{const p=document.getElementById('tf-panel');const b=document.getElementById('tf-toggle');if(!p.classList.contains('open')){p.classList.add('open');b.classList.add('active');}},600);">Download Beta</a></li>
+    <li><a onclick="toggleTheme()" id='ltdrk-mode' class="lt-dk-mode">
+      <svg width="22" height="22" viewBox="0 0 253 253" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M134.88 0H118.02V44.3699H134.88V0Z" fill="currentColor"/>
+        <path d="M134.88 208.53H118.02V252.9H134.88V208.53Z" fill="currentColor"/>
+        <path d="M44.3699 118.02H0V134.88H44.3699V118.02Z" fill="currentColor"/>
+        <path d="M252.9 118.02H208.53V134.88H252.9V118.02Z" fill="currentColor"/>
+        <path d="M209.901 31.0758L165.756 75.2209C154.522 66.5661 140.863 61.82 126.45 61.82C90.8136 61.82 61.82 90.8136 61.82 126.45C61.82 140.865 66.5661 154.525 75.2209 165.759L31.0758 209.901L42.9958 221.821L221.821 42.9958L209.901 31.0758Z" fill="currentColor"/>
+        <path d="M42.9946 31.0873L31.0729 43.009L62.4468 74.3829L74.3685 62.4612L42.9946 31.0873Z" fill="currentColor"/>
+        <path d="M190.45 178.516L178.528 190.438L209.902 221.812L221.824 209.89L190.45 178.516Z" fill="currentColor"/>
+      </svg>
+    </a></li>
+  </ul>
+</nav>
+
+<!-- AUDIO TOGGLE -->
+<div class="audio-toggle" id="audio-toggle" title="Toggle binaural beat">
+  <div class="audio-bars" id="audio-bars">
+    <div class="bar" style="height:6px"></div>
+    <div class="bar" style="height:10px"></div>
+    <div class="bar" style="height:4px"></div>
+    <div class="bar" style="height:8px"></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow">Neuroscience-backed meditation</div>
+  <h1>Change without trying through <em>deep hypnosis</em></h1>
+  <p class="hero-sub">Repose reads your breathing and heartbeat, then adapts in real time to guide you into a deep hypnotic state. Choose beliefs, and hear them played back when your mind is most open.</p>
+  
+  <div class="hero-scroll-hint">
+    <span>Explore</span>
+    <div class="scroll-line"></div>
+  </div>
+
+  
+</section>
+<section class="freq-section">
+  <div class="freq-listener">
+    <div class="hero-eyebrow">What it sounds like</div>
+    <div class="freq-selector">
+      <button class="freq-btn freq-btn-alpha active" data-freq="10" onclick="setFreq(10, this)">
+        <span class="label">Alpha</span>
+        <span class="hz">10 Hz · Calm</span>
+      </button>
+      <button class="freq-btn freq-btn-theta" data-freq="6" onclick="setFreq(6, this)">
+        <span class="label">Theta</span>
+        <span class="hz">6 Hz · Deep</span>
+      </button>
+      <button class="freq-btn freq-btn-gamma" data-freq="40" onclick="setFreq(40, this)">
+        <span class="label">Gamma</span>
+        <span class="hz">40 Hz · Focus</span>
+      </button>
+    </div>
+    <button class="freq-play-btn" id="listen-btn" onclick="toggleAudio()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+        <polygon points="5 3 19 12 5 21 5 3"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<!-- SESSION JOURNEY -->
+<section class="journey-section" id="journey">
+  <div class="section-label">Your Journey</div>
+  <h2 class="section-heading">How a Session Works</h2>
+  
+  <div class="timeline">
+    <div class="timeline-step">
+      <div class="timeline-content">
+        <div class="timeline-phase">Prepare</div>
+        <div class="timeline-title">Choose Your Path</div>
+        <div class="timeline-desc">Your session unfolds differently depending what you need in the moment. Morning sessions leave you alert and awake. Deep hypnosis gently brings you in and out of trance into a cocoon of calm.</div>
+      </div>
+      <!--<div class="timeline-dot"></div>-->
+      <div class="timeline-spacer"></div>
+    </div>
+    
+    <div class="timeline-step">
+      <div class="timeline-content">
+        <div class="timeline-phase">Goal</div>
+        <div class="timeline-title">Set Your Intention</div>
+        <div class="timeline-desc">Choose beliefs you want to take hold. For example, you could release self-doubt, welcome peace, or manifest something new.</div>
+      </div>
+      <div class="timeline-spacer"></div>
+    </div>
+    
+    <div class="timeline-step">
+      <div class="timeline-content">
+        <div class="timeline-phase">Listen</div>
+        <div class="timeline-title">Move Into Theta</div>
+        <div class="timeline-desc">The Theta state is where your subconscious becomes receptive. During deep hypnosis sessions, guidance is carefully timed in rhythm with your breath to land you in a deep, relaxed state.</div>
+      </div>
+      <div class="timeline-spacer"></div>
+    </div>
+    
+    <div class="timeline-step">
+      <div class="timeline-content">
+        <div class="timeline-phase">Imprint</div>
+        <div class="timeline-title">Gamma Entrainment</div>
+        <div class="timeline-desc">Once frequencies have climbed to 40 Hz gamma, you'll hear the beliefs you've chosen as they're encoded into your neural pathways.</div>
+      </div>
+      <div class="timeline-spacer"></div>
+    </div>
+    
+    <div class="timeline-step">
+      <div class="timeline-content">
+        <div class="timeline-phase">Return</div>
+        <div class="timeline-title">Gentle Emergence</div>
+        <div class="timeline-desc">Most sessions end with a slow ascent back to waking consciousness. You return carrying new patterns and feeling renewed.</div>
+      </div>
+      <div class="timeline-spacer"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAINWAVE STATES -->
+<section class="brainwave-section" id="states">
+  <div class="brainwave-bg" id="brainwave-bg"></div>
+  <div class="brainwave-content reveal">
+    <div class="section-label">States</div>
+    <h2 class="section-heading">Brainwave <em>Frequencies</em></h2>
+    <p class="section-body" style="margin: 0 auto 1rem; max-width: 520px;">Affirmations play during a brief gamma state, a fast brainwave rhythm linked to heightened learning and neuroplasticity (the brain's ability to form new neural pathways). You don't focus. You don't follow along. You press play and let go.</p>
+    
+    <div class="brainwave-states">
+      <div class="brain-state">
+        <div class="state-name">Beta</div>
+        <div class="state-hz">13–30 Hz</div>
+        <div class="state-desc">Waking state.<br>Where sessions begin.</div>
+      </div>
+      <div class="brain-state">
+        <div class="state-name">Alpha</div>
+        <div class="state-hz">8–13 Hz</div>
+        <div class="state-desc">Relaxed awareness.<br>The gateway inward.</div>
+      </div>
+      <div class="brain-state">
+        <div class="state-name">Theta</div>
+        <div class="state-hz">4–8 Hz</div>
+        <div class="state-desc">Deep meditation.<br>Subconscious access.</div>
+      </div>
+      <div class="brain-state">
+        <div class="state-name">Gamma</div>
+        <div class="state-hz">30–100 Hz</div>
+        <div class="state-desc">Peak neuroplasticity.<br>Where change lives.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVEFORM / SCIENCE -->
+<section class="waveform-section" id="science">
+  <div class="section-grid">
+    <div class="waveform-visual reveal scrim-horizontal-right">
+      <canvas id="waveform-canvas"></canvas>
+    </div>
+    <div class="reveal">
+      <div class="section-label">The Science</div>
+      <h2 class="section-heading entrainment">Brainwave <em>Entrainment</em></h2>
+      <p class="section-body">
+        Entrainment blends tones in a way that gently shifts your brain's electrical activity. When your left ear hears 200 Hz and your right hears 240 Hz, your brain perceives a 40 Hz gamma wave — a frequency linked to heightened neuroplasticity and deep focus.
+      </p>
+    </div>
+  </div>
+  <div class="section-grid">
+    <div class="breathing-visual reveal">
+      <div class="breath-circle-outer">
+        <div class="breath-circle">
+          <span class="breath-label" id="breath-text">Inhale</span> <!--<span class="breath-label" id="breath-value">0.00</span>-->
+        </div>
+      </div>
+      <div class="breath-wave">
+        <canvas id="breath-wave-canvas"></canvas>
+      </div>
+    </div>
+    <div class="reveal">
+      <h2 class="section-heading breath">Your breath is the <em>conductor</em></h2>
+      <p class="section-body">
+        Deep hypnosis sessions use your phone's sensors to detect your breathing rhythm in real-time. As you inhale and exhale, Repose adapts frequencies, assembles guidance, and times affirmations to sync with your body's natural rhythm. 
+      </p>
+    </div>
+  </div>
+  <div class="section-grid">
+    <div class="reveal scrim">
+      <canvas id="golden-canvas"></canvas>
+    </div>
+    <div class="reveal">
+      <h2 class="section-heading">Built on the <em>golden ratio</em></h2>
+      <p class="section-body">
+        Frequency transitions in Repose aren't arbitrary. They follow φ (1.618) — the same mathematical relationship found in seashells, galaxies, and neural branching patterns. This creates transitions that feel organic and inevitable, because they mirror the mathematics of nature itself.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="hero-glow"></div>
+  <div class="reveal">
+    <h2>Begin your <em>transformation</em></h2>
+    <p>Repose is currently in beta. Join early adopters exploring the frontier of neuroscience-backed meditation.</p>
+
+    <div class="tf-cta-wrap">
+      <!-- TestFlight Button -->
+      <button class="tf-btn" id="tf-toggle" onclick="toggleTestFlight()">
+        <svg width="48" height="48" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:12px; flex-shrink:0;">
+          <g clip-path="url(#clip0_app)">
+            <path d="M409.6 0H102.4C45.846 0 0 45.846 0 102.4V409.6C0 466.154 45.846 512 102.4 512H409.6C466.154 512 512 466.154 512 409.6V102.4C512 45.846 466.154 0 409.6 0Z" fill="url(#paint0_app)"/>
+            <path d="M117 380.5C117 352.75 135.533 336.562 172.6 331.938C209.667 327.312 237.467 325 256 325C274.533 325 302.333 327.312 339.4 331.938C376.467 336.562 395 352.75 395 380.5C395 408.25 376.467 424.438 339.4 429.062C302.333 433.688 274.533 436 256 436C237.467 436 209.667 433.688 172.6 429.062C135.533 424.438 117 408.25 117 380.5Z" fill="#9B9488"/>
+            <path d="M158 297.5C158 274.405 173.077 260.548 203.231 255.929C233.385 251.31 256 249 271.077 249C286.154 249 303.744 251.31 323.846 255.929C343.949 260.548 354 274.405 354 297.5C354 320.595 343.949 334.452 323.846 339.071C303.744 343.69 286.154 346 271.077 346C256 346 233.385 343.69 203.231 339.071C173.077 334.452 158 320.595 158 297.5Z" fill="#B8B0A0"/>
+            <path d="M184.287 190.19C185.962 171.822 196.237 161.183 215.112 158.274C233.987 155.364 250.346 154.54 264.189 155.802C278.032 157.064 291.665 160.622 305.089 166.476C318.513 172.33 324.388 184.441 322.713 202.81C321.038 221.178 313.071 232.027 298.809 235.357C284.548 238.687 270.496 239.721 256.654 238.46C242.811 237.198 226.871 233.429 208.832 227.155C190.794 220.88 182.612 208.558 184.287 190.19Z" fill="#C4BBA8"/>
+            <path d="M254 135C281.062 135 303 119.33 303 100C303 80.67 281.062 65 254 65C226.938 65 205 80.67 205 100C205 119.33 226.938 135 254 135Z" fill="#DBCEB4"/>
+          </g>
+          <defs>
+            <linearGradient id="paint0_app" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#F5F5F2"/><stop offset="0.5" stop-color="#EFEFE8"/><stop offset="1" stop-color="#E8DCC4"/>
+            </linearGradient>
+            <clipPath id="clip0_app"><rect width="512" height="512" fill="white"/></clipPath>
+          </defs>
+        </svg>
+        <div class="tf-btn-text">
+          <div class="tf-btn-label">Beta Available</div>
+          <div class="tf-btn-title">Get Beta App</div>
+        </div>
+        <svg class="tf-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-secondary);">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+
+      <!-- Expandable Instructions -->
+      <div class="tf-instructions-grid" id="tf-panel">
+        <div class="tf-instructions-inner">
+          <div class="tf-instructions">
+            <h3>How to join the Beta</h3>
+            <ol>
+              <li>
+                <span class="tf-step-num">1</span>
+                <div>
+                  <p>Get Apple's <a href="https://apps.apple.com/app/testflight/id899247664" target="_blank" rel="noopener noreferrer" class="tf-link">TestFlight</a> app from the App Store if you don't have it</p>
+                </div>
+              </li>
+              <li style="align-items: center;">
+                <span class="tf-step-num">2</span>
+                <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                  <p style="margin:0;">Return here to</p>
+                  <a href="https://testflight.apple.com/join/RptbMP1e" target="_blank" rel="noopener noreferrer" class="tf-install-btn">
+                    Install the App
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M15 3h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="./privacy.html">Privacy</a>
+    <a href="./terms.html">Terms</a>
+    <a href="./entrain.html">Science</a>
+  </div>
+  <p>&copy; 2026 Repose · Neuroscience-backed meditation</p>
+</footer>
+
+<script>
+// ════════════════════════════════════════════
+// PARTICLE SYSTEM
+// ════════════════════════════════════════════
+const pCanvas = document.getElementById('particle-canvas');
+const pCtx = pCanvas.getContext('2d');
+let particles = [];
+let mouseX = 0, mouseY = 0;
+let audioPlaying = false;
+
+function resizeParticleCanvas() {
+  pCanvas.width = window.innerWidth;
+  pCanvas.height = window.innerHeight;
+}
+resizeParticleCanvas();
+window.addEventListener('resize', resizeParticleCanvas);
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    // Check for theme
+    const theme = getTheme();
+    // Color schema
+    const colorAtoms = {
+      "dark": {
+        "hue": 25,
+        "sat": 30,
+        "light": 65,
+        "size": 0.5
+      },
+      "light": {
+        "hue": 10,
+        "sat": 0,
+        "light": 80,
+        "size": 2
+      }
+    }
+    
+    this.x = Math.random() * pCanvas.width;
+    this.y = Math.random() * pCanvas.height;
+    this.size = Math.random() * 2 + colorAtoms[theme].size;
+    this.baseAlpha = Math.random() * 0.35 + 0.05;
+    this.alpha = this.baseAlpha;
+    this.vx = (Math.random() - 0.5) * 0.15;
+    this.vy = (Math.random() - 0.5) * 0.15;
+    this.pulse = Math.random() * Math.PI * 2;
+    this.pulseSpeed = Math.random() * 0.008 + 0.003;
+
+    // warm tones
+    const hue = colorAtoms[theme].hue + Math.random() * 30;
+    const sat = colorAtoms[theme].sat + Math.random() * 40;
+    const light = colorAtoms[theme].light + Math.random() * 20;
+    this.color = `hsla(${hue}, ${sat}%, ${light}%,`;
+  }
+  update(time) {
+    this.pulse += this.pulseSpeed;
+    this.alpha = this.baseAlpha * (0.6 + 0.4 * Math.sin(this.pulse));
+    
+    // Gentle mouse influence
+    const dx = mouseX - this.x;
+    const dy = mouseY - this.y;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist < 200) {
+      const force = (200 - dist) / 200 * 0.08;
+      this.vx -= (dx / dist) * force;
+      this.vy -= (dy / dist) * force;
+      this.alpha = Math.min(this.alpha * 1.8, 0.6);
+    }
+
+    // Audio reactivity
+    if (audioPlaying) {
+      this.alpha *= 1.3;
+      this.vx += Math.sin(time * 0.001 + this.pulse) * 0.01;
+    }
+
+    this.vx *= 0.99;
+    this.vy *= 0.99;
+    this.x += this.vx;
+    this.y += this.vy;
+
+    if (this.x < -20 || this.x > pCanvas.width + 20 || 
+        this.y < -20 || this.y > pCanvas.height + 20) {
+      this.reset();
+    }
+  }
+  draw(ctx) {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color + this.alpha + ')';
+    ctx.fill();
+  }
+}
+
+function initParticles() {
+  particles = [];
+  for (let i = 0; i < 120; i++) particles.push(new Particle());
+}
+initParticles();
+
+function drawConnections(ctx) {
+  // Color schema
+  const colorAtoms = {
+    "dark": {
+      "r": 196,
+      "g": 149,
+      "b": 106,
+      "w": 0.5
+    },
+    "light": {
+      "r": 235,
+      "g": 215,
+      "b": 205,
+      "w": 2.0
+    }
+  }
+  // Check for theme
+  const theme = getTheme();
+
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120) {
+        const alpha = (1 - dist / 120) * 0.06;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(${colorAtoms[theme].r},${colorAtoms[theme].g},${colorAtoms[theme].b},${alpha})`;
+        ctx.lineWidth = colorAtoms[theme].w;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animateParticles(time) {
+  pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+  particles.forEach(p => { p.update(time); p.draw(pCtx); });
+  drawConnections(pCtx);
+  requestAnimationFrame(animateParticles);
+}
+requestAnimationFrame(animateParticles);
+
+// ════════════════════════════════════════════
+// WAVEFORM VISUALIZATION
+// ════════════════════════════════════════════
+const wfCanvas = document.getElementById('waveform-canvas');
+const wfCtx = wfCanvas.getContext('2d');
+
+function resizeWaveform() {
+  const rect = wfCanvas.parentElement.getBoundingClientRect();
+  wfCanvas.width = rect.width * 2;
+  wfCanvas.height = rect.height * 2;
+  wfCanvas.style.width = rect.width + 'px';
+  wfCanvas.style.height = rect.height + 'px';
+  wfCanvas.style.transformOrigin = 'right center';
+}
+resizeWaveform();
+window.addEventListener('resize', resizeWaveform);
+
+function drawWaveform(time) {
+  const w = wfCanvas.width * 2, h = wfCanvas.height;
+  wfCtx.clearRect(0, 0, w, h);
+
+  // Check for theme
+  const theme = getTheme();
+  // Styles
+  const rgba = {
+    "dark": {
+      "left": '#d4a574',
+      "right": '#6a8fa3',
+      "diff": '#8b7aac'
+    },
+    "light": {
+      "left": '#c1905b',
+      "right": '#48768e',
+      "diff": '#68558f'
+    }
+  }
+  
+  const mid = h / 2;
+  const visW = w * 0.5;
+  const waveAmplitude = 240; // visual amplitude scaling
+  const freqL = 6; // visual representation
+  const freqR = 6.5;
+
+  // Left ear wave
+  wfCtx.beginPath();
+  for (let x = 0; x < w; x++) {
+    const t = x / w * Math.PI * 8;
+    const y = mid + Math.sin(t * freqL + time * -0.001) * waveAmplitude * Math.sin(x / w * Math.PI);
+    x === 0 ? wfCtx.moveTo(x, y) : wfCtx.lineTo(x, y);
+  }
+  wfCtx.strokeStyle = rgba[theme].left + '65';
+  wfCtx.lineWidth = 3;
+  wfCtx.stroke();
+  
+  // Right ear wave
+  wfCtx.beginPath();
+  for (let x = 0; x < w; x++) {
+    const t = x / w * Math.PI * 8;
+    const y = mid + Math.sin(t * freqR + time * -0.001) * waveAmplitude * Math.sin(x / w * Math.PI);
+    x === 0 ? wfCtx.moveTo(x, y) : wfCtx.lineTo(x, y);
+  }
+  wfCtx.strokeStyle = rgba[theme].right + '65';
+  wfCtx.lineWidth = 3;
+  wfCtx.stroke();
+
+  // Interference / difference wave
+  wfCtx.beginPath();
+  for (let x = 0; x < w; x++) {
+    const t = x / w * Math.PI * 8;
+    const yL = Math.sin(t * freqL + time * -0.001);
+    const yR = Math.sin(t * freqR + time * -0.001);
+    const combined = (yL + yR) / 2;
+    const y = mid + combined * waveAmplitude * Math.sin(x / w * Math.PI);
+    x === 0 ? wfCtx.moveTo(x, y) : wfCtx.lineTo(x, y);
+  }
+  wfCtx.strokeStyle = rgba[theme].diff + '99';
+  wfCtx.lineWidth = 3;
+  wfCtx.stroke();
+
+  // Labels
+  const labelX = 0;
+  const fontSize = 24;
+  const labelGap = 16;
+  const labelHeight = fontSize + labelGap;
+  wfCtx.font = `${fontSize}px "DM Sans", sans-serif`;
+  wfCtx.textAlign = 'left';
+  wfCtx.fillStyle = rgba[theme].left;
+  wfCtx.fillText('Left ear', labelX, h - labelHeight * 3);
+  wfCtx.fillStyle = rgba[theme].right;
+  wfCtx.fillText('Right ear', labelX, h - labelHeight * 2);
+  wfCtx.fillStyle = rgba[theme].diff;
+  wfCtx.fillText('Perceived beat', labelX, h - labelHeight);
+  requestAnimationFrame(drawWaveform);
+}
+requestAnimationFrame(drawWaveform);
+
+// ════════════════════════════════════════════
+// BREATHING WAVE
+// ════════════════════════════════════════════
+const bwCanvas = document.getElementById('breath-wave-canvas');
+const bwCtx = bwCanvas.getContext('2d');
+const breathLabel = document.getElementById('breath-text');
+//const breathValText = document.getElementById('breath-value');
+
+function resizeBreathWave() {
+  const rect = bwCanvas.parentElement.getBoundingClientRect();
+  bwCanvas.width = rect.width * 2;
+  bwCanvas.height = 160;
+  bwCanvas.style.width = rect.width + 'px';
+  bwCanvas.style.height = '80px';
+}
+resizeBreathWave();
+window.addEventListener('resize', resizeBreathWave);
+
+function drawBreathWave(time) {
+  const w = bwCanvas.width, h = bwCanvas.height;
+  bwCtx.clearRect(0, 0, w, h);
+
+  const breathCycleLength = Math.PI * 2;
+  const breathPhase = (time * 0.001) % (breathCycleLength);
+  const breathVal = Math.sin(breathPhase); // 6.28s cycle
+
+  //breathValText.textContent = breathPhase.toFixed(2) + " " + breathVal.toFixed(2);
+
+  if (breathPhase < breathCycleLength * 0.25 || breathPhase > breathCycleLength * 0.75) breathLabel.textContent = 'Inhale';
+  else breathLabel.textContent = 'Exhale';
+
+  bwCtx.beginPath();
+  for (let x = 0; x < w; x++) {
+    const progress = x / w;
+    const historicalTime = time - (1 - progress) * breathCycleLength * 1000;
+    const historicalBreathPhase = (historicalTime * 0.001) % breathCycleLength;
+    const historicalBreathValue = Math.sin(historicalBreathPhase);
+    const y = h/2 - historicalBreathValue * 40;
+    x === 0 ? bwCtx.moveTo(x, y) : bwCtx.lineTo(x, y);
+  }
+  bwCtx.strokeStyle = 'rgba(122,172,139,0.8)';
+  bwCtx.lineWidth = 3;
+  wfCtx.lineCap = 'round';
+  bwCtx.stroke();
+
+  // Current position dot
+  const currentY = h/2 + breathVal * 40;
+  bwCtx.beginPath();
+  bwCtx.arc(w - 10, currentY, 6, 0, Math.PI * 2);
+  bwCtx.fillStyle = 'rgba(122,172,139,0.0)';
+  bwCtx.fill();
+
+  requestAnimationFrame(drawBreathWave);
+}
+requestAnimationFrame(drawBreathWave);
+
+// ════════════════════════════════════════════
+// GOLDEN RATIO SPIRAL
+// ════════════════════════════════════════════
+const grCanvas = document.getElementById('golden-canvas');
+const grCtx = grCanvas.getContext('2d');
+
+function resizeGolden() {
+  const rect = grCanvas.parentElement.getBoundingClientRect();
+  grCanvas.width = rect.width * 2;
+  grCanvas.height = grCanvas.width; //800;
+  grCanvas.style.width = rect.width + 'px';
+  grCanvas.style.height = rect.width + 'px'; //'400px';
+}
+resizeGolden();
+window.addEventListener('resize', resizeGolden);
+
+const PHI = 1.618033988749895;
+
+function drawGoldenSpiral(time) {
+  const w = grCanvas.width, h = grCanvas.height;
+  grCtx.clearRect(0, 0, w, h);
+
+  const cx = w * 0.5, cy = h * 0.5;
+  const maxAngle = 6 * Math.PI;
+  const scale = 8;
+  const rotOffset = time * 0.0001;
+
+  // Draw spiral
+  grCtx.beginPath();
+  for (let angle = 0; angle < maxAngle; angle += 0.02) {
+    const r = scale * Math.pow(PHI, angle / (Math.PI / 2));
+    const x = cx + r * Math.cos(angle + rotOffset);
+    const y = cy + r * Math.sin(angle + rotOffset);
+    if (angle === 0) grCtx.moveTo(x, y);
+    else grCtx.lineTo(x, y);
+  }
+  grCtx.strokeStyle = 'rgba(196,149,106,0.75)';
+  grCtx.lineWidth = 2.5;
+  grCtx.stroke();
+
+  // Frequency nodes along spiral
+  const freqs = [4, 6.47, 10.47, 16.94, 27.42, 44.36];
+  const labels = ['δ 4Hz', 'θ 6.5Hz', 'α 10.5Hz', 'β 16.9Hz', 'β 27.4Hz', 'γ 44.4Hz'];
+  
+  freqs.forEach((freq, i) => {
+    const angle = (i + 1) * Math.PI * 0.9;
+    const r = scale * Math.pow(PHI, angle / (Math.PI / 2));
+    const x = cx + r * Math.cos(angle + rotOffset);
+    const y = cy + r * Math.sin(angle + rotOffset);
+    
+    const pulse = 1 + Math.sin(time * 0.002 + i) * 0.3;
+    const nodeSize = (4 + i * 1.5) * pulse;
+    
+    grCtx.beginPath();
+    grCtx.arc(x, y, nodeSize, 0, Math.PI * 2);
+    const alpha = 0.5 + Math.sin(time * 0.002 + i) * 0.15;
+    grCtx.fillStyle = `rgba(196,149,106,${alpha})`;
+    grCtx.fill();
+
+    // label
+    const labelSize = r * 0.1 + 18
+    grCtx.font = `${labelSize}px "DM Sans", sans-serif`;
+    grCtx.fillStyle = `rgba(232,228,222,${alpha * 1.2})`;
+    grCtx.fillText(labels[i], x + nodeSize + 8, y + 6);
+  });
+
+  // Center phi symbol
+  grCtx.font = '64px "Cormorant Garamond", serif';
+  grCtx.fillStyle = `rgba(196,149,106,${0.15 + Math.sin(time * 0.001) * 0.05})`;
+  grCtx.textAlign = 'center';
+  grCtx.fillText('', cx, cy + 20);
+  grCtx.textAlign = 'start';
+
+  requestAnimationFrame(drawGoldenSpiral);
+}
+requestAnimationFrame(drawGoldenSpiral);
+
+// ════════════════════════════════════════════
+// WEB AUDIO — BINAURAL BEAT GENERATOR
+// ════════════════════════════════════════════
+let audioCtx, oscLeft, oscRight, gainNode;
+let currentBeatFreq = 10;
+
+function initAudio() {
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  
+  gainNode = audioCtx.createGain();
+  gainNode.gain.value = 0;
+  gainNode.connect(audioCtx.destination);
+
+  const merger = audioCtx.createChannelMerger(2);
+  merger.connect(gainNode);
+
+  const baseFreq = 200;
+
+  oscLeft = audioCtx.createOscillator();
+  oscLeft.type = 'sine';
+  oscLeft.frequency.value = baseFreq;
+
+  oscRight = audioCtx.createOscillator();
+  oscRight.type = 'sine';
+  oscRight.frequency.value = baseFreq + currentBeatFreq;
+
+  const gainL = audioCtx.createGain();
+  gainL.gain.value = 0.3;
+  const gainR = audioCtx.createGain();
+  gainR.gain.value = 0.3;
+
+  oscLeft.connect(gainL);
+  gainL.connect(merger, 0, 0);
+
+  oscRight.connect(gainR);
+  gainR.connect(merger, 0, 1);
+
+  oscLeft.start();
+  oscRight.start();
+}
+
+function toggleAudio() {
+  if (!audioCtx) initAudio();
+  
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+
+  if (!audioPlaying) {
+    gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+    gainNode.gain.setTargetAtTime(0.25, audioCtx.currentTime, 0.8);
+    audioPlaying = true;
+    document.getElementById('audio-bars').classList.add('playing');
+    document.getElementById('listen-btn').innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+        <rect x="6" y="4" width="4" height="16" rx="1"/>
+        <rect x="14" y="4" width="4" height="16" rx="1"/>
+      </svg>`;
+  } else {
+    gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+    gainNode.gain.setTargetAtTime(0, audioCtx.currentTime, 0.5);
+    audioPlaying = false;
+    document.getElementById('audio-bars').classList.remove('playing');
+    document.getElementById('listen-btn').innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+        <polygon points="5 3 19 12 5 21 5 3"/>
+      </svg>`;
+  }
+  document.getElementById('listen-btn').classList.toggle('active');
+}
+
+function setFreq(freq, btn) {
+  currentBeatFreq = freq;
+  document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  if (oscRight && audioCtx) {
+    oscRight.frequency.cancelScheduledValues(audioCtx.currentTime);
+    oscRight.frequency.setTargetAtTime(200 + freq, audioCtx.currentTime, 0.5);
+  }
+}
+
+document.getElementById('audio-toggle').addEventListener('click', toggleAudio);
+
+// ════════════════════════════════════════════
+// SCROLL ANIMATIONS
+// ════════════════════════════════════════════
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .timeline-step').forEach(el => observer.observe(el));
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ══════════════════════════════════════════════════
+// TESTFLIGHT PANEL TOGGLE
+// ══════════════════════════════════════════════════
+function toggleTestFlight() {
+  const panel = document.getElementById('tf-panel');
+  const btn = document.getElementById('tf-toggle');
+  const isOpen = panel.classList.contains('open');
+
+  if (isOpen) {
+    panel.classList.remove('open');
+    btn.classList.remove('active');
+  } else {
+    panel.classList.add('open');
+    btn.classList.add('active');
+    // Scroll into view smoothly after animation starts
+    setTimeout(() => {
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 200);
+  }
+}
+
+// ══════════════════════════════════════════════════
+// TOGGLE LIGHT AND DARK MODE
+// ══════════════════════════════════════════════════
+// Respect system preference on load
+if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+  const html = document.documentElement;
+  html.setAttribute('data-theme', 'light');
+}
+function toggleTheme() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', newTheme);
+  initParticles();
+  //requestAnimationFrame(animateParticles);
+}
+function getTheme() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme') || 'dark';
+  return currentTheme;
+}
+</script>
+
+<script type="module">
+// ══════════════════════════════════════════════════
+// WEB COMPONENTS (for future use, currently styled via CSS)
+// ══════════════════════════════════════════════════
+class VStack extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+  connectedCallback() {
+    const gap = this.getAttribute('gap') || '0px';
+    const padding = this.getAttribute('padding') || '0px';
+    const margin = this.getAttribute('margin') || '0px';
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          display: flex;
+          flex-direction: column;
+          margin: ${margin};
+          padding: ${padding};
+          gap: ${gap};
+        }
+      </style>
+      <slot></slot>
+    `;
+  }
+  static get observedAttributes() {
+    return ['margin', 'padding', 'gap'];  // must declare which attrs to watch
+  }
+}
+class HStack extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+  connectedCallback() {
+    const gap = this.getAttribute('gap') || '0px';
+    const padding = this.getAttribute('padding') || '0px';
+    const margin = this.getAttribute('margin') || '0px';
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          display: flex;
+          flex-direction: row;
+          margin: ${margin};
+          padding: ${padding};
+          gap: ${gap};
+        }
+      </style>
+      <slot></slot>
+    `;
+  }
+  static get observedAttributes() {
+    return ['margin', 'padding', 'gap'];  // must declare which attrs to watch
+  }
+}
+class Text extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+  connectedCallback() {
+    const padding = this.getAttribute('padding') || '0px';
+    const margin = this.getAttribute('margin') || '0px';
+    const color = this.getAttribute('color') || 'var(--text-primary)';
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          color: ${color};
+          margin: ${margin};
+          padding: ${padding};
+          display: block;
+        }
+      </style>
+      <slot></slot>
+    `;
+  }
+  static get observedAttributes() {
+    return ['margin', 'padding', 'color'];  // must declare which attrs to watch
+  }
+}
+customElements.define('v-stack', VStack);
+customElements.define('h-stack', HStack);
+customElements.define('b-text', Text);
+
+</script>
+</body>
+</html>

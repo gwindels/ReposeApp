@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repose — Deep Hypnosis Meditation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-warm: #f6f1eb;
+  --bg-cream: #faf7f2;
+  --bg-white: #fdfcfa;
+  --bg-tint: rgba(180,140,100,0.04);
+  --bg-card: rgba(180,140,100,0.06);
+  --bg-card-hover: rgba(180,140,100,0.10);
+  --text-primary: #2c2418;
+  --text-secondary: rgba(44,36,24,0.6);
+  --text-dim: rgba(44,36,24,0.35);
+  --accent-terra: #b06a3b;
+  --accent-terra-light: #c4854e;
+  --accent-terra-soft: rgba(176,106,59,0.12);
+  --accent-sage: #5e8a6a;
+  --accent-sage-soft: rgba(94,138,106,0.10);
+  --accent-slate: #5a7a8a;
+  --accent-slate-soft: rgba(90,122,138,0.10);
+  --accent-plum: #7a6a8a;
+  --accent-plum-soft: rgba(122,106,138,0.10);
+  --border: rgba(44,36,24,0.08);
+  --border-strong: rgba(44,36,24,0.12);
+  --shadow-soft: 0 2px 20px rgba(44,36,24,0.06);
+  --shadow-med: 0 8px 40px rgba(44,36,24,0.08);
+  --heading: 'Outfit', -apple-system, sans-serif;
+  --body: 'DM Sans', -apple-system, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-terra) var(--bg-warm);
+}
+
+body {
+  background: var(--bg-warm);
+  color: var(--text-primary);
+  font-family: var(--body);
+  font-weight: 300;
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── PARTICLE CANVAS ── */
+#particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.5;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+nav.scrolled {
+  background: rgba(246,241,235,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 var(--border);
+}
+
+.nav-logo {
+  font-family: var(--heading);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.nav-logo span {
+  color: var(--accent-terra);
+  font-weight: 500;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: var(--body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--accent-terra); }
+
+/* ── AUDIO TOGGLE ── */
+.audio-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: rgba(246,241,235,0.9);
+  backdrop-filter: blur(15px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.audio-toggle:hover {
+  border-color: var(--accent-terra);
+  box-shadow: 0 4px 24px rgba(176,106,59,0.15);
+  transform: translateY(-2px);
+}
+
+.audio-bars {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  height: 18px;
+}
+
+.audio-bars .bar {
+  width: 2.5px;
+  background: var(--accent-terra);
+  border-radius: 2px;
+}
+
+.audio-bars.playing .bar {
+  animation: barPulse 1.2s ease-in-out infinite;
+}
+.audio-bars.playing .bar:nth-child(1) { animation-delay: 0s; }
+.audio-bars.playing .bar:nth-child(2) { animation-delay: 0.15s; }
+.audio-bars.playing .bar:nth-child(3) { animation-delay: 0.3s; }
+.audio-bars.playing .bar:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes barPulse {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+/* ── SECTIONS ── */
+section { position: relative; z-index: 1; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 7rem 2rem 4rem;
+  position: relative;
+  background: var(--bg-cream);
+}
+
+.hero-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(176,106,59,0.06) 0%, rgba(176,106,59,0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  animation: heroGlowPulse 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes heroGlowPulse {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -55%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -55%) scale(1.12); }
+}
+
+.hero-eyebrow {
+  font-family: var(--body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-terra);
+  margin-bottom: 1.75rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.3s ease forwards;
+}
+
+.hero h1 {
+  font-family: var(--heading);
+  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+  font-weight: 200;
+  line-height: 1.12;
+  max-width: 820px;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  opacity: 0;
+  animation: fadeUp 1.2s 0.5s ease forwards;
+}
+
+.hero h1 .accent {
+  color: var(--accent-terra);
+  font-weight: 300;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 500px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.8s ease forwards;
+}
+
+.freq-selector {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.9s ease forwards;
+}
+
+.freq-btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 100px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-white);
+  color: var(--text-secondary);
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.freq-btn.active,
+.freq-btn:hover {
+  border-color: var(--accent-terra);
+  color: var(--accent-terra);
+  background: var(--accent-terra-soft);
+}
+
+.freq-btn .hz {
+  display: block;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+  letter-spacing: 0.04em;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2.2rem;
+  border: 1.5px solid var(--accent-terra);
+  border-radius: 100px;
+  color: var(--accent-terra);
+  font-family: var(--body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  opacity: 0;
+  animation: fadeUp 1s 1s ease forwards;
+}
+
+.hero-cta:hover {
+  background: var(--accent-terra);
+  color: var(--bg-white);
+  box-shadow: 0 8px 30px rgba(176,106,59,0.2);
+  transform: translateY(-1px);
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 1.4s ease forwards;
+}
+
+.hero-scroll-hint span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--accent-terra), transparent);
+  animation: scrollPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.2; transform: scaleY(0.6); }
+  50% { opacity: 0.7; transform: scaleY(1); }
+}
+
+/* ── DIVIDER ── */
+.section-divider {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-strong), transparent);
+}
+
+/* ── WAVEFORM / SCIENCE ── */
+.waveform-section {
+  padding: 7rem 3rem;
+  background: var(--bg-warm);
+}
+
+.section-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.section-label {
+  font-family: var(--body);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-slate);
+  margin-bottom: 1.25rem;
+}
+
+.section-heading {
+  font-family: var(--heading);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 200;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+.section-heading .accent {
+  color: var(--accent-terra);
+  font-weight: 300;
+}
+
+.section-body {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.85;
+  max-width: 460px;
+}
+
+.waveform-visual {
+  position: relative;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-cream);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+#waveform-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── BREATHING ── */
+.breathing-section {
+  padding: 7rem 3rem;
+  background: var(--bg-cream);
+}
+
+.breathing-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 380px;
+  position: relative;
+}
+
+.breath-circle-outer {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-sage-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.breath-circle-outer::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 1px solid rgba(94,138,106,0.06);
+  animation: breatheOuter 6s ease-in-out infinite;
+}
+
+.breath-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(94,138,106,0.08) 0%, rgba(94,138,106,0) 70%);
+  border: 1.5px solid rgba(94,138,106,0.2);
+  animation: breathe 6s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breath-label {
+  font-family: var(--body);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-sage);
+}
+
+.breath-wave {
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+  left: 0;
+}
+
+#breath-wave-canvas { width: 100%; height: 60px; }
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.88); border-color: rgba(94,138,106,0.12); }
+  40% { transform: scale(1.12); border-color: rgba(94,138,106,0.3); }
+  60% { transform: scale(1.12); border-color: rgba(94,138,106,0.25); }
+}
+
+@keyframes breatheOuter {
+  0%, 100% { transform: scale(0.92); opacity: 0.3; }
+  50% { transform: scale(1.08); opacity: 0.6; }
+}
+
+/* ── JOURNEY / TIMELINE ── */
+.journey-section {
+  padding: 7rem 3rem;
+  background: var(--bg-warm);
+}
+
+.journey-section .section-label,
+.journey-section .section-heading {
+  text-align: center;
+}
+.journey-section .section-heading { margin-bottom: 4rem; }
+
+.timeline {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  padding: 1.5rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--accent-terra-light), var(--accent-plum), var(--accent-sage), transparent);
+  opacity: 0.35;
+  transform: translateX(-50%);
+}
+
+.timeline-step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3.5rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-step.visible { opacity: 1; transform: translateY(0); }
+
+.timeline-step:nth-child(odd) { flex-direction: row; text-align: right; }
+.timeline-step:nth-child(even) { flex-direction: row-reverse; text-align: left; }
+
+.timeline-content { flex: 1; padding: 0 2.5rem; }
+.timeline-spacer { flex: 1; }
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-warm);
+  border: 2px solid var(--accent-terra);
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.timeline-step:nth-child(3) .timeline-dot { border-color: var(--accent-plum); }
+.timeline-step:nth-child(4) .timeline-dot { border-color: var(--accent-sage); }
+.timeline-step:nth-child(5) .timeline-dot { border-color: var(--accent-slate); }
+
+.timeline-phase {
+  font-family: var(--body);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-terra);
+  margin-bottom: 0.4rem;
+}
+
+.timeline-step:nth-child(3) .timeline-phase { color: var(--accent-plum); }
+.timeline-step:nth-child(4) .timeline-phase { color: var(--accent-sage); }
+.timeline-step:nth-child(5) .timeline-phase { color: var(--accent-slate); }
+
+.timeline-title {
+  font-family: var(--heading);
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 0.4rem;
+}
+
+.timeline-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ── GOLDEN RATIO ── */
+.ratio-section {
+  padding: 7rem 3rem;
+  background: var(--bg-cream);
+}
+
+.golden-visual {
+  background: var(--bg-warm);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#golden-canvas { width: 100%; height: 380px; }
+
+/* ── BRAINWAVE STATES ── */
+.brainwave-section {
+  padding: 6rem 3rem;
+  background: var(--bg-warm);
+}
+
+.brainwave-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.brainwave-states {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.brain-state {
+  padding: 1.5rem 1.75rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--bg-cream);
+  min-width: 155px;
+  transition: all 0.4s ease;
+  cursor: default;
+}
+
+.brain-state:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-med);
+  border-color: var(--border-strong);
+}
+
+.brain-state .state-name {
+  font-family: var(--heading);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.15rem;
+}
+
+.brain-state .state-hz {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.brain-state .state-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.brain-state:nth-child(1) .state-name { color: var(--accent-terra); }
+.brain-state:nth-child(2) .state-name { color: var(--accent-slate); }
+.brain-state:nth-child(3) .state-name { color: var(--accent-plum); }
+.brain-state:nth-child(4) .state-name { color: var(--accent-sage); }
+
+/* ── CTA ── */
+.cta-section {
+  padding: 9rem 3rem;
+  text-align: center;
+  background: var(--bg-cream);
+  position: relative;
+}
+
+.cta-section .hero-glow { opacity: 0.5; }
+
+.cta-section h2 {
+  font-family: var(--heading);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 200;
+  line-height: 1.2;
+  max-width: 650px;
+  margin: 0 auto 1.25rem;
+}
+
+.cta-section h2 .accent { color: var(--accent-terra); font-weight: 300; }
+
+.cta-section p {
+  color: var(--text-secondary);
+  max-width: 420px;
+  margin: 0 auto 2.5rem;
+  font-size: 0.95rem;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2.5rem;
+  background: var(--accent-terra);
+  color: var(--bg-white);
+  font-family: var(--body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 35px rgba(176,106,59,0.25);
+  background: #a0603a;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 2.5rem 3rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: var(--bg-warm);
+}
+
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+footer .footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+footer .footer-links a:hover { color: var(--accent-terra); }
+footer p { font-size: 0.7rem; color: var(--text-dim); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .section-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { padding: 5rem 1.5rem 4rem; }
+  .waveform-section, .breathing-section,
+  .journey-section, .ratio-section,
+  .brainwave-section, .cta-section { padding: 4.5rem 1.5rem; }
+  .timeline::before { left: 20px; }
+  .timeline-step,
+  .timeline-step:nth-child(odd),
+  .timeline-step:nth-child(even) { flex-direction: row; text-align: left; }
+  .timeline-spacer { display: none; }
+  .timeline-content { padding: 0 0 0 1.75rem; }
+  .freq-selector { flex-wrap: wrap; justify-content: center; }
+  .brainwave-states { gap: 0.75rem; }
+  .brain-state { min-width: 140px; padding: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Repo<span>s</span>e</div>
+  <ul class="nav-links">
+    <li><a href="#science">Science</a></li>
+    <li><a href="#breathing">Adaptive</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#states">States</a></li>
+    <li><a href="#cta">Try Beta</a></li>
+  </ul>
+</nav>
+
+<!-- AUDIO TOGGLE -->
+<div class="audio-toggle" id="audio-toggle" title="Toggle binaural beat">
+  <div class="audio-bars" id="audio-bars">
+    <div class="bar" style="height:5px"></div>
+    <div class="bar" style="height:9px"></div>
+    <div class="bar" style="height:4px"></div>
+    <div class="bar" style="height:7px"></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow">Neuroscience-backed meditation</div>
+  <h1>Rewire your mind through <span class="accent">deep hypnosis</span></h1>
+  <p class="hero-sub">Repose combines real-time binaural beat synthesis with sensor-driven adaptive hypnosis to reshape your neural pathways — effortlessly.</p>
+
+  <div class="freq-selector">
+    <button class="freq-btn" data-freq="10" onclick="setFreq(10, this)">
+      Alpha <span class="hz">10 Hz · Calm</span>
+    </button>
+    <button class="freq-btn active" data-freq="6" onclick="setFreq(6, this)">
+      Theta <span class="hz">6 Hz · Deep</span>
+    </button>
+    <button class="freq-btn" data-freq="40" onclick="setFreq(40, this)">
+      Gamma <span class="hz">40 Hz · Focus</span>
+    </button>
+  </div>
+
+  <button class="hero-cta" id="listen-btn" onclick="toggleAudio()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    Listen to Repose
+  </button>
+
+  <div class="hero-scroll-hint">
+    <span>Explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- SCIENCE -->
+<section class="waveform-section" id="science">
+  <div class="section-grid">
+    <div class="reveal">
+      <div class="section-label">The Science</div>
+      <h2 class="section-heading">Two tones. One <span class="accent">entrainment.</span></h2>
+      <p class="section-body">When your left ear hears 200 Hz and your right hears 240 Hz, your brain perceives a 40 Hz gamma wave — a frequency linked to heightened neuroplasticity. Repose generates these tones in real-time, using golden ratio harmonic relationships for smooth, natural transitions.</p>
+    </div>
+    <div class="waveform-visual reveal">
+      <canvas id="waveform-canvas"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- BREATHING -->
+<section class="breathing-section" id="breathing">
+  <div class="section-grid">
+    <div class="breathing-visual reveal">
+      <div class="breath-circle-outer">
+        <div class="breath-circle">
+          <span class="breath-label" id="breath-text">Inhale</span>
+        </div>
+      </div>
+      <div class="breath-wave">
+        <canvas id="breath-wave-canvas"></canvas>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-label">Adaptive Intelligence</div>
+      <h2 class="section-heading">Your breath becomes the <span class="accent">conductor</span></h2>
+      <p class="section-body">Deep Hypnosis mode uses your phone's sensors to detect breathing in real-time. As you inhale and exhale, Repose shifts frequencies, modulates nature sounds, and times affirmations to sync with your body's rhythm. No wearable required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey-section" id="journey">
+  <div class="section-label">A Session</div>
+  <h2 class="section-heading">The architecture of <span class="accent">transformation</span></h2>
+
+  <div class="timeline">
+    <div class="timeline-step">
+      <div class="timeline-content">
+        <div class="timeline-phase">Begin</div>
+        <div class="timeline-title">Set Your Intention</div>
+        <div class="timeline-desc">Choose your purpose — release self-doubt, manifest clarity, deepen sleep. Your intention shapes every element ahead.</div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-spacer"></div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-content">
+        <div class="timeline-phase">Descend</div>
+        <div class="timeline-title">Nature & Entrainment</div>
+        <div class="timeline-desc">Binaural beats guide brainwaves from beta to theta as nature soundscapes create a cocoon of calm. Golden ratio transitions ensure each shift feels effortless.</div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-spacer"></div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-content">
+        <div class="timeline-phase">Immerse</div>
+        <div class="timeline-title">Deep Hypnosis</div>
+        <div class="timeline-desc">In theta state, your subconscious becomes receptive. Personalized affirmations arrive in rhythm with your breath — at the moment of maximum neuroplasticity.</div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-spacer"></div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-content">
+        <div class="timeline-phase">Activate</div>
+        <div class="timeline-title">Gamma Entrainment</div>
+        <div class="timeline-desc">Frequencies elevate to 40 Hz gamma — the brainwave state of insight, learning, and lasting neural change. Affirmations encode into new pathways.</div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-spacer"></div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-content">
+        <div class="timeline-phase">Return</div>
+        <div class="timeline-title">Gentle Emergence</div>
+        <div class="timeline-desc">A slow ascent back to waking consciousness. Nature sounds brighten, frequencies ease into alpha, and you return renewed.</div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-spacer"></div>
+    </div>
+  </div>
+</section>
+
+<!-- GOLDEN RATIO -->
+<section class="ratio-section" id="ratio">
+  <div class="section-grid">
+    <div class="golden-visual reveal">
+      <canvas id="golden-canvas"></canvas>
+    </div>
+    <div class="reveal">
+      <div class="section-label">Harmonic Design</div>
+      <h2 class="section-heading">Built on the <span class="accent">golden ratio</span></h2>
+      <p class="section-body">Frequency transitions follow φ (1.618) — the same mathematical relationship in seashells, galaxies, and neural branching. This creates transitions that feel organic and inevitable, mirroring the mathematics of nature.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BRAINWAVE STATES -->
+<section class="brainwave-section" id="states">
+  <div class="brainwave-content reveal">
+    <div class="section-label">Brainwave States</div>
+    <h2 class="section-heading">Every frequency has a <span class="accent">purpose</span></h2>
+    <p class="section-body" style="margin: 0 auto 0.5rem; max-width: 480px;">Repose guides you through targeted states, each optimized for a different aspect of transformation.</p>
+    <div class="brainwave-states">
+      <div class="brain-state">
+        <div class="state-name">Beta</div>
+        <div class="state-hz">13–30 Hz</div>
+        <div class="state-desc">Waking state.<br>Where sessions begin.</div>
+      </div>
+      <div class="brain-state">
+        <div class="state-name">Alpha</div>
+        <div class="state-hz">8–13 Hz</div>
+        <div class="state-desc">Relaxed awareness.<br>The gateway inward.</div>
+      </div>
+      <div class="brain-state">
+        <div class="state-name">Theta</div>
+        <div class="state-hz">4–8 Hz</div>
+        <div class="state-desc">Deep meditation.<br>Subconscious access.</div>
+      </div>
+      <div class="brain-state">
+        <div class="state-name">Gamma</div>
+        <div class="state-hz">30–100 Hz</div>
+        <div class="state-desc">Peak neuroplasticity.<br>Where change lives.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="hero-glow"></div>
+  <div class="reveal">
+    <h2>Begin your <span class="accent">transformation</span></h2>
+    <p>Repose is in beta. Join early adopters exploring the frontier of neuroscience-backed meditation.</p>
+    <a href="#" class="cta-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l3 3 5-5"/></svg>
+      Join the Beta
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Science</a>
+    <a href="#">Contact</a>
+  </div>
+  <p>&copy; 2026 Repose · Neuroscience-backed meditation</p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════
+// PARTICLES (light theme — warm, subtle)
+// ═══════════════════════════════════════
+const pCanvas = document.getElementById('particle-canvas');
+const pCtx = pCanvas.getContext('2d');
+let particles = [];
+let mouseX = 0, mouseY = 0;
+let audioPlaying = false;
+
+function resizePC() {
+  pCanvas.width = window.innerWidth;
+  pCanvas.height = window.innerHeight;
+}
+resizePC();
+window.addEventListener('resize', resizePC);
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * pCanvas.width;
+    this.y = Math.random() * pCanvas.height;
+    this.size = Math.random() * 2.2 + 0.6;
+    this.baseAlpha = Math.random() * 0.18 + 0.04;
+    this.alpha = this.baseAlpha;
+    this.vx = (Math.random() - 0.5) * 0.12;
+    this.vy = (Math.random() - 0.5) * 0.12;
+    this.pulse = Math.random() * Math.PI * 2;
+    this.pulseSpeed = Math.random() * 0.006 + 0.002;
+    const hue = 22 + Math.random() * 20;
+    const sat = 35 + Math.random() * 30;
+    const light = 45 + Math.random() * 15;
+    this.color = `hsla(${hue}, ${sat}%, ${light}%,`;
+  }
+  update(time) {
+    this.pulse += this.pulseSpeed;
+    this.alpha = this.baseAlpha * (0.5 + 0.5 * Math.sin(this.pulse));
+    const dx = mouseX - this.x;
+    const dy = mouseY - this.y;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist < 180) {
+      const force = (180 - dist) / 180 * 0.06;
+      this.vx -= (dx / dist) * force;
+      this.vy -= (dy / dist) * force;
+      this.alpha = Math.min(this.alpha * 2, 0.35);
+    }
+    if (audioPlaying) {
+      this.alpha *= 1.4;
+      this.vx += Math.sin(time * 0.001 + this.pulse) * 0.008;
+    }
+    this.vx *= 0.992;
+    this.vy *= 0.992;
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < -20 || this.x > pCanvas.width + 20 || this.y < -20 || this.y > pCanvas.height + 20) this.reset();
+  }
+  draw(ctx) {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color + this.alpha + ')';
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 90; i++) particles.push(new Particle());
+
+function drawConnections(ctx) {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 110) {
+        const alpha = (1 - dist / 110) * 0.04;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(176,106,59,${alpha})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animateParticles(time) {
+  pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+  particles.forEach(p => { p.update(time); p.draw(pCtx); });
+  drawConnections(pCtx);
+  requestAnimationFrame(animateParticles);
+}
+requestAnimationFrame(animateParticles);
+
+// ═══════════════════════════════════════
+// WAVEFORM
+// ═══════════════════════════════════════
+const wfCanvas = document.getElementById('waveform-canvas');
+const wfCtx = wfCanvas.getContext('2d');
+
+function resizeWF() {
+  const r = wfCanvas.parentElement.getBoundingClientRect();
+  wfCanvas.width = r.width * 2;
+  wfCanvas.height = r.height * 2;
+  wfCanvas.style.width = r.width + 'px';
+  wfCanvas.style.height = r.height + 'px';
+}
+resizeWF();
+window.addEventListener('resize', resizeWF);
+
+function drawWaveform(time) {
+  const w = wfCanvas.width, h = wfCanvas.height, mid = h / 2;
+  wfCtx.clearRect(0, 0, w, h);
+
+  // Left ear
+  wfCtx.beginPath();
+  for (let x = 0; x < w; x++) {
+    const t = x / w * Math.PI * 8;
+    const y = mid + Math.sin(t * 6 + time * 0.001) * 55 * Math.sin(x / w * Math.PI);
+    x === 0 ? wfCtx.moveTo(x, y) : wfCtx.lineTo(x, y);
+  }
+  wfCtx.strokeStyle = 'rgba(176,106,59,0.5)';
+  wfCtx.lineWidth = 2;
+  wfCtx.stroke();
+
+  // Right ear
+  wfCtx.beginPath();
+  for (let x = 0; x < w; x++) {
+    const t = x / w * Math.PI * 8;
+    const y = mid + Math.sin(t * 6.5 + time * 0.001) * 55 * Math.sin(x / w * Math.PI);
+    x === 0 ? wfCtx.moveTo(x, y) : wfCtx.lineTo(x, y);
+  }
+  wfCtx.strokeStyle = 'rgba(90,122,138,0.5)';
+  wfCtx.lineWidth = 2;
+  wfCtx.stroke();
+
+  // Interference
+  wfCtx.beginPath();
+  for (let x = 0; x < w; x++) {
+    const t = x / w * Math.PI * 8;
+    const combined = (Math.sin(t * 6 + time * 0.001) + Math.sin(t * 6.5 + time * 0.001)) / 2;
+    const y = mid + combined * 70 * Math.sin(x / w * Math.PI);
+    x === 0 ? wfCtx.moveTo(x, y) : wfCtx.lineTo(x, y);
+  }
+  wfCtx.strokeStyle = 'rgba(122,106,138,0.45)';
+  wfCtx.lineWidth = 2.5;
+  wfCtx.stroke();
+
+  wfCtx.font = '500 20px "DM Sans", sans-serif';
+  wfCtx.fillStyle = 'rgba(176,106,59,0.45)';
+  wfCtx.fillText('Left ear', 28, 46);
+  wfCtx.fillStyle = 'rgba(90,122,138,0.45)';
+  wfCtx.fillText('Right ear', 28, 72);
+  wfCtx.fillStyle = 'rgba(122,106,138,0.45)';
+  wfCtx.fillText('Perceived beat', 28, 98);
+
+  requestAnimationFrame(drawWaveform);
+}
+requestAnimationFrame(drawWaveform);
+
+// ═══════════════════════════════════════
+// BREATHING WAVE
+// ═══════════════════════════════════════
+const bwCanvas = document.getElementById('breath-wave-canvas');
+const bwCtx = bwCanvas.getContext('2d');
+const breathLabel = document.getElementById('breath-text');
+
+function resizeBW() {
+  const r = bwCanvas.parentElement.getBoundingClientRect();
+  bwCanvas.width = r.width * 2;
+  bwCanvas.height = 120;
+  bwCanvas.style.width = r.width + 'px';
+  bwCanvas.style.height = '60px';
+}
+resizeBW();
+window.addEventListener('resize', resizeBW);
+
+function drawBreathWave(time) {
+  const w = bwCanvas.width, h = bwCanvas.height;
+  bwCtx.clearRect(0, 0, w, h);
+  const breathVal = Math.sin((time * 0.001) % (Math.PI * 2) / 3);
+  if (breathVal > 0.2) breathLabel.textContent = 'Inhale';
+  else if (breathVal < -0.2) breathLabel.textContent = 'Exhale';
+  else breathLabel.textContent = 'Hold';
+
+  bwCtx.beginPath();
+  for (let x = 0; x < w; x++) {
+    const historicalTime = time - (1 - x / w) * 6000;
+    const y = h / 2 + Math.sin(historicalTime * 0.001 / 3) * 30;
+    x === 0 ? bwCtx.moveTo(x, y) : bwCtx.lineTo(x, y);
+  }
+  bwCtx.strokeStyle = 'rgba(94,138,106,0.35)';
+  bwCtx.lineWidth = 2;
+  bwCtx.stroke();
+
+  const currentY = h / 2 + breathVal * 30;
+  bwCtx.beginPath();
+  bwCtx.arc(w - 10, currentY, 5, 0, Math.PI * 2);
+  bwCtx.fillStyle = 'rgba(94,138,106,0.7)';
+  bwCtx.fill();
+
+  requestAnimationFrame(drawBreathWave);
+}
+requestAnimationFrame(drawBreathWave);
+
+// ═══════════════════════════════════════
+// GOLDEN RATIO SPIRAL
+// ═══════════════════════════════════════
+const grCanvas = document.getElementById('golden-canvas');
+const grCtx = grCanvas.getContext('2d');
+const PHI = 1.618033988749895;
+
+function resizeGR() {
+  const r = grCanvas.parentElement.getBoundingClientRect();
+  grCanvas.width = r.width * 2;
+  grCanvas.height = 760;
+  grCanvas.style.width = r.width + 'px';
+  grCanvas.style.height = '380px';
+}
+resizeGR();
+window.addEventListener('resize', resizeGR);
+
+function drawGoldenSpiral(time) {
+  const w = grCanvas.width, h = grCanvas.height;
+  grCtx.clearRect(0, 0, w, h);
+  const cx = w * 0.5, cy = h * 0.5;
+  const maxAngle = 6 * Math.PI;
+  const scale = 7;
+  const rotOffset = time * 0.00008;
+
+  grCtx.beginPath();
+  for (let angle = 0; angle < maxAngle; angle += 0.02) {
+    const r = scale * Math.pow(PHI, angle / (Math.PI / 2));
+    const x = cx + r * Math.cos(angle + rotOffset);
+    const y = cy + r * Math.sin(angle + rotOffset);
+    angle === 0 ? grCtx.moveTo(x, y) : grCtx.lineTo(x, y);
+  }
+  grCtx.strokeStyle = 'rgba(176,106,59,0.25)';
+  grCtx.lineWidth = 2;
+  grCtx.stroke();
+
+  const labels = ['δ 4Hz', 'θ 6.5Hz', 'α 10.5Hz', 'β 16.9Hz', 'β 27.4Hz', 'γ 44.4Hz'];
+  labels.forEach((label, i) => {
+    const angle = (i + 1) * Math.PI * 0.9;
+    const r = scale * Math.pow(PHI, angle / (Math.PI / 2));
+    const x = cx + r * Math.cos(angle + rotOffset);
+    const y = cy + r * Math.sin(angle + rotOffset);
+    const pulse = 1 + Math.sin(time * 0.0018 + i) * 0.3;
+    const nodeSize = (3.5 + i * 1.4) * pulse;
+    const alpha = 0.2 + Math.sin(time * 0.0018 + i) * 0.1;
+
+    grCtx.beginPath();
+    grCtx.arc(x, y, nodeSize, 0, Math.PI * 2);
+    grCtx.fillStyle = `rgba(176,106,59,${alpha})`;
+    grCtx.fill();
+
+    grCtx.font = '500 18px "DM Sans", sans-serif';
+    grCtx.fillStyle = `rgba(44,36,24,${alpha * 1.5})`;
+    grCtx.fillText(label, x + nodeSize + 8, y + 5);
+  });
+
+  grCtx.font = '200 56px "Outfit", sans-serif';
+  grCtx.fillStyle = `rgba(176,106,59,${0.12 + Math.sin(time * 0.001) * 0.04})`;
+  grCtx.textAlign = 'center';
+  grCtx.fillText('φ', cx, cy + 18);
+  grCtx.textAlign = 'start';
+
+  requestAnimationFrame(drawGoldenSpiral);
+}
+requestAnimationFrame(drawGoldenSpiral);
+
+// ═══════════════════════════════════════
+// WEB AUDIO — BINAURAL BEAT GENERATOR
+// ═══════════════════════════════════════
+let audioCtx, oscLeft, oscRight, gainNode;
+let currentBeatFreq = 6;
+
+function initAudio() {
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  gainNode = audioCtx.createGain();
+  gainNode.gain.value = 0;
+  gainNode.connect(audioCtx.destination);
+  const merger = audioCtx.createChannelMerger(2);
+  merger.connect(gainNode);
+  const base = 200;
+  oscLeft = audioCtx.createOscillator();
+  oscLeft.type = 'sine';
+  oscLeft.frequency.value = base;
+  oscRight = audioCtx.createOscillator();
+  oscRight.type = 'sine';
+  oscRight.frequency.value = base + currentBeatFreq;
+  const gL = audioCtx.createGain(); gL.gain.value = 0.3;
+  const gR = audioCtx.createGain(); gR.gain.value = 0.3;
+  oscLeft.connect(gL); gL.connect(merger, 0, 0);
+  oscRight.connect(gR); gR.connect(merger, 0, 1);
+  oscLeft.start(); oscRight.start();
+}
+
+function toggleAudio() {
+  if (!audioCtx) initAudio();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  if (!audioPlaying) {
+    gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+    gainNode.gain.setTargetAtTime(0.25, audioCtx.currentTime, 0.8);
+    audioPlaying = true;
+    document.getElementById('audio-bars').classList.add('playing');
+    document.getElementById('listen-btn').innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg> Pause';
+  } else {
+    gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+    gainNode.gain.setTargetAtTime(0, audioCtx.currentTime, 0.5);
+    audioPlaying = false;
+    document.getElementById('audio-bars').classList.remove('playing');
+    document.getElementById('listen-btn').innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg> Listen to Repose';
+  }
+}
+
+function setFreq(freq, btn) {
+  currentBeatFreq = freq;
+  document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (oscRight && audioCtx) {
+    oscRight.frequency.cancelScheduledValues(audioCtx.currentTime);
+    oscRight.frequency.setTargetAtTime(200 + freq, audioCtx.currentTime, 0.5);
+  }
+}
+
+document.getElementById('audio-toggle').addEventListener('click', toggleAudio);
+
+// ═══════════════════════════════════════
+// SCROLL ANIMATIONS
+// ═══════════════════════════════════════
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .timeline-step').forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+</body>
+</html>

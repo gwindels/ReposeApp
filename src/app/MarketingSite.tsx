@@ -47,11 +47,13 @@ export function MarketingSite() {
             </svg>
           </div>
           <h1 className="text-6xl mb-6" style={{ fontWeight: 300, letterSpacing: '1px', color: '#2A2A28' }}>
-            Change Without Effort
+            Real Hypnosis. Just Your Phone.
           </h1>
           <p className="text-2xl text-black/60 max-w-2xl mx-auto mb-12 leading-relaxed" style={{ fontWeight: 300 }}>
-            Listen to layered audio frequencies that quiet your mind and open you to change.
-            Pair with affirmations that actually land, whether releasing old doubts or inviting something new.
+            Place your phone on your chest and close your eyes. The app reads your breathing and heartbeat, then adapts in real time to guide you into a deep hypnotic state.
+          </p>
+          <p className="text-2xl text-black/60 max-w-2xl mx-auto mb-12 leading-relaxed" style={{ fontWeight: 300 }}>
+            Or create your own session with brainwave audio and spoken affirmations, timed to play when your mind is most open to absorbing them.
           </p>
           <BetaButton />
         </section>
@@ -68,8 +70,11 @@ export function MarketingSite() {
             <h2 className="text-4xl mb-6" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
               The Approach
             </h2>
+            <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
+                Stop Trying. Start Changing.
+            </h3>
               <p className="text-xl text-black/60 max-w-2xl mx-auto leading-relaxed" style={{ fontWeight: 300 }}>
-              Instead of willpower, Repose works with your brain's natural plasticity. The audio opens receptivity, affirmations seed new patterns, and rest lets them take hold. Change becomes easier when you stop forcing it.
+                Most meditation asks you to concentrate. Repose asks you to stop. The audio uses brainwave entrainment — layered tones that gently shift your brain's electrical activity from alert waking states into deeper, more receptive ones. Affirmations play during a brief gamma state, a fast brainwave rhythm linked to heightened learning and neuroplasticity (the brain's ability to form new neural pathways). You don't focus. You don't follow along. You press play and let go.
               </p>
           </div>
         </section>
@@ -79,16 +84,16 @@ export function MarketingSite() {
           <h2 className="text-4xl text-center mb-16" style={{ fontWeight: 300, letterSpacing: '0.5px', color: '#2A2A28' }}>
             How Repose Works
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <div className="text-center">
               <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
                 <PurposeIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                1. Create Your Session
+                Deep Hypnosis
               </h3>
               <p className="text-black/60 leading-relaxed">
-                Choose a purpose: falling asleep, waking up, a midday reset, or deep meditation. Each one sequences the audio differently based on what you need.
+                Place your phone on your chest, put on headphones, and close your eyes. The app senses your breathing and heartbeat through motion — no watch, no headband, nothing to buy. Over 33 minutes, it guides you through seven phases of hypnosis, pacing itself to your body. Your affirmations play at the deepest point, when your brain is most open to receiving them.
               </p>
             </div>
             <div className="text-center">
@@ -96,21 +101,10 @@ export function MarketingSite() {
                 <BirdIcon className="w-10 h-10 text-[#756F63]" />
               </div>
               <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                2. Make It Yours
+                Custom Sessions
               </h3>
               <p className="text-black/60 leading-relaxed">
-                Pick a nature soundscape to play throughout. Add spoken affirmations from our library, type your own and hear them read back, or record them in your own voice.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#FAFAF8] to-[#E8DCC4] flex items-center justify-center">
-                <HeadphonesIcon className="w-10 h-10 text-[#756F63]" />
-              </div>
-              <h3 className="text-xl mb-3" style={{ fontWeight: 400, color: '#2A2A28' }}>
-                3. Press Play and Let Go
-              </h3>
-              <p className="text-black/60 leading-relaxed">
-                Put on headphones and listen. The audio guides your brain through targeted states while you rest.
+                Choose what you need: falling asleep, waking up, a midday reset, or deep meditation. Each session moves your brain through a specific sequence of brainwave states — such as alpha (calm, relaxed awareness), theta (deep rest, dreamlike), and gamma (heightened learning) — matched to your session's purpose.
               </p>
             </div>
           </div>
