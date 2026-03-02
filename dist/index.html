@@ -1308,7 +1308,7 @@ footer .footer-links a:hover { color: var(--accent-warm); }
     direction: ltr;
   }
   nav { padding: 1rem var(--page-margin-mobile); }
-  .nav-links { display: none; }
+  .nav-link { display: none; }
   .hero { padding: 5rem var(--page-margin-mobile) 4rem; }
   .waveform-section, .breathing-section,
   .journey-section, .ratio-section,
@@ -1358,11 +1358,11 @@ footer .footer-links a:hover { color: var(--accent-warm); }
     </a>
   </div>
   <ul class="nav-links">
-    <li><a href="#journey">How It Works</a></li>
-    <li><a href="#states">The Frequencies</a></li>
-    <li><a href="#science">The Science</a></li>
+    <li class="nav-link"><a href="#journey">How It Works</a></li>
+    <li class="nav-link"><a href="#states">The Frequencies</a></li>
+    <li class="nav-link"><a href="#science">The Science</a></li>
     <li><a class="nav-install-btn" href="#cta" onclick="setTimeout(()=>{const p=document.getElementById('tf-panel');const b=document.getElementById('tf-toggle');if(!p.classList.contains('open')){p.classList.add('open');b.classList.add('active');}},600);">Download Beta</a></li>
-    <li><a onclick="toggleTheme()" id='ltdrk-mode' class="lt-dk-mode">
+    <li class="nav-link"><a onclick="toggleTheme()" id='ltdrk-mode' class="lt-dk-mode">
       <svg width="1rem" height="1rem" viewBox="0 0 253 253" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M134.88 0H118.02V44.3699H134.88V0Z" fill="currentColor"/>
         <path d="M134.88 208.53H118.02V252.9H134.88V208.53Z" fill="currentColor"/>
@@ -1577,7 +1577,7 @@ footer .footer-links a:hover { color: var(--accent-warm); }
     <div class="reveal">
       <h2 class="section-heading">Built on the <em>golden ratio</em></h2>
       <p class="section-body">
-        Frequency transitions in Repose aren't arbitrary. They follow φ (1.618) — the same mathematical relationship found in seashells, galaxies, and neural branching patterns. This approach gently moves you out of your current state and so you can settle into the next.
+        Frequency transitions in Repose aren't arbitrary. They follow φ (1.618) — the same mathematical relationship found in seashells, galaxies, and neural branching patterns. This approach gently dislodges you from your current state and so you can move into the next.
       </p>
     </div>
   </div>
