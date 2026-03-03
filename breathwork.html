@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Breathwork Architecture — Technical Specification</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Newsreader:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<title>The Case for State-Aware Breathwork</title>
+<meta name="description" content="A grounded assessment of what compounds, what's measurable, what's felt, and what's defensible.">
+<meta property="og:title" content="The Case for State-Aware Breathwork">
+<meta property="og:description" content="What compounds, what's measurable, what's felt, and what's defensible.">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0b0d;
@@ -15,16 +18,17 @@
     --text: #c8cad0;
     --text-dim: #6b6e7a;
     --text-bright: #e8eaef;
+    --white: #f4f5f7;
     --accent-cyan: #4ecdc4;
     --accent-blue: #5b8def;
     --accent-violet: #8b7cf6;
     --accent-pink: #e879a8;
     --accent-rose: #f47068;
     --accent-amber: #e8b44f;
+    --accent-green: #6bcf8e;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -32,7 +36,7 @@
     color: var(--text);
     font-family: 'Newsreader', Georgia, serif;
     font-size: 17px;
-    line-height: 1.72;
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -41,198 +45,105 @@
     color: var(--text-bright);
   }
 
-  /* ── Navigation ── */
+  a { color: var(--accent-cyan); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Nav ── */
   nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba(10, 11, 13, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10, 11, 13, 0.88);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border);
     padding: 0 2rem;
-    transition: transform 0.3s ease;
   }
-
   nav .nav-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 52px;
+    max-width: 860px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 50px;
   }
-
   nav .nav-title {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--text-dim);
   }
-
-  nav .nav-links {
-    display: flex;
-    gap: 0.25rem;
-  }
-
+  nav .nav-links { display: flex; gap: 2px; }
   nav .nav-links a {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--text-dim);
-    text-decoration: none;
-    padding: 6px 10px;
-    border-radius: 4px;
-    transition: all 0.2s;
-    letter-spacing: 0.02em;
+    font-size: 11px; color: var(--text-dim); text-decoration: none;
+    padding: 5px 9px; border-radius: 4px; transition: all 0.2s;
   }
-
   nav .nav-links a:hover {
-    color: var(--text-bright);
-    background: var(--surface2);
+    color: var(--text-bright); background: var(--surface2);
   }
 
   /* ── Hero ── */
   .hero {
-    padding: 140px 2rem 80px;
-    max-width: 900px;
-    margin: 0 auto;
+    padding: 130px 2rem 60px;
+    max-width: 860px; margin: 0 auto;
     position: relative;
   }
-
   .hero::before {
-    content: '';
-    position: absolute;
-    top: 80px;
-    left: -200px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(ellipse, rgba(78, 205, 196, 0.04) 0%, transparent 70%);
+    content: ''; position: absolute;
+    top: 60px; left: -250px;
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse, rgba(78, 205, 196, 0.035) 0%, transparent 70%);
     pointer-events: none;
   }
-
   .hero .label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--accent-cyan);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
+    margin-bottom: 1.25rem;
+    opacity: 0; animation: fadeUp 0.6s ease forwards;
   }
-
   .hero h1 {
-    font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
-    font-weight: 300;
-    color: var(--text-bright);
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    max-width: 700px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.1s forwards;
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    font-weight: 300; color: var(--white);
+    line-height: 1.25; margin-bottom: 1.5rem;
+    max-width: 680px;
+    opacity: 0; animation: fadeUp 0.6s ease 0.1s forwards;
   }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent-cyan);
-  }
-
+  .hero h1 em { font-style: italic; color: var(--accent-cyan); }
   .hero .subtitle {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    max-width: 580px;
-    line-height: 1.7;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.2s forwards;
+    font-size: 1.05rem; color: var(--text-dim);
+    max-width: 560px; line-height: 1.75;
+    opacity: 0; animation: fadeUp 0.6s ease 0.2s forwards;
   }
 
-  .hero .pipeline-summary {
-    margin-top: 3rem;
-    display: flex;
-    gap: 2px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.35s forwards;
-  }
-
-  .hero .pipeline-step {
-    flex: 1;
-    padding: 12px 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    text-align: center;
-  }
-
-  .hero .pipeline-step:first-child { border-radius: 8px 0 0 8px; }
-  .hero .pipeline-step:last-child { border-radius: 0 8px 8px 0; }
-
-  .hero .pipeline-step .step-num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--text-dim);
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .hero .pipeline-step .step-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .ps-cyan .step-label { color: var(--accent-cyan); }
-  .ps-blue .step-label { color: var(--accent-blue); }
-  .ps-violet .step-label { color: var(--accent-violet); }
-  .ps-pink .step-label { color: var(--accent-pink); }
-  .ps-rose .step-label { color: var(--accent-rose); }
-  .ps-amber .step-label { color: var(--accent-amber); }
-
-  /* ── Main Content ── */
+  /* ── Main ── */
   main {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 860px; margin: 0 auto;
     padding: 0 2rem 120px;
   }
 
-  /* ── Section ── */
-  .section {
-    margin-top: 5rem;
-    padding-top: 2rem;
-  }
-
+  /* ── Sections ── */
+  .section { margin-top: 4.5rem; padding-top: 1.5rem; }
   .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    display: flex; align-items: baseline; gap: 1rem;
+    margin-bottom: 1.75rem;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 1rem;
+    padding-bottom: 0.75rem;
   }
-
   .section-number {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--text-dim);
-    font-weight: 400;
+    font-size: 12px; color: var(--text-dim);
+    flex-shrink: 0;
   }
-
   .section-title {
-    font-family: 'Newsreader', Georgia, serif;
-    font-size: 1.6rem;
-    font-weight: 400;
+    font-size: 1.5rem; font-weight: 400;
     color: var(--text-bright);
   }
+  .section > p {
+    margin-bottom: 1.25rem; max-width: 640px;
+  }
 
-  .section p {
-    margin-bottom: 1.25rem;
-    max-width: 680px;
+  /* ── Sub headings ── */
+  .sub-heading {
+    font-size: 1.1rem; font-weight: 500;
+    color: var(--text-bright);
+    margin: 2.5rem 0 0.75rem;
   }
 
   /* ── Cards ── */
@@ -240,71 +151,68 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 1.75rem;
-    margin: 1.5rem 0;
-    position: relative;
-    overflow: hidden;
+    padding: 1.5rem 1.75rem;
+    margin: 1.25rem 0;
+    position: relative; overflow: hidden;
   }
-
   .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
   }
-
-  .card.card-cyan::before { background: linear-gradient(90deg, var(--accent-cyan), transparent 60%); }
-  .card.card-blue::before { background: linear-gradient(90deg, var(--accent-blue), transparent 60%); }
-  .card.card-violet::before { background: linear-gradient(90deg, var(--accent-violet), transparent 60%); }
-  .card.card-pink::before { background: linear-gradient(90deg, var(--accent-pink), transparent 60%); }
-  .card.card-rose::before { background: linear-gradient(90deg, var(--accent-rose), transparent 60%); }
-  .card.card-amber::before { background: linear-gradient(90deg, var(--accent-amber), transparent 60%); }
+  .card.c-cyan::before { background: linear-gradient(90deg, var(--accent-cyan), transparent 50%); }
+  .card.c-blue::before { background: linear-gradient(90deg, var(--accent-blue), transparent 50%); }
+  .card.c-violet::before { background: linear-gradient(90deg, var(--accent-violet), transparent 50%); }
+  .card.c-pink::before { background: linear-gradient(90deg, var(--accent-pink), transparent 50%); }
+  .card.c-rose::before { background: linear-gradient(90deg, var(--accent-rose), transparent 50%); }
+  .card.c-amber::before { background: linear-gradient(90deg, var(--accent-amber), transparent 50%); }
+  .card.c-green::before { background: linear-gradient(90deg, var(--accent-green), transparent 50%); }
 
   .card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 0.75rem; flex-wrap: wrap; gap: 8px;
   }
-
   .card-title {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.03em;
   }
-
-  .card-cyan .card-title { color: var(--accent-cyan); }
-  .card-blue .card-title { color: var(--accent-blue); }
-  .card-violet .card-title { color: var(--accent-violet); }
-  .card-pink .card-title { color: var(--accent-pink); }
-  .card-rose .card-title { color: var(--accent-rose); }
-  .card-amber .card-title { color: var(--accent-amber); }
+  .c-cyan .card-title { color: var(--accent-cyan); }
+  .c-blue .card-title { color: var(--accent-blue); }
+  .c-violet .card-title { color: var(--accent-violet); }
+  .c-pink .card-title { color: var(--accent-pink); }
+  .c-rose .card-title { color: var(--accent-rose); }
+  .c-amber .card-title { color: var(--accent-amber); }
+  .c-green .card-title { color: var(--accent-green); }
 
   .card-badge {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 3px;
-    background: rgba(78, 205, 196, 0.08);
-    color: var(--accent-cyan);
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 3px;
   }
+  .badge-cyan { background: rgba(78,205,196,0.1); color: var(--accent-cyan); }
+  .badge-rose { background: rgba(244,112,104,0.1); color: var(--accent-rose); }
+  .badge-amber { background: rgba(232,180,79,0.1); color: var(--accent-amber); }
+  .badge-dim { background: var(--surface2); color: var(--text-dim); }
+  .badge-green { background: rgba(107,207,142,0.12); color: var(--accent-green); }
 
   .card p {
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--text);
-    margin-bottom: 1rem;
+    font-size: 15px; line-height: 1.7; color: var(--text);
+    margin-bottom: 0.75rem;
   }
-
   .card p:last-child { margin-bottom: 0; }
 
-  /* ── Code blocks ── */
+  /* ── Cite ── */
+  .cite {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; line-height: 1.6;
+    color: var(--text-dim);
+    margin-top: 0.75rem; padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .cite a { color: var(--text-dim); }
+  .cite a:hover { color: var(--accent-cyan); }
+
+  /* ── Code block ── */
   .code-block {
     background: var(--bg);
     border: 1px solid var(--border);
@@ -312,1069 +220,921 @@
     padding: 1.25rem 1.5rem;
     margin: 1rem 0;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    line-height: 1.8;
-    color: var(--text-dim);
-    overflow-x: auto;
+    font-size: 12px; line-height: 1.85;
+    color: var(--text-dim); overflow-x: auto;
+    white-space: pre;
   }
+  .kw { color: var(--accent-cyan); }
+  .str { color: var(--accent-amber); }
+  .cmt { color: #3a3d47; font-style: italic; }
+  .val { color: var(--accent-pink); }
 
-  .code-block .kw { color: var(--accent-cyan); }
-  .code-block .op { color: var(--text-dim); }
-  .code-block .str { color: var(--accent-amber); }
-  .code-block .cmt { color: #3a3d47; font-style: italic; }
-  .code-block .val { color: var(--accent-pink); }
-
-  /* ── Stats row ── */
+  /* ── Stats ── */
   .stats-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 8px;
-    margin: 1.25rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px; margin: 1.25rem 0;
   }
-
   .stat {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 12px;
-    text-align: center;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 6px; padding: 14px 12px; text-align: center;
   }
-
   .stat-value {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--accent-cyan);
+    font-size: 16px; font-weight: 500;
   }
-
+  .stat-value.cyan { color: var(--accent-cyan); }
+  .stat-value.amber { color: var(--accent-amber); }
+  .stat-value.rose { color: var(--accent-rose); }
+  .stat-value.green { color: var(--accent-green); }
   .stat-label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--text-dim);
-    margin-top: 4px;
-    letter-spacing: 0.02em;
+    font-size: 10px; color: var(--text-dim); margin-top: 4px;
   }
 
-  /* ── Protocol table ── */
-  .protocol-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-    font-size: 14px;
+  /* ── Table ── */
+  .ptable {
+    width: 100%; border-collapse: collapse;
+    margin: 1.25rem 0; font-size: 14px;
   }
-
-  .protocol-table th {
+  .ptable th {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    text-align: left;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-dim); text-align: left;
     padding: 10px 14px;
     border-bottom: 1px solid var(--border-light);
   }
-
-  .protocol-table td {
+  .ptable td {
     padding: 12px 14px;
     border-bottom: 1px solid var(--border);
     vertical-align: top;
   }
+  .ptable tr:last-child td { border-bottom: none; }
 
-  .protocol-table tr:last-child td { border-bottom: none; }
-
-  .protocol-table .state-tag {
+  .tag {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 3px;
-    white-space: nowrap;
+    font-size: 11px; font-weight: 500;
+    display: inline-block; padding: 2px 8px;
+    border-radius: 3px; white-space: nowrap;
   }
+  .tag-yes { background: rgba(107,207,142,0.12); color: var(--accent-green); }
+  .tag-no { background: rgba(244,112,104,0.08); color: var(--accent-rose); }
+  .tag-partial { background: rgba(232,180,79,0.1); color: var(--accent-amber); }
 
-  .tag-high { background: rgba(244, 112, 104, 0.12); color: var(--accent-rose); }
-  .tag-mid { background: rgba(232, 180, 79, 0.12); color: var(--accent-amber); }
-  .tag-low { background: rgba(91, 141, 239, 0.12); color: var(--accent-blue); }
-  .tag-trans { background: rgba(139, 124, 246, 0.12); color: var(--accent-violet); }
-
-  /* ── Subsection headings ── */
-  .sub-heading {
-    font-family: 'Newsreader', Georgia, serif;
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: var(--text-bright);
-    margin: 2.5rem 0 1rem;
-  }
-
-  .sub-heading-sm {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin: 2rem 0 0.75rem;
-  }
-
-  /* ── Inline tag ── */
-  .inline-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    padding: 1px 6px;
-    border-radius: 3px;
-    color: var(--text);
-    white-space: nowrap;
-  }
-
-  /* ── Note callout ── */
+  /* ── Note ── */
   .note {
-    background: rgba(78, 205, 196, 0.04);
+    background: rgba(78,205,196,0.04);
     border-left: 2px solid var(--accent-cyan);
-    padding: 1rem 1.25rem;
-    margin: 1.5rem 0;
+    padding: 1rem 1.25rem; margin: 1.25rem 0;
     border-radius: 0 6px 6px 0;
   }
-
-  .note p {
-    font-size: 14px;
-    color: var(--text);
-    margin: 0;
+  .note p { font-size: 14px; color: var(--text); margin: 0; }
+  .note strong { color: var(--accent-cyan); font-weight: 500; }
+  .note.note-amber {
+    background: rgba(232,180,79,0.04);
+    border-left-color: var(--accent-amber);
   }
-
-  .note strong {
-    color: var(--accent-cyan);
-    font-weight: 500;
+  .note.note-amber strong { color: var(--accent-amber); }
+  .note.note-rose {
+    background: rgba(244,112,104,0.04);
+    border-left-color: var(--accent-rose);
   }
+  .note.note-rose strong { color: var(--accent-rose); }
+  .note.note-green {
+    background: rgba(107,207,142,0.04);
+    border-left-color: var(--accent-green);
+  }
+  .note.note-green strong { color: var(--accent-green); }
 
-  /* ── Grid layouts ── */
+  /* ── Grids ── */
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 1.25rem 0;
+    gap: 10px; margin: 1.25rem 0;
   }
-
-  .grid-item {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.25rem;
+  .gi {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.25rem;
   }
-
-  .grid-item-title {
+  .gi-title {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-bright);
-    margin-bottom: 0.5rem;
+    font-size: 12px; font-weight: 500;
+    color: var(--text-bright); margin-bottom: 0.4rem;
+  }
+  .gi p {
+    font-size: 13px; line-height: 1.6;
+    color: var(--text-dim); margin: 0;
   }
 
-  .grid-item p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--text-dim);
-    margin: 0;
+  /* ── Pipeline ── */
+  .pipeline {
+    display: flex; gap: 2px; margin: 2rem 0;
+    opacity: 0; animation: fadeUp 0.6s ease 0.3s forwards;
   }
-
-  /* ── Responsive ── */
-  @media (max-width: 640px) {
-    .hero .pipeline-summary { flex-wrap: wrap; }
-    .hero .pipeline-step { flex: 1 1 30%; }
-    .grid-2 { grid-template-columns: 1fr; }
-    nav .nav-links { display: none; }
-    .protocol-table { font-size: 12px; }
-    .protocol-table td, .protocol-table th { padding: 8px 10px; }
+  .pipeline .ps {
+    flex: 1; padding: 14px 10px;
+    background: var(--surface); border: 1px solid var(--border);
+    text-align: center;
   }
-
-  /* ── Animations ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
+  .pipeline .ps:first-child { border-radius: 8px 0 0 8px; }
+  .pipeline .ps:last-child { border-radius: 0 8px 8px 0; }
+  .pipeline .ps .ps-n {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; color: var(--text-dim); display: block; margin-bottom: 3px;
   }
-
-  /* ── Scroll fade-in ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+  .pipeline .ps .ps-l {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
   }
+  .ps-l.cyan { color: var(--accent-cyan); }
+  .ps-l.blue { color: var(--accent-blue); }
+  .ps-l.violet { color: var(--accent-violet); }
+  .ps-l.pink { color: var(--accent-pink); }
+  .ps-l.amber { color: var(--accent-amber); }
+  .ps-l.green { color: var(--accent-green); }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
+  /* ── Compound visual ── */
+  .compound {
+    display: flex; align-items: center; gap: 8px;
+    margin: 1.5rem 0; flex-wrap: wrap;
   }
-
-  /* ── Divider ── */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 4rem 0;
+  .compound .c-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; font-weight: 500;
+    padding: 6px 14px; border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .compound .c-arrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; color: var(--text-dim);
   }
 
   /* ── Footer ── */
   footer {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+    max-width: 860px; margin: 0 auto;
+    padding: 2rem; text-align: center;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--text-dim);
+    font-size: 11px; color: var(--text-dim);
     border-top: 1px solid var(--border);
   }
 
-  /* ── Flow diagram ── */
-  .flow-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin: 6px 0;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
+  /* ── Animation ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
   }
+  .reveal {
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  .flow-arrow {
-    color: var(--text-dim);
-    font-size: 10px;
-  }
-
-  /* list style */
-  .spec-list {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0;
-  }
-  .spec-list li {
-    position: relative;
-    padding-left: 1.25rem;
-    margin-bottom: 0.6rem;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-  .spec-list li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    color: var(--text-dim);
-    font-family: 'IBM Plex Mono', monospace;
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .pipeline { flex-wrap: wrap; }
+    .pipeline .ps { flex: 1 1 30%; }
+    .grid-2 { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+    .ptable { font-size: 12px; }
+    .ptable td, .ptable th { padding: 8px 10px; }
+    .compound { gap: 5px; }
   }
 </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <nav>
   <div class="nav-inner">
-    <span class="nav-title">Breathwork Architecture</span>
+    <span class="nav-title">Repose &middot; Breathwork</span>
     <div class="nav-links">
-      <a href="#sensing">Sensing</a>
-      <a href="#state">State</a>
-      <a href="#protocol">Protocol</a>
-      <a href="#audio">Audio</a>
-      <a href="#entrainment">Entrainment</a>
-      <a href="#ux">Experience</a>
-      <a href="#proof">Proof</a>
+      <a href="#thesis">Thesis</a>
+      <a href="#stack">Stack</a>
+      <a href="#measured">Measured</a>
+      <a href="#felt">Felt</a>
+      <a href="#differentiation">Moat</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#risks">Risks</a>
     </div>
   </div>
 </nav>
 
-<!-- Hero -->
+<!-- ════════════════ HERO ════════════════ -->
 <header class="hero">
-  <div class="label">Technical Architecture Specification</div>
-  <h1>State-aware breathwork with <em>brainwave entrainment</em></h1>
+  <div class="label">A grounded assessment</div>
+  <h1>The case for <em>state-aware</em> breathwork</h1>
   <p class="subtitle">
-    A standalone iOS app that detects autonomic state through passive smartphone sensors,
-    routes to the optimal breathing protocol, sonifies the breath into a living soundscape,
-    and entrains brainwave activity during exhale phases.
+    What compounds, what's measurable, what's felt, and what's defensible.
+    Not a pitch &mdash; an honest evaluation of an intervention where the science,
+    the user experience, and the market gap actually align.
   </p>
-  <div class="pipeline-summary">
-    <div class="pipeline-step ps-cyan">
-      <span class="step-num">01</span>
-      <span class="step-label">Sense</span>
-    </div>
-    <div class="pipeline-step ps-blue">
-      <span class="step-num">02</span>
-      <span class="step-label">Assess</span>
-    </div>
-    <div class="pipeline-step ps-violet">
-      <span class="step-num">03</span>
-      <span class="step-label">Route</span>
-    </div>
-    <div class="pipeline-step ps-pink">
-      <span class="step-num">04</span>
-      <span class="step-label">Guide</span>
-    </div>
-    <div class="pipeline-step ps-rose">
-      <span class="step-num">05</span>
-      <span class="step-label">Entrain</span>
-    </div>
-    <div class="pipeline-step ps-amber">
-      <span class="step-num">06</span>
-      <span class="step-label">Prove</span>
-    </div>
-  </div>
 </header>
 
-<!-- Main Content -->
 <main>
 
-  <!-- ════════════ 0. DESIGN PRINCIPLES ════════════ -->
-  <section class="section reveal" id="principles">
+  <!-- ════════════ 00 &middot; THESIS ════════════ -->
+  <section class="section reveal" id="thesis">
     <div class="section-header">
       <span class="section-number">00</span>
-      <h2 class="section-title">Design Principles</h2>
-    </div>
-
-    <div class="grid-2">
-      <div class="grid-item">
-        <div class="grid-item-title">Phone stays put</div>
-        <p>No balancing on chest. Phone sits on a table, lap, or bed nearby. All sensing is ambient — the user never thinks about the device.</p>
-      </div>
-      <div class="grid-item">
-        <div class="grid-item-title">Body first, mind second</div>
-        <p>The first 30 seconds are pure physical invitation. No instructions, no UI chrome — just an exhale cue that the body follows before the mind engages.</p>
-      </div>
-      <div class="grid-item">
-        <div class="grid-item-title">Guidance disappears</div>
-        <p>Pacing cues start prominent and fade as the user entrains. By minute three, they're barely perceptible. The user feels like they found their own rhythm.</p>
-      </div>
-      <div class="grid-item">
-        <div class="grid-item-title">One number, not a dashboard</div>
-        <p>Post-session proof is a single data point delivered in a moment of calm. Not a stats screen — a felt experience of measurable change.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════ 1. SENSING LAYER ════════════ -->
-  <section class="section reveal" id="sensing">
-    <div class="section-header">
-      <span class="section-number">01</span>
-      <h2 class="section-title">Sensing Layer</h2>
+      <h2 class="section-title">The Core Thesis</h2>
     </div>
 
     <p>
-      Three complementary approaches using only the iPhone's built-in sensors. No wearables, no contact, no special positioning.
-      The phone sits on a nearby surface — nightstand, desk, cushion beside you.
+      Most wellness interventions fail for one of two reasons: they work but people can't tell,
+      or people can tell but the effect is shallow. The rare opportunity is an intervention where the
+      mechanism is scientifically validated, the user can feel the change in their body,
+      <em>and</em> a measurement confirms what they felt.
+    </p>
+    <p>
+      Breathwork &mdash; done correctly &mdash; is one of the only interventions that satisfies all three
+      simultaneously.
+    </p>
+    <p>
+      But "done correctly" is the operative phrase. The right breathing technique for a stressed person
+      is wrong for a sluggish one. No existing product detects which state the user is in. Every app
+      offers a menu and hopes the user picks well.
+    </p>
+    <p>
+      The combination proposed here is deliberately narrow: three interventions that share a common
+      physiological pathway and compound on each other without requiring the user to understand any of it.
     </p>
 
-    <!-- Sonar -->
-    <div class="card card-cyan">
+    <div class="compound">
+      <span class="c-item" style="color: var(--accent-cyan);">State-aware breathwork</span>
+      <span class="c-arrow">&times;</span>
+      <span class="c-item" style="color: var(--accent-violet);">Exhale-phase entrainment</span>
+      <span class="c-arrow">&times;</span>
+      <span class="c-item" style="color: var(--accent-amber);">Self-distanced affirmations</span>
+    </div>
+  </section>
+
+  <!-- ════════════ 01 &middot; STACK ════════════ -->
+  <section class="section reveal" id="stack">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">What Compounds (and What Doesn't)</h2>
+    </div>
+
+    <p>
+      Not every research-backed wellness insight belongs in this product. Some are powerful ideas that would
+      dilute focus. The sorting is deliberate.
+    </p>
+
+    <div class="sub-heading">The three layers</div>
+
+    <!-- LAYER 1 -->
+    <div class="card c-cyan">
       <div class="card-header">
-        <span class="card-title">Method 1 — Active Sonar (FMCW)</span>
-        <span class="card-badge">Primary</span>
+        <span class="card-title">Layer 1 &mdash; State-Aware Breathwork</span>
+        <span class="card-badge badge-cyan">Centerpiece</span>
       </div>
       <p>
-        The phone emits inaudible ultrasonic chirps (18–22 kHz) from its speaker and listens for reflections via the microphone.
-        Chest and abdomen movement from breathing modulates the reflected signal's phase. This is the same principle used in
-        the University of Washington <span class="inline-tag">ApneaApp</span> research — proven to detect breathing at up to 1 meter distance with the phone on a nightstand, even under a blanket.
+        Detect the user's autonomic state through passive phone sensors &mdash; respiration rate, inhale-to-exhale ratio,
+        movement restlessness &mdash; and route them to the physiologically matched breathing protocol. High arousal
+        gets cyclic sighing. Moderate gets resonance breathing. Low gets energizing breath. The user never sees a menu.
+        The system decides.
       </p>
-      <div class="code-block">
-<span class="cmt">// Signal chain</span>
-<span class="kw">GENERATE</span> <span class="op">→</span> FMCW chirp 18–22 kHz <span class="str">(inaudible to humans)</span>
-<span class="kw">EMIT</span>     <span class="op">→</span> iPhone speaker, low amplitude
-<span class="kw">RECEIVE</span>  <span class="op">→</span> iPhone mic captures reflections
-<span class="kw">MIX</span>      <span class="op">→</span> Cross-correlate TX/RX <span class="op">→</span> isolate target range bin
-<span class="kw">EXTRACT</span>  <span class="op">→</span> Phase variation within range bin = chest displacement
-<span class="kw">FILTER</span>   <span class="op">→</span> Bandpass 0.05–1.0 Hz <span class="str">(3–60 bpm range)</span>
-<span class="kw">OUTPUT</span>   <span class="op">→</span> Respiration rate + inhale/exhale phase timing
+      <p>
+        A Stanford trial showed that just 5 minutes of daily cyclic sighing outperformed mindfulness meditation
+        for both mood improvement and respiratory rate reduction. But the broader finding &mdash; that matching
+        the technique to the person's current state is what matters &mdash; is what makes this the foundation
+        of everything else.
+      </p>
+      <div class="cite">
+        Balban, M.Y. et al. (2023). "Brief structured respiration practices enhance mood and reduce physiological arousal."
+        <a href="https://doi.org/10.1016/j.xcrm.2022.100895" target="_blank"><em>Cell Reports Medicine</em>, 4(1), 100895.</a>
       </div>
+    </div>
+
+    <!-- LAYER 2 -->
+    <div class="card c-violet">
+      <div class="card-header">
+        <span class="card-title">Layer 2 &mdash; Exhale-Phase Brainwave Entrainment</span>
+        <span class="card-badge badge-dim">Amplifier</span>
+      </div>
+      <p>
+        This isn't a separate feature. It's an amplifier of the breathwork itself.
+        During exhale, vagal tone increases, heart rate drops, and the brain shifts toward parasympathetic
+        processing. EEG research shows increased alpha and theta power during extended exhalation &mdash; the brain
+        is more receptive to rhythmic input during this phase.
+      </p>
+      <p>
+        By concentrating binaural beat or isochronic pulse intensity on the exhale and reducing it on the inhale,
+        entrainment arrives when the neural gates are most open. Over a 5-minute session at 6 breaths per minute,
+        that's 30 exhale-phase entrainment windows, each reinforcing the target brainwave state. This approach
+        compounds with breathwork because they share the same physiological mechanism: parasympathetic activation.
+      </p>
+      <div class="cite">
+        Russo, M.A. et al. (2017). "The physiological effects of slow breathing in the healthy human."
+        <a href="https://doi.org/10.1183/23120541.00126-2017" target="_blank"><em>Breathe</em>, 13(4), 298&ndash;309.</a>
+        &nbsp;&bull;&nbsp;
+        Chaieb, L. et al. (2015). "Auditory beat stimulation and its effects on cognition and mood states."
+        <a href="https://doi.org/10.3389/fpsyt.2015.00070" target="_blank"><em>Frontiers in Psychiatry</em>, 6, 70.</a>
+      </div>
+    </div>
+
+    <!-- LAYER 3 -->
+    <div class="card c-amber">
+      <div class="card-header">
+        <span class="card-title">Layer 3 &mdash; Self-Distanced Affirmations</span>
+        <span class="card-badge badge-dim">Deepener</span>
+      </div>
+      <p>
+        Across seven studies (N=585), Kross and colleagues demonstrated that using your own name or "you"
+        instead of "I" during self-talk reduces anxiety and improves performance &mdash; with almost no
+        additional cognitive effort. Participants using non-first-person pronouns performed better according to
+        objective raters under both social stress and public speaking conditions.
+        Follow-up ERP and fMRI work showed this operates by reducing activity in the medial prefrontal cortex
+        (the self-referential processing region), essentially creating the same psychological distance you'd have
+        when advising a friend.
+      </p>
+      <p>
+        Delivering affirmations in second person (<em>"You are capable of this"</em>) during the
+        exhale-phase entrainment window is a triple compound: the right language form, at the right neural
+        moment, in the right autonomic state.
+      </p>
+
+      <div class="note note-green">
+        <p><strong>Already happening in Repose.</strong> All affirmations in Repose already use second-person
+        "you" framing &mdash; an unintentional alignment with Kross's research. This means the self-distancing
+        mechanism is already active in every Repose session. The opportunity now is to make it <em>intentional</em>:
+        adding the user's own name to affirmation delivery (e.g., <em>"You've got this, Gary"</em>) would
+        activate the full self-distancing effect the research supports, and the ElevenLabs whispered TTS
+        integration makes personalized name insertion trivial.</p>
+      </div>
+
+      <div class="cite">
+        Kross, E. et al. (2014). "Self-talk as a regulatory mechanism: How you do it matters."
+        <a href="https://doi.org/10.1037/a0035173" target="_blank"><em>J. Personality &amp; Social Psychology</em>, 106(2), 304&ndash;324.</a>
+        &nbsp;&bull;&nbsp;
+        Moser, J.S. et al. (2017). "Third-person self-talk facilitates emotion regulation without engaging cognitive control."
+        <a href="https://doi.org/10.1038/s41598-017-04047-3" target="_blank"><em>Scientific Reports</em>, 7, 4519.</a>
+        &nbsp;&bull;&nbsp;
+        Orvell, A. et al. (2019). "Linguistic shifts: A relatively effortless route to emotion regulation?"
+        <a href="https://doi.org/10.1177/0963721419861411" target="_blank"><em>Current Directions in Psychological Science</em>, 28(6), 567&ndash;573.</a>
+      </div>
+    </div>
+
+    <div class="sub-heading">What doesn't belong (yet)</div>
+
+    <div class="grid-2">
+      <div class="gi">
+        <div class="gi-title">Awe experiences</div>
+        <p>Powerful research (Stellar 2015; Keltner &amp; Haidt 2003), but a different modality. Can't be delivered through a breathwork session without becoming a different product.</p>
+      </div>
+      <div class="gi">
+        <div class="gi-title">Kindness / prosocial</div>
+        <p>Strong science (Lyubomirsky 2005), wrong context. This is a solo, inward-facing practice. Adding social mechanics breaks the design contract.</p>
+      </div>
+      <div class="gi">
+        <div class="gi-title">Earthing / grounding</div>
+        <p>Too much scientific controversy (Chevalier 2012; Oschman 2015), too little control over the experience. Credibility risk outweighs association benefit.</p>
+      </div>
+      <div class="gi">
+        <div class="gi-title">Expressive writing</div>
+        <p>Complementary but orthogonal (Pennebaker 1986). Could be a post-session journaling feature someday. Not in v1.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <p><strong>One exception: savoring.</strong> The post-session "hold" moment &mdash; 15&ndash;20 seconds of ambient sound
+      before showing the result &mdash; <em>is</em> a savoring intervention (Bryant &amp; Veroff, 2007). It doesn't need to be labeled. It's baked
+      into the UX. The user sits in the state they created. That's when the proof lands.</p>
+    </div>
+  </section>
+
+  <!-- ════════════ 02 &middot; MEASURED ════════════ -->
+  <section class="section reveal" id="measured">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Axis 1: What Can Be Measured</h2>
+    </div>
+
+    <p>
+      These are things the app can track with real sensor data &mdash; not self-reports, not subjective ratings.
+      The phone sits on a nearby surface. No wearables. No chest placement.
+    </p>
+
+    <div class="card c-cyan">
+      <div class="card-header">
+        <span class="card-title">Respiratory Rate Delta</span>
+        <span class="card-badge badge-cyan">Primary outcome</span>
+      </div>
+      <p>
+        Using FMCW active sonar &mdash; inaudible 18&ndash;22 kHz chirps emitted from the speaker, reflections captured by
+        the mic &mdash; the app detects chest and abdomen movement at up to 1 meter distance. The UW ApneaApp research
+        demonstrated this works even under a blanket, with sub-0.2 bpm median error across the 3&ndash;60 bpm range.
+        A clinical validation study using FMCW radar for respiratory monitoring in postoperative patients found bias
+        of just &ndash;0.12 bpm during mechanical ventilation.
+      </p>
+      <p>
+        A stressed person breathing at 18&ndash;22 bpm who drops to 6&ndash;8 bpm after cyclic sighing has experienced a
+        measurable, physiologically meaningful change. Respiratory rate is itself a clinical vital sign &mdash;
+        this is not a proxy metric.
+      </p>
       <div class="stats-row">
         <div class="stat">
-          <div class="stat-value">≤ 1m</div>
-          <div class="stat-label">effective range</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">&lt; 0.15 bpm</div>
+          <div class="stat-value cyan">&lt; 0.2 bpm</div>
           <div class="stat-label">median error</div>
         </div>
         <div class="stat">
-          <div class="stat-value">18–22 kHz</div>
-          <div class="stat-label">chirp band</div>
+          <div class="stat-value cyan">&le; 1m</div>
+          <div class="stat-label">sensing range</div>
         </div>
         <div class="stat">
-          <div class="stat-value">~30 Hz</div>
-          <div class="stat-label">sample rate</div>
+          <div class="stat-value cyan">18&ndash;22 kHz</div>
+          <div class="stat-label">inaudible band</div>
         </div>
       </div>
-
-      <div class="note">
-        <p><strong>Key insight:</strong> Because the sonar is inaudible and low-amplitude, it can run <em>simultaneously</em> with the app's
-        audio output (nature sounds, binaural beats). The frequency bands don't overlap — breathing audio lives below 4 kHz, sonar lives above 18 kHz.
-        The iPhone mic captures both in the same audio stream and you demux in software.</p>
-      </div>
-
-      <div class="sub-heading-sm">Swift Implementation Approach</div>
-      <p style="font-size:14px; color: var(--text-dim);">
-        Use <span class="inline-tag">AVAudioEngine</span> with a custom audio unit that generates the FMCW chirp on the output bus while simultaneously
-        capturing the mic input. Apply a high-pass filter at 17 kHz to isolate the sonar return from ambient audio.
-        Cross-correlation between the transmitted and received chirps yields range bins; track the phase of the dominant
-        bin over time to extract the breathing waveform. The <span class="inline-tag">Accelerate</span> framework's vDSP functions handle the FFT
-        and correlation math at real-time speed.
-      </p>
-    </div>
-
-    <!-- Passive Audio -->
-    <div class="card card-blue">
-      <div class="card-header">
-        <span class="card-title">Method 2 — Passive Audio (Breath Sound)</span>
-        <span class="card-badge">Fallback</span>
-      </div>
-      <p>
-        The mic picks up nasal and oral airflow sound passively — no emitted signal needed.
-        Research shows smartphones can estimate respiratory rate from nasal breath sounds at up to 30 cm
-        with less than 1% median error across 6–90 bpm. Even at greater distances in quiet environments, exhale
-        events are detectable due to their characteristic spectral envelope (energy concentration in 200–800 Hz band).
-      </p>
-      <p>
-        This method is less precise at distance than sonar but has a crucial advantage: it can detect <em>breath quality</em> —
-        whether the user is breathing through the nose vs. mouth, whether exhales are smooth or choppy, and approximate
-        exhale duration. These qualitative signals feed the state assessment and can tune guidance in real time.
-      </p>
-      <div class="note">
-        <p><strong>Fusion strategy:</strong> Run sonar and passive audio simultaneously. Sonar gives you precise inhale/exhale timing.
-        Passive audio gives you breath quality and compliance detection (are they actually doing the extended exhale, or cutting it short?).
-        Together, they form a complete picture no single method achieves alone.</p>
+      <div class="cite">
+        Nandakumar, R. et al. (2015). "Contactless Sleep Apnea Detection on Smartphones."
+        <a href="https://doi.org/10.1145/2742647.2742674" target="_blank"><em>Proc. ACM MobiSys</em></a> (ApneaApp).
+        &nbsp;&bull;&nbsp;
+        Van Loon, K. et al. (2016). "Wireless non-invasive continuous respiratory monitoring with FMCW radar."
+        <a href="https://doi.org/10.1007/s10877-015-9777-5" target="_blank"><em>J. Clinical Monitoring &amp; Computing</em>, 30, 797&ndash;805.</a>
       </div>
     </div>
 
-    <!-- Accelerometer -->
-    <div class="card card-violet">
+    <div class="card c-blue">
       <div class="card-header">
-        <span class="card-title">Method 3 — Accelerometer (Stillness Profile)</span>
-        <span class="card-badge">Supplemental</span>
+        <span class="card-title">Inhale-to-Exhale Ratio Shift</span>
       </div>
       <p>
-        If the phone is on the user's lap or a soft surface near them, the accelerometer picks up micro-vibrations
-        correlated with breathing. But even without direct contact, the accelerometer serves as a <strong>restlessness detector</strong>.
-        Micro-movements, fidgeting, and postural shifts correlate with sympathetic arousal and give the state classifier
-        a non-audio signal to work with.
+        Sympathetic dominance produces short, sharp exhales (I:E ratio near 1:1 or inverted). Parasympathetic
+        activation elongates the exhale (I:E ratio 1:2 or greater). The sonar system tracks this in real time,
+        and the shift from a compressed ratio to an extended one is direct evidence of autonomic rebalancing.
       </p>
+    </div>
+
+    <div class="card c-blue">
+      <div class="card-header">
+        <span class="card-title">Time-to-Entrainment</span>
+      </div>
       <p>
-        The <span class="inline-tag">CMMotionManager</span> accelerometer data at 100 Hz is bandpass filtered to two bands:
-        a breathing band (0.1–0.6 Hz) for direct respiratory detection when the phone is in contact, and a
-        movement band (0.5–10 Hz) for restlessness scoring regardless of phone placement.
+        How quickly the user's actual breathing locks to the guided pattern. This improves with practice &mdash;
+        tracking it over weeks provides objective evidence that the user is getting better at self-regulation,
+        not just following instructions. It distinguishes skill-building from compliance.
       </p>
+    </div>
+
+    <div class="card c-blue">
+      <div class="card-header">
+        <span class="card-title">Baseline Trend Over Weeks</span>
+      </div>
+      <p>
+        If the user's initial respiratory rate trends downward over weeks &mdash; they arrive at the app less
+        activated each time &mdash; that suggests carryover effects from regular practice. This is the hardest metric
+        to achieve but the most valuable: it distinguishes acute relief from lasting change.
+      </p>
+    </div>
+
+    <div class="note note-amber">
+      <p><strong>What can't be measured, honestly:</strong> Without EEG, you can't confirm brainwave
+      entrainment is occurring for an individual user. You can measure behavioral proxies (breathing regularity,
+      stillness) and cite the peer-reviewed studies showing these protocols produce the expected neural effects,
+      but you can't prove entrainment on a per-session basis with phone sensors alone. The entrainment layer is
+      the least measurable part of the stack, even though the research supporting it is strong.</p>
     </div>
   </section>
 
-  <!-- ════════════ 2. STATE ASSESSMENT ════════════ -->
-  <section class="section reveal" id="state">
-    <div class="section-header">
-      <span class="section-number">02</span>
-      <h2 class="section-title">State Assessment</h2>
-    </div>
-
-    <p>
-      The goal is not clinical-grade measurement. It's a coarse but useful classification of where the user's autonomic nervous
-      system is right now — enough to route them to the right breathing protocol instead of offering a menu.
-    </p>
-
-    <div class="sub-heading">Input Signals → Arousal Score</div>
-
-    <div class="card card-blue">
-      <div class="card-header">
-        <span class="card-title">Feature Extraction</span>
-      </div>
-      <div class="code-block">
-<span class="cmt">// From sonar/passive audio (first 15–30 seconds of quiet sensing)</span>
-
-<span class="kw">resp_rate</span>       <span class="op">→</span> breaths per minute (primary arousal signal)
-<span class="kw">resp_variability</span> <span class="op">→</span> coefficient of variation of breath-to-breath intervals
-<span class="kw">ie_ratio</span>        <span class="op">→</span> inhale:exhale duration ratio (short exhale = sympathetic)
-<span class="kw">breath_depth</span>    <span class="op">→</span> sonar phase displacement amplitude (shallow = stressed)
-
-<span class="cmt">// From accelerometer</span>
-
-<span class="kw">movement_energy</span> <span class="op">→</span> RMS of high-pass filtered accel (restlessness proxy)
-<span class="kw">stillness_ratio</span> <span class="op">→</span> % of time below movement threshold
-
-<span class="cmt">// Derived</span>
-
-<span class="kw">arousal_score</span>   <span class="op">→</span> weighted composite <span class="op">→</span> maps to 3 states
-      </div>
-    </div>
-
-    <div class="sub-heading">Classification</div>
-
-    <table class="protocol-table">
-      <thead>
-        <tr>
-          <th>State</th>
-          <th>Typical Signals</th>
-          <th>What It Means</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="state-tag tag-high">HIGH AROUSAL</span></td>
-          <td style="font-size:14px; color:var(--text-dim)">Resp rate &gt; 18 bpm, short I:E ratio (&lt;1:1.2), high movement energy, shallow breath depth</td>
-          <td style="font-size:14px">Sympathetic dominance. Stressed, anxious, activated. Needs downregulation.</td>
-        </tr>
-        <tr>
-          <td><span class="state-tag tag-mid">MODERATE</span></td>
-          <td style="font-size:14px; color:var(--text-dim)">Resp rate 12–18 bpm, moderate I:E ratio, low movement, normal depth</td>
-          <td style="font-size:14px">Baseline. Neither activated nor sluggish. Ready for optimization.</td>
-        </tr>
-        <tr>
-          <td><span class="state-tag tag-low">LOW AROUSAL</span></td>
-          <td style="font-size:14px; color:var(--text-dim)">Resp rate &lt; 12 bpm, very still, potentially irregular rhythm</td>
-          <td style="font-size:14px">Hypo-aroused, fatigued, disengaged. May need gentle upregulation.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="sub-heading">Personal Baseline Modeling</div>
-    <p>
-      The classifier improves over time by building a personal baseline. Your typical resting respiration rate,
-      your usual I:E ratio, your movement profile — all stored locally on-device. This means the app doesn't compare
-      you to population norms; it compares you to <em>yourself</em>. If your resting rate is normally 14 bpm
-      and today it's 20, the app knows something is off before you tell it.
-    </p>
-    <p>
-      The baseline model is a simple exponential moving average updated after each session's initial sensing window.
-      Stored in <span class="inline-tag">Core Data</span> with timestamps, enabling trend analysis over weeks.
-    </p>
-  </section>
-
-  <!-- ════════════ 3. PROTOCOL ROUTING ════════════ -->
-  <section class="section reveal" id="protocol">
+  <!-- ════════════ 03 &middot; FELT ════════════ -->
+  <section class="section reveal" id="felt">
     <div class="section-header">
       <span class="section-number">03</span>
-      <h2 class="section-title">Protocol Routing</h2>
+      <h2 class="section-title">Axis 2: What Users Feel</h2>
     </div>
 
     <p>
-      Based on the detected state, the system selects a breathing protocol — not from a menu, but automatically.
-      The user never sees protocol names or makes a choice. They just start breathing and the guidance meets them where they are.
+      A perfectly effective intervention that <em>feels</em> like nothing will be abandoned.
+      This is where design work matters as much as science.
     </p>
 
-    <table class="protocol-table">
-      <thead>
-        <tr>
-          <th>Detected State</th>
-          <th>Protocol</th>
-          <th>Pattern</th>
-          <th>Mechanism</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="state-tag tag-high">HIGH AROUSAL</span></td>
-          <td style="color:var(--text-bright)">Cyclic Sighing</td>
-          <td style="font-size:14px; color:var(--text-dim)">Double nasal inhale → extended mouth exhale. ~1:2 I:E ratio. Target: 6 bpm.</td>
-          <td style="font-size:14px; color:var(--text-dim)">Maximizes alveolar surface area on double inhale, then activates parasympathetic via extended exhale. Fastest downregulation in Stanford study.</td>
-        </tr>
-        <tr>
-          <td><span class="state-tag tag-mid">MODERATE</span></td>
-          <td style="color:var(--text-bright)">Resonance Breathing</td>
-          <td style="font-size:14px; color:var(--text-dim)">Equal inhale/exhale, ~5.5 bpm. Smooth sine-wave pattern. Nose breathing throughout.</td>
-          <td style="font-size:14px; color:var(--text-dim)">Maximizes HRV by synchronizing breathing with the baroreflex. Optimal autonomic tuning at the individual's resonance frequency.</td>
-        </tr>
-        <tr>
-          <td><span class="state-tag tag-low">LOW AROUSAL</span></td>
-          <td style="color:var(--text-bright)">Energizing Breath</td>
-          <td style="font-size:14px; color:var(--text-dim)">Emphasized inhale, shorter exhale. I:E ~2:1. Optional brief retention. Target: 10–12 bpm.</td>
-          <td style="font-size:14px; color:var(--text-dim)">Inhale emphasis activates sympathetic just enough to increase alertness and norepinephrine without triggering stress response.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="sub-heading">Transition Architecture</div>
-    <p>
-      Protocols aren't static. The system continuously monitors the user's actual breath pattern during the session and
-      can transition between protocols if the state changes. These transitions use the golden-ratio frequency offset
-      approach from Repose's entrainment system:
-    </p>
-
-    <div class="card card-violet">
+    <div class="card c-pink">
       <div class="card-header">
-        <span class="card-title">Three-Phase Transition</span>
-      </div>
-      <div class="code-block">
-<span class="cmt">// Same architecture as Repose brainwave transitions</span>
-
-<span class="kw">PHASE 1</span> <span class="str">Destabilize</span>
-  <span class="op">→</span> Golden-ratio offset from current breath rhythm
-  <span class="op">→</span> Gently disrupts locked-in pattern without jarring the user
-  <span class="op">→</span> Duration: ~30 seconds
-
-<span class="kw">PHASE 2</span> <span class="str">Bridge</span>
-  <span class="op">→</span> Fibonacci-convergent ratio between current and target pattern
-  <span class="op">→</span> Breath rate and I:E ratio both shifting smoothly
-  <span class="op">→</span> Duration: ~45 seconds
-
-<span class="kw">PHASE 3</span> <span class="str">Arrive</span>
-  <span class="op">→</span> Clean harmonic lock at target protocol parameters
-  <span class="op">→</span> Full entrainment with audio/haptic/visual
-  <span class="op">→</span> Duration: remainder of session
-      </div>
-      <div class="note">
-        <p><strong>This is the differentiator.</strong> No other breathwork app transitions between protocols mid-session based on
-        real-time physiological feedback. And no other app uses mathematically grounded transition curves to prevent
-        the jarring feeling of switching from one pattern to another.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════ 4. AUDIO ARCHITECTURE ════════════ -->
-  <section class="section reveal" id="audio">
-    <div class="section-header">
-      <span class="section-number">04</span>
-      <h2 class="section-title">Audio Architecture</h2>
-    </div>
-
-    <p>
-      The soundscape has three layers that blend into a single organic experience.
-      The user should never perceive these as separate — only as an environment that breathes with them.
-    </p>
-
-    <div class="card card-pink">
-      <div class="card-header">
-        <span class="card-title">Layer 1 — Ambient Soundscape</span>
+        <span class="card-title">Immediate Felt Shift &mdash; 60 to 90 Seconds</span>
       </div>
       <p>
-        Nature sounds or tonal textures that respond to breath phase. On inhale, the sound field gently expands —
-        a low tonal swell, nature sounds rising in richness, stereo width widening. On exhale, it contracts, softens,
-        resolves. Reverb tail lengthens on exhale. High-frequency content attenuates.
+        Breathwork produces proprioceptive changes faster than almost any other wellness intervention.
+        Within 60&ndash;90 seconds of cyclic sighing, most people feel warmth in the extremities (vasodilation),
+        heaviness or relaxation in the shoulders, and a slowing of internal tempo. These are not placebo &mdash; they're
+        direct consequences of parasympathetic activation via vagal engagement during extended exhalation.
       </p>
       <p>
-        This creates a feedback loop that doesn't feel like feedback — it feels like the environment is alive and
-        synchronized with you.
-      </p>
-      <div class="code-block">
-<span class="cmt">// Breath-responsive audio parameters</span>
-
-<span class="kw">inhale_phase</span>  <span class="op">→</span> volume_swell: +2dB, stereo_width: 1.0→1.3
-                   reverb_mix: 0.3→0.2, filter_cutoff: 2kHz→6kHz
-                   pitch_shift: +10 cents (barely perceptible rise)
-
-<span class="kw">exhale_phase</span>  <span class="op">→</span> volume_swell: -2dB, stereo_width: 1.3→0.8
-                   reverb_mix: 0.2→0.5, filter_cutoff: 6kHz→1.5kHz
-                   pitch_shift: -10 cents (settling, resolving)
-
-<span class="kw">pause/hold</span>    <span class="op">→</span> minimal change, gentle sustain, spaciousness
-      </div>
-    </div>
-
-    <div class="card card-rose">
-      <div class="card-header">
-        <span class="card-title">Layer 2 — Binaural / Isochronic Entrainment</span>
-      </div>
-      <p>
-        Carrier tones generating brainwave entrainment, with parameters that shift based on breath phase.
-        The critical innovation: entrainment intensity increases during exhale, when the brain is in a more
-        receptive parasympathetic state and neuroplasticity windows are more accessible.
-      </p>
-      <p>
-        During inhale, the entrainment layer recedes — carrier amplitude drops, beat frequency holds steady.
-        During exhale, amplitude rises and the beat frequency can be modulated toward the target state.
-        This creates a breath-gated entrainment cycle that compounds over the session.
+        The design challenge is making the user <em>notice</em> them. The post-session hold (savoring window)
+        and the single-number proof create a moment of attention where the felt shift becomes conscious.
       </p>
     </div>
 
-    <div class="card card-amber">
+    <div class="card c-pink">
       <div class="card-header">
-        <span class="card-title">Layer 3 — Haptic Pacer</span>
+        <span class="card-title">The Soundscape Breathes With You</span>
       </div>
       <p>
-        The Taptic Engine produces a breath-shaped haptic curve — not a metronome click, but a smooth
-        <em>swell</em> that rises like an inhale and fades like an exhale. The body follows haptic cues
-        more naturally than visual ones because it bypasses conscious processing.
+        When the ambient audio responds to detected breathing &mdash; expanding on inhale, softening on exhale,
+        reverb lengthening as the breath slows &mdash; users experience something no other app provides. It transforms
+        breathwork from "following a timer" to "the world is synchronized with me." The sound field widens on
+        inhale (stereo width 1.0&rarr;1.3, high-pass filter opening), contracts and resolves on exhale
+        (volume &ndash;2dB, reverb deepening, filter narrowing). The user feels <em>inside</em> the sound
+        rather than listening to it.
       </p>
-      <div class="code-block">
-<span class="cmt">// Haptic curve via Core Haptics</span>
-
-<span class="kw">CHHapticPattern</span> {
-  <span class="str">inhale</span>:  intensity ramp 0.0 → 0.6 over inhale_duration
-            sharpness ramp 0.2 → 0.5 (slightly crisper at peak)
-
-  <span class="str">exhale</span>:  intensity ramp 0.6 → 0.0 over exhale_duration
-            sharpness ramp 0.5 → 0.1 (softening, dissolving)
-
-  <span class="str">fade</span>:    over session, multiply intensity envelope by
-            decay curve 1.0 → 0.15 <span class="cmt">// guidance disappears</span>
-}
-      </div>
-      <div class="note">
-        <p><strong>Progressive disappearance:</strong> The haptic intensity envelope is multiplied by a session-long decay
-        curve. By minute 3, haptic cues are at ~15% intensity — subliminal but still felt by the body. The user
-        experiences this as finding their own rhythm, not as following a machine.</p>
-      </div>
     </div>
 
-    <div class="sub-heading">Audio Engine Architecture (Swift)</div>
-    <div class="card card-cyan">
+    <div class="card c-pink">
       <div class="card-header">
-        <span class="card-title">AVAudioEngine Graph</span>
+        <span class="card-title">Haptic Pacing the Body Follows Without Thinking</span>
       </div>
-      <div class="code-block">
-<span class="cmt">// Simultaneous playback + sonar + mic capture</span>
-
-<span class="kw">AVAudioEngine</span>
-  ├── <span class="str">Input Node</span> (mic)
-  │     ├── High-pass 17kHz <span class="op">→</span> Sonar return processing
-  │     └── Low-pass 4kHz  <span class="op">→</span> Breath sound analysis
-  │
-  ├── <span class="str">Mixer Node</span> (output)
-  │     ├── Ambient soundscape player (nature/tonal)
-  │     ├── Binaural tone generator (AU unit)
-  │     ├── Sonar chirp generator (18–22 kHz, low amplitude)
-  │     └── Masking/crossfade controller
-  │
-  └── <span class="str">Output Node</span> (speaker or headphones)
-
-<span class="cmt">// Headphone detection matters:</span>
-<span class="cmt">// Headphones → binaural beats work, sonar uses speaker</span>
-<span class="cmt">// Speaker only → isochronic pulses instead, sonar shared</span>
-      </div>
-      <div class="note">
-        <p><strong>Headphone routing:</strong> When AirPods or headphones are detected, binaural beats are delivered through headphones
-        while sonar chirps continue through the iPhone speaker. When no headphones are present, the app switches to isochronic
-        pulses (amplitude-modulated tones that don't require stereo separation) and shares the speaker for both audio and sonar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════ 5. ENTRAINMENT ════════════ -->
-  <section class="section reveal" id="entrainment">
-    <div class="section-header">
-      <span class="section-number">05</span>
-      <h2 class="section-title">Breath-Gated Entrainment</h2>
+      <p>
+        The Taptic Engine produces a breath-shaped curve &mdash; a smooth swell that rises like an inhale and fades
+        like an exhale. Not a metronome click. The body follows haptic cues more naturally than visual ones
+        because it bypasses conscious processing. Users describe this as "my body just started breathing that way"
+        rather than "I followed the instructions."
+      </p>
+      <p>
+        Critically, the haptic intensity fades over the session (1.0 &rarr; ~0.15 by minute three).
+        The user feels like they found their own rhythm. By the time the haptics are subliminal, they have.
+      </p>
     </div>
 
-    <p>
-      This is where the breathwork app connects to Repose's core technology. The breath cycle becomes the gating mechanism
-      for brainwave entrainment — not a separate feature bolted on, but an integrated system where breathing and
-      neural state change are synchronized.
-    </p>
-
-    <div class="card card-rose">
+    <div class="card c-amber">
       <div class="card-header">
-        <span class="card-title">Entrainment × Breath Phase</span>
+        <span class="card-title">The One-Number Moment</span>
       </div>
-      <div class="code-block">
-<span class="cmt">// Entrainment intensity modulated by breath phase</span>
-
-<span class="kw">INHALE</span>
-  binaural_amplitude: <span class="val">0.15</span> <span class="cmt">// recede</span>
-  beat_frequency: hold at current target
-  visual_flicker: off
-  haptic: rising curve (pacing, not entraining)
-
-<span class="kw">EXHALE</span>
-  binaural_amplitude: <span class="val">0.45</span> <span class="cmt">// emerge</span>
-  beat_frequency: active modulation toward target Hz
-  visual_flicker: ISF at target frequency (if screen visible)
-  haptic: falling curve + subtle entrainment pulse overlay
-
-<span class="kw">HOLD / PAUSE</span>
-  binaural_amplitude: <span class="val">0.60</span> <span class="cmt">// peak receptivity</span>
-  beat_frequency: locked at target
-  deepest entrainment window
-      </div>
+      <p>
+        <em style="color: var(--text-bright); font-size: 17px;">"Your breathing slowed from 19 to 7."</em>
+      </p>
+      <p>
+        Delivered after a 15-second hold in ambient silence. The user is still in a parasympathetic state when they
+        see this number. It lands in the body, not just the mind. Not a dashboard, not a chart &mdash;
+        one data point in a moment of calm. That's the proof. Every user who experiences biofeedback-style
+        proof-of-change reports a specific emotional response between satisfaction and surprise.
+        This is what makes them come back.
+      </p>
     </div>
-
-    <div class="sub-heading">Why Exhale-Phase Entrainment Matters</div>
-    <p>
-      During exhale, vagal tone increases, heart rate drops, and the brain shifts toward parasympathetic processing.
-      EEG research shows increased alpha and theta power during extended exhalation — the brain is literally more
-      receptive to rhythmic input during this phase. By concentrating entrainment energy on the exhale, you're
-      delivering the stimulus when the neural gates are most open.
-    </p>
-    <p>
-      Over a 5-minute session with 6 breaths per minute, that's 30 exhale-phase entrainment windows — each one
-      reinforcing the target brainwave state. The cumulative effect is substantially stronger than continuous
-      entrainment at constant intensity, because you're working <em>with</em> the brain's natural oscillation rather
-      than against it.
-    </p>
-
-    <div class="sub-heading">Target Frequencies by Protocol</div>
-    <table class="protocol-table">
-      <thead>
-        <tr>
-          <th>Protocol</th>
-          <th>Primary Target</th>
-          <th>Rationale</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="color:var(--text-bright)">Cyclic Sighing</td>
-          <td style="font-size:14px"><span class="state-tag tag-mid">10 Hz Alpha</span></td>
-          <td style="font-size:14px; color:var(--text-dim)">Calm alertness. Supports the downregulation goal without pushing into drowsiness.</td>
-        </tr>
-        <tr>
-          <td style="color:var(--text-bright)">Resonance Breathing</td>
-          <td style="font-size:14px"><span class="state-tag tag-trans">40 Hz Gamma</span></td>
-          <td style="font-size:14px; color:var(--text-dim)">Neuroplasticity window. Optimal for clarity, integration, and the affirmation pathway if combined with Repose.</td>
-        </tr>
-        <tr>
-          <td style="color:var(--text-bright)">Energizing Breath</td>
-          <td style="font-size:14px"><span class="state-tag tag-high">14–18 Hz Beta</span></td>
-          <td style="font-size:14px; color:var(--text-dim)">Focused alertness. Supports upregulation toward engaged wakefulness without anxiety.</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- ════════════ 6. UX FLOW ════════════ -->
-  <section class="section reveal" id="ux">
-    <div class="section-header">
-      <span class="section-number">06</span>
-      <h2 class="section-title">Experience Flow</h2>
-    </div>
-
-    <p>
-      The session UX is designed to feel like one continuous arc, not a sequence of steps.
-      The user should lose awareness of the app and be left with their breath and the soundscape.
-    </p>
-
-    <div class="card card-cyan">
-      <div class="card-header">
-        <span class="card-title">Session Timeline</span>
-      </div>
-      <div class="code-block">
-<span class="kw">T-0:00</span>  <span class="str">OPEN</span>
-  Screen: minimal. Dark. A single soft glow.
-  No text, no buttons except optional duration selection.
-  Audio: silence fading into ambient texture.
-  Sonar: begins emitting silently.
-
-<span class="kw">T-0:05</span>  <span class="str">SENSE</span>  <span class="cmt">(15–25 seconds, invisible to user)</span>
-  Sonar + mic + accelerometer capturing baseline.
-  Ambient audio is building slowly — the user doesn't know
-  sensing is happening. They're just settling in.
-  Visual: breathing glow begins, slow and inviting.
-
-<span class="kw">T-0:25</span>  <span class="str">FIRST EXHALE</span>
-  Before any protocol is named or shown:
-  One long, gentle haptic fade + warm descending tone.
-  Pure physical invitation to let air out.
-  No words. No UI change. Just an exhale cue.
-  <span class="cmt">// This is the critical moment — body trusts before mind engages.</span>
-
-<span class="kw">T-0:30</span>  <span class="str">PROTOCOL BEGINS</span>
-  State assessment complete. Protocol selected.
-  Haptic pacer establishes rhythm.
-  Soundscape responds to detected breath.
-  Entrainment layer fades in on first exhale.
-  Guidance intensity: 100%.
-
-<span class="kw">T-1:30</span>  <span class="str">ENTRAINMENT</span>
-  User is breathing in rhythm.
-  Haptic guidance: ~60% intensity (fading).
-  Audio responsiveness: full.
-  Entrainment: building with each exhale cycle.
-
-<span class="kw">T-3:00</span>  <span class="str">AUTONOMY</span>
-  Haptic guidance: ~15% (subliminal).
-  User feels like they own the rhythm.
-  Soundscape continues responding.
-  Entrainment at peak effectiveness.
-  <span class="cmt">// If state has shifted, transition begins here.</span>
-
-<span class="kw">T-4:30</span>  <span class="str">RESOLVE</span>
-  Entrainment begins gentle fade.
-  Soundscape simplifies — fewer layers, more space.
-  Haptic: barely perceptible or gone.
-
-<span class="kw">T-5:00</span>  <span class="str">HOLD</span>
-  Session complete. But don't end yet.
-  Ambient audio continues 15–20 seconds.
-  No UI change. No completion chime.
-  Let them sit in the state they created.
-  <span class="cmt">// This is where savoring happens.</span>
-
-<span class="kw">T-5:20</span>  <span class="str">ONE NUMBER</span>
-  Gentle fade-in of a single data point:
-  "Your breathing slowed from 19 to 7"
-  Small. Quiet. Delivered in calm.
-  That's the proof. Nothing else.
-      </div>
-    </div>
-
-    <div class="sub-heading">What the User Never Sees</div>
-    <ul class="spec-list">
-      <li>Protocol names or technique descriptions — the app chooses for them</li>
-      <li>Real-time metrics or waveforms during the session — no dashboards</li>
-      <li>A progress bar or countdown — time dissolves</li>
-      <li>Instructions like "breathe in now" — only the body-level cues (haptic, audio, visual glow)</li>
-      <li>A completion celebration, badge, or streak — just the held silence and the number</li>
-    </ul>
-  </section>
-
-  <!-- ════════════ 7. PROOF ════════════ -->
-  <section class="section reveal" id="proof">
-    <div class="section-header">
-      <span class="section-number">07</span>
-      <h2 class="section-title">The Proof Layer</h2>
-    </div>
-
-    <p>
-      Every session captures a before-and-after delta. The user sees one number.
-      Behind the scenes, more data is stored for personal trend analysis — but the post-session moment
-      is designed for emotional impact, not information density.
-    </p>
-
-    <div class="grid-2">
-      <div class="grid-item">
-        <div class="grid-item-title">Primary metric: Respiratory rate delta</div>
-        <p>"Your breathing slowed from 19 to 7 breaths per minute." Simple, felt, undeniable. Everyone understands breath rate intuitively.</p>
-      </div>
-      <div class="grid-item">
-        <div class="grid-item-title">Secondary (stored, not shown immediately)</div>
-        <p>I:E ratio shift, breath depth change, time-to-entrainment (how fast they locked to the pacer), restlessness delta, session-over-session trends.</p>
-      </div>
-    </div>
-
-    <div class="sub-heading">Trend Tracking</div>
-    <p>
-      Over time, the stored data reveals patterns the user can optionally explore: their average baseline arousal
-      is trending down (good), their time-to-entrainment is getting shorter (they're getting better at this),
-      their post-session respiratory rate is consistently lower than when they started weeks ago.
-      This is the long game — proving that breathwork creates lasting change, not just acute relief.
-    </p>
 
     <div class="note">
-      <p><strong>The emotional design principle:</strong> Stats screens feel clinical. One number in a moment of calm
-      feels like truth. The post-session beat is designed so the user is still in a parasympathetic state when they see the result —
-      which means it lands in the body, not just the prefrontal cortex. They <em>feel</em> the proof rather than analyzing it.</p>
+      <p><strong>What users won't feel:</strong> They won't perceive the sonar running. They won't feel the
+      brainwave entrainment directly. They won't recognize the self-distancing language shift as a technique &mdash;
+      the affirmations will just seem to "land" more. The invisible layers are the hardest to
+      market but the easiest to trust, because the user isn't asked to believe anything they can't verify.</p>
     </div>
   </section>
 
-  <!-- ════════════ 8. REPOSE INTEGRATION ════════════ -->
-  <section class="section reveal" id="repose">
+  <!-- ════════════ 04 &middot; DIFFERENTIATION ════════════ -->
+  <section class="section reveal" id="differentiation">
     <div class="section-header">
-      <span class="section-number">08</span>
-      <h2 class="section-title">Repose Integration Path</h2>
+      <span class="section-number">04</span>
+      <h2 class="section-title">Axis 3: Differentiation</h2>
     </div>
 
-    <p>
-      This breathwork system can stand alone, but its most powerful form is as the entry ramp to a Repose session.
-      State-aware breathwork → gamma entrainment → affirmation delivery during neuroplasticity windows.
-      No one else has this pipeline.
-    </p>
-
-    <div class="card card-violet">
-      <div class="card-header">
-        <span class="card-title">Standalone → Integrated Modes</span>
-      </div>
-      <div class="code-block">
-<span class="kw">MODE A: Standalone Breathwork</span>
-  Sense → Assess → Route → Guide → Entrain → Prove
-  <span class="cmt">// Complete experience, 3–10 minutes</span>
-  <span class="cmt">// Ship this first. Prove the sensing + routing works.</span>
-
-<span class="kw">MODE B: Breathwork → Repose Session</span>
-  Sense → Assess → Route → Guide → Entrain
-    <span class="op">→</span> <span class="str">Seamless crossfade</span> <span class="op">→</span>
-  Repose gamma entrainment → Affirmation delivery → Prove
-  <span class="cmt">// Breathwork becomes the on-ramp</span>
-  <span class="cmt">// User arrives at gamma state already calm and entrained</span>
-  <span class="cmt">// Affirmations land in optimal neuroplasticity window</span>
-
-<span class="kw">MODE C: Adaptive Hybrid</span>
-  If initial state is already calm (low/moderate arousal):
-    Skip extended breathwork → brief resonance tuning
-    → straight into Repose entrainment + affirmations
-  If initial state is high arousal:
-    Full cyclic sighing protocol first
-    → transition to gamma
-    → affirmations only when state is ready
-  <span class="cmt">// The system decides. The user just starts.</span>
-      </div>
-    </div>
-
-    <div class="sub-heading">Shared Architecture with Repose</div>
-    <ul class="spec-list">
-      <li>Audio engine — same AVAudioEngine graph, same binaural synthesis, same nature sound system</li>
-      <li>Entrainment math — same golden-ratio transitions, same frequency targeting</li>
-      <li>Haptic system — same Core Haptics patterns, extended for breath pacing</li>
-      <li>Sensor pipeline — Repose already uses accelerometer + mic; sonar is the new addition</li>
-      <li>UI aesthetic — same neumorphic language, same ambient breathing glow, extended for breathwork visualization</li>
-    </ul>
-  </section>
-
-  <!-- ════════════ 9. TECHNICAL RISKS ════════════ -->
-  <section class="section reveal" id="risks">
-    <div class="section-header">
-      <span class="section-number">09</span>
-      <h2 class="section-title">Technical Risks &amp; Mitigations</h2>
-    </div>
-
-    <table class="protocol-table">
+    <table class="ptable">
       <thead>
         <tr>
-          <th style="width:26%">Risk</th>
-          <th style="width:40%">Details</th>
-          <th>Mitigation</th>
+          <th style="width:24%">Capability</th>
+          <th style="width:22%">Calm / Headspace</th>
+          <th style="width:24%">Breathwrk / Othership</th>
+          <th style="width:30%">This product</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="color:var(--text-bright); font-size:14px">Sonar interference with audio playback</td>
-          <td style="font-size:13px; color:var(--text-dim)">Ultrasonic chirps could be audible to some users or cause speaker artifacts</td>
-          <td style="font-size:13px; color:var(--text-dim)">Chirp at 19–21 kHz (well above hearing range). Amplitude calibration per device model. User can disable sonar and fall back to passive audio.</td>
+          <td style="color:var(--text-bright); font-size:14px">Detects respiratory state</td>
+          <td><span class="tag tag-no">No</span></td>
+          <td><span class="tag tag-no">No</span></td>
+          <td><span class="tag tag-yes">Sonar + audio + accel</span></td>
         </tr>
         <tr>
-          <td style="color:var(--text-bright); font-size:14px">Ambient noise floor</td>
-          <td style="font-size:13px; color:var(--text-dim)">Noisy environments degrade both sonar and passive breath detection</td>
-          <td style="font-size:13px; color:var(--text-dim)">SNR quality check during sensing phase. If below threshold, fall back to accelerometer-only + haptic-guided protocol (no state detection, just guided breathing).</td>
+          <td style="color:var(--text-bright); font-size:14px">Auto-selects protocol</td>
+          <td><span class="tag tag-no">User picks</span></td>
+          <td><span class="tag tag-no">User picks</span></td>
+          <td><span class="tag tag-yes">Matched to detected state</span></td>
         </tr>
         <tr>
-          <td style="color:var(--text-bright); font-size:14px">Phone distance variability</td>
-          <td style="font-size:13px; color:var(--text-dim)">Sonar accuracy degrades beyond ~1m. User may place phone too far away.</td>
-          <td style="font-size:13px; color:var(--text-dim)">Signal quality indicator during setup. Gentle prompt: "Move your phone a bit closer" only if signal is too weak. Once calibrated, no further interaction.</td>
+          <td style="color:var(--text-bright); font-size:14px">Measures outcome</td>
+          <td><span class="tag tag-no">None</span></td>
+          <td><span class="tag tag-partial">Lung score (Breathwrk)</span></td>
+          <td><span class="tag tag-yes">Pre/post resp rate delta</span></td>
         </tr>
         <tr>
-          <td style="color:var(--text-bright); font-size:14px">Battery drain</td>
-          <td style="font-size:13px; color:var(--text-dim)">Continuous mic + speaker + haptics + audio processing</td>
-          <td style="font-size:13px; color:var(--text-dim)">Sessions are 3–10 minutes. Even at full sensor load, battery impact is negligible for session-based use. Sonar chirp duty cycle can be reduced after initial sensing.</td>
+          <td style="color:var(--text-bright); font-size:14px">Breath-responsive audio</td>
+          <td><span class="tag tag-no">Static loops</span></td>
+          <td><span class="tag tag-partial">Music-driven (Othership)</span></td>
+          <td><span class="tag tag-yes">Synced to detected breath</span></td>
         </tr>
         <tr>
-          <td style="color:var(--text-bright); font-size:14px">App Store review (ultrasonic audio)</td>
-          <td style="font-size:13px; color:var(--text-dim)">Apple may flag inaudible audio emission</td>
-          <td style="font-size:13px; color:var(--text-dim)">Precedent exists — several sleep tracking apps use active sonar. Document the frequency range and amplitude levels in review notes. Provide opt-out.</td>
+          <td style="color:var(--text-bright); font-size:14px">Brainwave entrainment</td>
+          <td><span class="tag tag-no">No</span></td>
+          <td><span class="tag tag-no">No</span></td>
+          <td><span class="tag tag-yes">Exhale-phase gated</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text-bright); font-size:14px">Mid-session adaptation</td>
+          <td><span class="tag tag-no">Fixed session</span></td>
+          <td><span class="tag tag-no">Fixed session</span></td>
+          <td><span class="tag tag-yes">Transitions if state shifts</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text-bright); font-size:14px">Self-distanced affirmations</td>
+          <td><span class="tag tag-no">No affirmations</span></td>
+          <td><span class="tag tag-no">No affirmations</span></td>
+          <td><span class="tag tag-yes">2nd person + user name</span></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text-bright); font-size:14px">Requires hardware</td>
+          <td><span class="tag tag-partial">Optional watch</span></td>
+          <td><span class="tag tag-no">None</span></td>
+          <td><span class="tag tag-no">Phone only</span></td>
         </tr>
       </tbody>
     </table>
+
+    <div class="sub-heading">The real competitor is nothing</div>
+    <p>
+      Most people who would benefit from breathwork don't do it. The reasons: they don't know which technique
+      to use, they're not sure it's working, and the available apps feel either too clinical or too spiritual.
+      State-aware routing solves the first. Sensor-based proof solves the second. The sonic and haptic design
+      solves the third.
+    </p>
+
+    <div class="sub-heading">Defensible IP</div>
+    <p>
+      The specific combination of FMCW sonar breath detection + state classification + protocol routing +
+      breath-phase-gated entrainment + golden-ratio protocol transitions is novel. Individual pieces exist
+      in research papers, but no one has assembled them into a consumer product. The transition architecture
+      (destabilize &rarr; bridge &rarr; arrive using golden-ratio frequency offsets) is already built and
+      working in Repose. Porting it to breath pattern transitions is engineering, not research.
+    </p>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ════════════ SUMMARY ════════════ -->
-  <section class="section reveal">
+  <!-- ════════════ 05 &middot; ARCHITECTURE ════════════ -->
+  <section class="section reveal" id="architecture">
     <div class="section-header">
-      <span class="section-number">⟡</span>
-      <h2 class="section-title">What Makes This Different</h2>
+      <span class="section-number">05</span>
+      <h2 class="section-title">Technical Architecture</h2>
     </div>
 
     <p>
-      Every existing breathwork app is a menu of techniques. They assume the user knows what they need,
-      or they guess based on a mood selection screen. This system <em>measures</em> what the user needs,
-      <em>matches</em> the right protocol, <em>guides</em> with multimodal cues that fade into autonomy,
-      <em>entrains</em> brainwave activity synchronized to breath phase, and <em>proves</em> the result
-      with a single felt number.
+      The system is a six-stage pipeline. The user experiences it as a single continuous arc.
+    </p>
+
+    <div class="pipeline">
+      <div class="ps"><span class="ps-n">01</span><span class="ps-l cyan">Sense</span></div>
+      <div class="ps"><span class="ps-n">02</span><span class="ps-l blue">Assess</span></div>
+      <div class="ps"><span class="ps-n">03</span><span class="ps-l violet">Route</span></div>
+      <div class="ps"><span class="ps-n">04</span><span class="ps-l pink">Guide</span></div>
+      <div class="ps"><span class="ps-n">05</span><span class="ps-l amber">Entrain</span></div>
+      <div class="ps"><span class="ps-n">06</span><span class="ps-l green">Prove</span></div>
+    </div>
+
+    <!-- SENSING -->
+    <div class="card c-cyan">
+      <div class="card-header">
+        <span class="card-title">Sensing &mdash; Three Methods, One Audio Stream</span>
+      </div>
+      <p>
+        <strong style="color:var(--accent-cyan)">Primary: Active sonar (FMCW).</strong> The phone emits inaudible 18&ndash;22 kHz chirps and captures
+        reflections. Chest movement modulates the reflected signal's phase. Because sonar lives above 18 kHz and breathing audio
+        stays below 4 kHz, they run simultaneously in the same AVAudioEngine graph and are demuxed in software
+        via bandpass filters.
+      </p>
+      <p>
+        <strong style="color:var(--accent-blue)">Fallback: Passive breath audio.</strong> The mic detects nasal/oral airflow sound passively.
+        Research shows spectral energy concentrated in the 200&ndash;800 Hz range during exhale events, with median
+        error below 1% at 30 cm. Less precise at distance, but captures breath <em>quality</em> &mdash;
+        nose vs. mouth, smooth vs. choppy exhale, approximate duration.
+      </p>
+      <p>
+        <strong style="color:var(--text-dim)">Supplemental: Accelerometer.</strong> CMMotionManager at 100 Hz, bandpass filtered.
+        Restlessness scoring via micro-movement energy in the 0.5&ndash;10 Hz band. No contact required.
+        Gives the state classifier a non-audio signal.
+      </p>
+      <div class="cite">
+        Nandakumar, R. et al. (2015). ApneaApp: Contactless Sleep Apnea Detection on Smartphones.
+        <a href="https://doi.org/10.1145/2742647.2742674" target="_blank"><em>Proc. ACM MobiSys</em></a>.
+        &nbsp;&bull;&nbsp;
+        Nam, Y. et al. (2016). "Estimation of Respiratory Rates Using the Built-in Microphone of a Smartphone."
+        <a href="https://doi.org/10.1109/JBHI.2015.2480838" target="_blank"><em>IEEE J. Biomedical &amp; Health Informatics</em>, 20(6).</a>
+      </div>
+    </div>
+
+    <!-- STATE + ROUTING -->
+    <div class="card c-blue">
+      <div class="card-header">
+        <span class="card-title">State Assessment &rarr; Protocol Routing</span>
+      </div>
+      <div class="code-block"><span class="cmt">// 15&ndash;30 seconds of quiet sensing (user doesn't know it's happening)</span>
+
+<span class="kw">INPUTS</span>
+  resp_rate         &rarr; breaths per minute (sonar primary)
+  ie_ratio          &rarr; inhale:exhale duration ratio
+  breath_depth      &rarr; sonar phase displacement amplitude
+  movement_energy   &rarr; accelerometer RMS (restlessness proxy)
+
+<span class="kw">CLASSIFICATION</span>
+  <span class="val">HIGH AROUSAL</span>     &rarr; resp &gt;18, ie_ratio &lt;1:1.2, fidgeting
+                      <span class="str">&rarr; Cyclic Sighing</span> (double inhale, 1:2 I:E, target 6 bpm)
+                        Entrainment target: <span class="str">10 Hz alpha</span> (calm alertness)
+
+  <span class="val">MODERATE</span>        &rarr; resp 12&ndash;18, balanced I:E, still
+                      <span class="str">&rarr; Resonance Breathing</span> (equal I:E, ~5.5 bpm)
+                        Entrainment target: <span class="str">40 Hz gamma</span> (neuroplasticity)
+
+  <span class="val">LOW AROUSAL</span>     &rarr; resp &lt;12, very still, irregular
+                      <span class="str">&rarr; Energizing Breath</span> (inhale emphasis, 2:1 I:E, 10&ndash;12 bpm)
+                        Entrainment target: <span class="str">14&ndash;18 Hz beta</span> (focused alertness)
+
+<span class="kw">PERSONAL BASELINE</span>
+  Exponential moving average updated after each session.
+  Compares you to yourself, not population norms.</div>
+    </div>
+
+    <!-- TRANSITIONS -->
+    <div class="card c-violet">
+      <div class="card-header">
+        <span class="card-title">Mid-Session Transitions (Golden-Ratio Architecture)</span>
+      </div>
+      <p>
+        If the user's state changes mid-session, the system transitions protocols using the same
+        golden-ratio architecture already built into Repose's brainwave entrainment:
+      </p>
+      <div class="code-block"><span class="kw">PHASE 1</span> <span class="str">Destabilize</span> <span class="cmt">~30s</span>
+  Golden-ratio offset (&phi; &asymp; 1.618) from current breath rhythm.
+  Gently disrupts locked-in pattern without jarring the user.
+
+<span class="kw">PHASE 2</span> <span class="str">Bridge</span> <span class="cmt">~45s</span>
+  Fibonacci-convergent ratio between current and target.
+  Both rate and I:E ratio shifting smoothly.
+
+<span class="kw">PHASE 3</span> <span class="str">Arrive</span> <span class="cmt">remainder</span>
+  Clean harmonic lock at target protocol parameters.
+  Full entrainment with audio, haptic, and visual (ISF) layers.</div>
+    </div>
+
+    <!-- SESSION FLOW -->
+    <div class="card c-pink">
+      <div class="card-header">
+        <span class="card-title">Session Experience Flow</span>
+      </div>
+      <div class="code-block"><span class="kw">0:00</span>  Dark screen, soft glow. Sonar begins silently.
+<span class="kw">0:05</span>  <span class="str">SENSING</span> &mdash; ambient audio building. User is just settling in.
+<span class="kw">0:25</span>  <span class="str">FIRST EXHALE</span> &mdash; one haptic fade + descending tone. No words.
+       <span class="cmt">Body trusts before mind engages.</span>
+<span class="kw">0:30</span>  <span class="str">PROTOCOL</span> &mdash; state assessed, protocol selected, pacer establishes rhythm.
+       Soundscape responds to breath. Entrainment fades in.
+<span class="kw">1:30</span>  <span class="str">ENTRAINMENT</span> &mdash; haptics at ~60%, fading. Exhale-phase entrainment building.
+       Each exhale: binaural amplitude rises, beat frequency locks to target.
+<span class="kw">3:00</span>  <span class="str">AUTONOMY</span> &mdash; haptics at ~15%. User owns the rhythm.
+       Peak entrainment effectiveness. Affirmations arrive here (if Mode B/C).
+<span class="kw">4:30</span>  <span class="str">RESOLVE</span> &mdash; entrainment gently fades. Soundscape simplifies.
+<span class="kw">5:00</span>  <span class="str">HOLD</span> &mdash; session over but don't end yet. 15&ndash;20s of ambient sound.
+       <span class="cmt">Savoring window. No UI change. Let them sit in what they created.</span>
+<span class="kw">5:20</span>  <span class="str">ONE NUMBER</span> &mdash; "Your breathing slowed from 19 to 7."
+       <span class="cmt">Small. Quiet. Delivered in calm.</span></div>
+    </div>
+
+    <!-- REPOSE INTEGRATION -->
+    <div class="sub-heading">Repose Integration Path</div>
+
+    <div class="card c-green">
+      <div class="card-header">
+        <span class="card-title">Three Modes</span>
+      </div>
+      <p>
+        <strong style="color:var(--accent-green)">Mode A: Standalone breathwork.</strong> Ship this first. Prove the sensing and routing work.
+        Complete sense &rarr; assess &rarr; route &rarr; guide &rarr; entrain &rarr; prove cycle in 3&ndash;10 minutes.
+      </p>
+      <p>
+        <strong style="color:var(--accent-cyan)">Mode B: Breathwork &rarr; Repose.</strong> Breathwork becomes the on-ramp.
+        Seamless crossfade into 40 Hz gamma entrainment + self-distanced affirmation delivery.
+        User arrives at the neuroplasticity window already calm, already entrained, already in parasympathetic state.
+        Affirmations land in the optimal window.
+      </p>
+      <p>
+        <strong style="color:var(--accent-violet)">Mode C: Adaptive hybrid.</strong> If already calm &rarr; brief resonance tuning, then
+        straight into Repose. If activated &rarr; full cyclic sighing first, transition to gamma, affirmations
+        only when the system confirms the state is ready. User just presses start; the system decides the path.
+      </p>
+      <p style="font-size: 14px; color: var(--text-dim); margin-top: 0.5rem;">
+        Shared infrastructure: same AVAudioEngine graph, same binaural synthesis, same golden-ratio transitions,
+        same Core Haptics system, same neumorphic UI language. The sonar pipeline is the only net-new component.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════ 06 &middot; RISKS ════════════ -->
+  <section class="section reveal" id="risks">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">What Could Go Wrong</h2>
+    </div>
+
+    <p>
+      Honesty about risks makes the case stronger.
+    </p>
+
+    <div class="card c-rose">
+      <div class="card-header">
+        <span class="card-title">Sonar reliability in real-world conditions</span>
+        <span class="card-badge badge-rose">High impact</span>
+      </div>
+      <p>
+        Lab papers show excellent accuracy, but homes have TVs, pets, ambient noise, and variable phone placement.
+        Clinical FMCW studies found that accuracy degraded during spontaneous breathing with patient movement,
+        with limits of agreement widening to &plusmn;5 bpm.
+        The fallback stack (passive audio &rarr; accelerometer &rarr; guided-only mode) degrades gracefully, but if the
+        primary sensing modality fails frequently, the "state-aware" promise weakens. This is the highest-risk
+        technical unknown and should be validated first.
+      </p>
+      <div class="cite">
+        Van Loon, K. et al. (2016). The radar appeared more accurate during low breathing rates with large tidal volumes.
+        <a href="https://doi.org/10.1007/s10877-015-9777-5" target="_blank"><em>J. Clinical Monitoring &amp; Computing</em>, 30, 797&ndash;805.</a>
+      </div>
+    </div>
+
+    <div class="card c-rose">
+      <div class="card-header">
+        <span class="card-title">The market may not value measurement</span>
+        <span class="card-badge badge-amber">Medium impact</span>
+      </div>
+      <p>
+        It's possible most breathwork users want guided relaxation, not biofeedback. The one-number proof is
+        designed to be emotionally resonant rather than analytically interesting, but if users skip past it,
+        the measurement layer becomes infrastructure without a user-facing payoff. The dedicated breathwork
+        market is also still small relative to general meditation apps &mdash; Calm has over 100 million
+        downloads; even the leading breathwork-specific apps are orders of magnitude smaller.
+      </p>
+    </div>
+
+    <div class="card c-rose">
+      <div class="card-header">
+        <span class="card-title">Entrainment claims are hard to substantiate without EEG</span>
+        <span class="card-badge badge-amber">Medium impact</span>
+      </div>
+      <p>
+        If users ask "how do I know the brainwave part is working?", the honest answer is "the peer-reviewed
+        research shows it does, but we can't measure it on your phone." This is a messaging challenge, not a
+        scientific one, but it requires careful framing. Over-claiming would damage credibility; under-explaining
+        would leave the most differentiated feature invisible.
+      </p>
+    </div>
+
+    <div class="card c-rose">
+      <div class="card-header">
+        <span class="card-title">Personalized affirmation delivery adds an uncanny valley risk</span>
+        <span class="card-badge badge-dim">Low impact</span>
+      </div>
+      <p>
+        Hearing your own name in second person from a synthesized voice ("You've got this, Gary") could feel
+        intimate or could feel unsettling. The research says it works better than first-person framing &mdash;
+        but the felt experience of hearing it for the first time requires a moment of adjustment.
+        The ElevenLabs whispered TTS and the entrainment context (user already in calm state) should
+        soften the landing. Worth testing early in beta.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════ CLOSING ════════════ -->
+  <section class="section reveal" id="closing" style="margin-top: 5rem;">
+    <div class="section-header" style="border-bottom: none; padding-bottom: 0;">
+      <span class="section-number">&crarr;</span>
+      <h2 class="section-title">The Shortest Version</h2>
+    </div>
+
+    <p>
+      Breathwork is the only wellness intervention where:
     </p>
     <p>
-      The technical foundation — active sonar for contactless respiratory sensing, breath-gated entrainment,
-      golden-ratio protocol transitions — represents IP that would take competitors significant time to replicate.
-      And the Repose integration path means this isn't just a breathwork app: it's the on-ramp to a
-      neuroplasticity platform.
+      <strong style="color: var(--accent-cyan)">1.</strong> The optimal technique depends on your current physiological state.
+      <br>
+      <strong style="color: var(--accent-blue)">2.</strong> No product currently detects that state.
+      <br>
+      <strong style="color: var(--accent-violet)">3.</strong> The effect can be measured with phone sensors in real time.
+      <br>
+      <strong style="color: var(--accent-pink)">4.</strong> The user can feel the change in their body within 90 seconds.
+      <br>
+      <strong style="color: var(--accent-amber)">5.</strong> A single number can prove the change happened.
+    </p>
+    <p>
+      Adding exhale-phase entrainment makes it work deeper. Adding self-distanced affirmations &mdash;
+      which Repose already delivers in second person &mdash; makes it work on beliefs, not just physiology.
+      All three layers share the same audio engine, the same sensor pipeline, and the same underlying principle:
+      meet the nervous system where it is, and guide it somewhere better.
+    </p>
+    <p>
+      The technical architecture already exists in Repose. The market has no product that does any of this.
+      The research supporting each layer is peer-reviewed and replicable.
+      The risk is execution, not concept.
     </p>
   </section>
 
 </main>
 
 <footer>
-  Breathwork Architecture Spec — Draft v1 — March 2026
+  State-Aware Breathwork &mdash; Draft v1 &mdash; March 2026
 </footer>
 
 <script>
-// Scroll-triggered reveal
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
