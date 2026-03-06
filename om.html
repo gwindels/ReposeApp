@@ -219,6 +219,53 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointe
   </div>
 </section>
 
+
+<!-- TUNING -->
+<section class="section">
+  <div class="container">
+    <div class="tuning-grid">
+      <div class="tuning-visual reveal">
+        <div class="freq-vis">
+          <div class="freq-number">Hz</div>
+          <svg viewBox="0 0 220 220" style="width:100%;height:100%">
+            <g transform="translate(0,110)">
+              <path class="wave-path wave-1" d="" stroke="var(--accent)" fill="none" stroke-width="1.5" opacity=".25"/>
+              <path class="wave-path wave-2" d="" stroke="var(--accent)" fill="none" stroke-width="1" opacity=".15"/>
+              <path class="wave-path wave-3" d="" stroke="var(--accent-soft)" fill="none" stroke-width="2" opacity=".4"/>
+            </g>
+            <circle cx="110" cy="110" r="4" fill="var(--accent)" opacity=".5">
+              <animate attributeName="r" values="3;5;3" dur="5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values=".5;.8;.5" dur="5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="110" cy="110" r="85" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="4 8">
+              <animateTransform attributeName="transform" type="rotate" from="0 110 110" to="360 110 110" dur="80s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+          <div class="freq-label">Finding your frequency</div>
+        </div>
+      </div>
+      <div class="tuning-text reveal reveal-delay-2">
+        <div class="t-label">Tuning</div>
+        <h2 class="t-display t-display-md">Twist to tune</h2>
+        <p>
+          The egg's two hand-turned halves rotate against each other to adjust internal tension, changing which frequencies it responds to most. You set a target, whether it's 111&nbsp;Hz or Om near 136&nbsp;Hz. Then vocalize and twist slowly until you feel&nbsp;it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LONGEVITY -->
+<section class="section longevity">
+  <div class="container reveal">
+    <div class="longevity-number" id="longevityNum">500</div>
+    <div class="longevity-unit">years without recharging</div>
+    <p class="longevity-text">
+      There are no circuits, no batteries, and no firmware. The construction is so simple that there's nothing to wear out or break&nbsp;down.
+    </p>
+  </div>
+</section>
+
 <!-- SCIENCE -->
 <section class="section science" id="science">
   <div class="science-inner">
@@ -252,52 +299,6 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointe
         <div class="finding-cite">Iaccarino et al., Nature, 2016</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- TUNING -->
-<section class="section">
-  <div class="container">
-    <div class="tuning-grid">
-      <div class="tuning-visual reveal">
-        <div class="freq-vis">
-          <div class="freq-number">Hz</div>
-          <svg viewBox="0 0 220 220" style="width:100%;height:100%">
-            <g transform="translate(0,110)">
-              <path class="wave-path wave-1" d="" stroke="var(--accent)" fill="none" stroke-width="1.5" opacity=".25"/>
-              <path class="wave-path wave-2" d="" stroke="var(--accent)" fill="none" stroke-width="1" opacity=".15"/>
-              <path class="wave-path wave-3" d="" stroke="var(--accent-soft)" fill="none" stroke-width="2" opacity=".4"/>
-            </g>
-            <circle cx="110" cy="110" r="4" fill="var(--accent)" opacity=".5">
-              <animate attributeName="r" values="3;5;3" dur="5s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values=".5;.8;.5" dur="5s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="110" cy="110" r="85" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="4 8">
-              <animateTransform attributeName="transform" type="rotate" from="0 110 110" to="360 110 110" dur="80s" repeatCount="indefinite"/>
-            </circle>
-          </svg>
-          <div class="freq-label">Finding your frequency</div>
-        </div>
-      </div>
-      <div class="tuning-text reveal reveal-delay-2">
-        <div class="t-label">Tuning</div>
-        <h2 class="t-display t-display-md">Twist to tune</h2>
-        <p>
-          The research points to specific frequencies — 111&nbsp;Hz, Om near 136&nbsp;Hz, harmonics of 40&nbsp;Hz. The egg's two hand-turned halves rotate against each other to adjust internal tension, changing which frequencies it responds to most. You set a target, vocalize, and twist slowly until you feel&nbsp;it.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LONGEVITY -->
-<section class="section longevity">
-  <div class="container reveal">
-    <div class="longevity-number" id="longevityNum">500</div>
-    <div class="longevity-unit">years without recharging</div>
-    <p class="longevity-text">
-      There are no circuits, no batteries, and no firmware. The construction is so simple that there's nothing to wear out or break&nbsp;down.
-    </p>
   </div>
 </section>
 
